@@ -1,0 +1,44 @@
+{
+    "name": "grato-shop-client",
+    "version": "1.0.0",
+    "description": "an e-commernce project aimed for selling cell-phones",
+    "author": "Liam",
+    "private": true,
+    "scripts": {
+        "dev": "nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "generate": "nuxt generate",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@nuxtjs/auth": "^4.8.4",
+        "@nuxtjs/axios": "^5.3.6",
+        "@nuxtjs/google-analytics": "^2.2.1",
+        "nuxt": "^2.0.0"
+    },
+    "devDependencies": {
+        "@nuxtjs/eslint-config": "^1.0.1",
+        "@nuxtjs/eslint-module": "^1.0.0",
+        "@nuxtjs/tailwindcss": "^1.0.0",
+        "@vue/test-utils": "^1.0.0-beta.27",
+        "babel-eslint": "^10.0.3",
+        "babel-jest": "^24.1.0",
+        "eslint": "^6.6.0",
+        "eslint-config-prettier": "^6.5.0",
+        "eslint-plugin-nuxt": ">=0.4.2",
+        "eslint-plugin-prettier": "^3.1.1",
+        "jest": "^24.1.0",
+        "numeral": "^2.0.6",
+        "prettier": "^1.18.2",
+        "v-scroll-lock": "^1.0.1",
+        "vue-bytesize-icons": "^0.1.1",
+        "vue-clickaway": "^2.2.2",
+        "vue-fragment": "^1.5.1",
+        "vue-jest": "^4.0.0-0",
+        "vue-numeral-filter": "^1.1.1",
+        "vue-svg-loader": "^0.14.0",
+        "vue-template-compiler": "^2.6.10",
+        "vuelidate": "^0.7.4"
+    }
+}
