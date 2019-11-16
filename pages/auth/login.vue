@@ -1,22 +1,13 @@
 <template>
     <div class="container mx-auto">
-        <div class="flex justify-around items-center">
-            <div class="w-1/2 my-32 mx-8">
-                <form class="w-3/5" @submit.prevent="Login">
-                    <div class="pb-8 text-gray-700">
-                        <h1 class="text-gray-900 text-2xl">
-                            ورود به حساب کاربری
-                        </h1>
-
-                        <p class="text-xs text-gray-900 inline pr-1">
-                            حساب کاربری ندارید؟
-                        </p>
-                        <nuxt-link
-                            to="/auth/register"
-                            class="text-xs text-blue-600 hover:text-blue-900 hover:underline"
-                            >ثبت نام کنید</nuxt-link
-                        >
-                    </div>
+        <div
+            class="flex flex-col lg:flex-row jusutify-center lg:justify-around items-center"
+        >
+            <div class="w-full lg:w-1/2 my-12 lg:my-32 p-6  lg:mx-8">
+                <form class="w-full lg:w-3/5" @submit.prevent="Login">
+                    <h1 class="text-gray-900 text-2xl">
+                        ورود به حساب کاربری
+                    </h1>
 
                     <div class="py-2">
                         <label
@@ -25,7 +16,7 @@
                             >ایمیل یا نام کاربری</label
                         >
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <input
                             id="email"
                             ref="email"
@@ -68,7 +59,7 @@
                         />
                     </div>
 
-                    <div>
+                    <div class="pt-5">
                         <nuxt-link
                             class="font-dana text-xs text-blue-700 hover:text-blue-900 hover:underline"
                             to="/auth/recovery"
@@ -84,12 +75,19 @@
                             <span>ورود به گراتو</span>
                             <SendIcon class="icon w-10" />
                         </button>
+                        <nuxt-link
+                            tag="span"
+                            class=" mx-3 text-xs text-gray-700"
+                            to="/"
+                            >{{ "یا برگشت به فروشگاه" }}</nuxt-link
+                        >
                     </div>
                 </form>
             </div>
-
-            <div class="w-1/2">
-                <h1 class="text-black text-2xl">ثبت نام در فروشگاه گراتو</h1>
+            <div class="w-full p-6 lg:w-1/2">
+                <h1 class="text-black text-2xl">
+                    ثبت نام در فروشگاه گراتو
+                </h1>
                 <p class="py-2 text-gray-800">
                     با ثبت نام در گراتو به راحتی پرداخت خود را انجام دهید
                 </p>

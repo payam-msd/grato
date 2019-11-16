@@ -55,7 +55,7 @@ export default {
     /*
      ** Nuxt.js modules
      */
-    modules: ["@nuxtjs/axios"],
+    modules: ["@nuxtjs/axios", "@nuxtjs/device"],
 
     /*
      ** Axios module configuration

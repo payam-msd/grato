@@ -1,8 +1,8 @@
 <template>
     <div class="container mx-auto">
-        <div class="flex items-center justify-start">
-            <div class="w-1/2 mt-12 mx-8">
-                <form class="w-3/5" @submit.prevent="Register">
+        <div class="flex items-center">
+            <div class="w-full lg:w-1/2 p-6 lg:mt-12 lg:mx-8">
+                <form class="w-full lg:w-3/5" @submit.prevent="Register">
                     <div class="p-3 pb-4">
                         <h1 class="text-black  text-2xl">
                             {{ "ثبت نام" }}
@@ -19,7 +19,7 @@
                             >
                         </div>
                     </div>
-                    <div class="mb-2 relative">
+                    <div class="mb-3 relative">
                         <input
                             id="username"
                             ref="username"
@@ -40,7 +40,7 @@
                             >
                         </div>
                     </div>
-                    <div class="mb-2">
+                    <div class="mb-3">
                         <input
                             id="email"
                             ref="email"
@@ -119,6 +119,12 @@
                             <span>ثبت نام در گراتو</span>
                             <SendIcon class="icon w-10" />
                         </button>
+                        <nuxt-link
+                            tag="span"
+                            class=" mx-3 text-xs text-gray-700"
+                            to="/"
+                            >{{ "یا برگشت به فروشگاه" }}</nuxt-link
+                        >
                     </div>
                 </form>
             </div>

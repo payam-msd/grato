@@ -2,7 +2,7 @@
     <div class="relative">
         <header
             ref="navbar"
-            class="inset-x-0 z-20 bg-white flex flex-wrap items-center py-2 lg:py-8"
+            class="w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8"
         >
             <div
                 class="flex-1 flex justify-between items-center container mx-auto px-6"
@@ -17,15 +17,7 @@
 
                 <BrandCategories />
 
-                <label for="menu-toggle" class="pointer-cursor lg:hidden block">
-                    <Menu />
-                </label>
-                <input id="menu-toggle" class="hidden" type="checkbox" />
-
-                <div
-                    id="menu"
-                    class="hidden w-full lg:flex lg:items-center lg:w-auto"
-                >
+                <div id="menu" class="w-full lg:flex lg:items-center lg:w-auto">
                     <div
                         class="items-center justify-between text-base text-gray-700 pt-4 lg:pt-0 lg:flex"
                     >
@@ -49,6 +41,11 @@
                         role="button"
                         tabindex="0"
                         class="relative lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor"
+                        @click="
+                            $store.commit('TOGGLE_SIDEBAR', {
+                                component: cartContent,
+                            })
+                        "
                     >
                         <cart
                             class="icon w-7 text-gray-700 hover:text-gray-900"
@@ -68,8 +65,8 @@
 
 <script>
 import {mapGetters, mapState} from "vuex"
-import BrandCategories from "~/components/navigation/hoverDrop/BrandCategories"
-import profile from "~/components/navigation/profile/Dropdown"
+import BrandCategories from "~/components/Desktop/navigation/hoverDrop/BrandCategories"
+import profile from "~/components/Desktop/navigation/profile/Dropdown"
 import Menu from "~/assets/svg/icons/menu.svg"
 import cart from "~/assets/svg/icons/cart.svg"
 import thinLine from "~/assets/svg/icon-/icon-remove.svg"
@@ -81,12 +78,14 @@ export default {
         cart,
         thinLine,
     },
-    // props: {
-    //     content: {
-    //         type: Object,
-    //         default: () => {},
-    //     },
-    // },
+
+    props: {
+        cartContent: {
+            type: Object,
+            default: () => {},
+        },
+    },
+
     data() {
         return {
             isNavbarFixed: false,
@@ -94,6 +93,7 @@ export default {
             lastScrollPosition: 55,
         }
     },
+
     computed: {
         ...mapGetters(["isAuthenticated"]),
         ...mapState(["sidebarOpen", "cart"]),
@@ -108,13 +108,13 @@ export default {
                 ? tl.set(navbar, {
                       css: {
                           classList:
-                              "+=fixed top-0 inset-x-0 z-20 rounded-b shadow-lg bg-white flex flex-wrap items-center py-2 lg:py-4",
+                              "+=fixed top-0 w-full z-20 rounded-b shadow-lg bg-white flex flex-wrap items-center py-2 lg:py-4",
                       },
                   })
                 : tl.set(navbar, {
                       css: {
                           classList:
-                              "-=inset-x-0 z-20 bg-white flex flex-wrap items-center py-2 lg:py-8",
+                              "-=w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8",
                       },
                   })
         },
@@ -156,8 +156,4 @@ export default {
 }
 </script>
 
-<style>
-#menu-toggle:checked + #menu {
-    display: block;
-}
-</style>
+<style></style>

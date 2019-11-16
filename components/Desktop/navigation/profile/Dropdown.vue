@@ -72,9 +72,9 @@
 
 <script>
 import {mapGetters} from "vuex"
-import Wrapper from "~/components/modules/profile/Wrapper"
-import ItemDetail from "~/components/modules/profile/ItemDetail"
-import Item from "~/components/modules/profile/Item"
+import Wrapper from "~/components/Desktop/modules/profile/Wrapper"
+import ItemDetail from "~/components/Desktop/modules/profile/ItemDetail"
+import Item from "~/components/Desktop/modules/profile/Item"
 import ChevronBottomIcon from "~/assets/svg/icons/chevron-bottom.svg"
 import UserIcon from "~/assets/svg/icons/user.svg"
 import BagIcon from "~/assets/svg/icons/bag.svg"

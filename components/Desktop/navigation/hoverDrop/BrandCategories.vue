@@ -20,10 +20,10 @@
 <script>
 import {mapGetters} from "vuex"
 import {Fragment} from "vue-fragment"
-import Wrapper from "~/components/modules/hoverDrop/Wrapper"
-import Menu from "~/components/modules/hoverDrop/Menu"
-import SubMenu from "~/components/modules/hoverDrop/SubMenu"
-import Title from "~/components/modules/hoverDrop/Title"
+import Wrapper from "~/components/Desktop/modules/hoverDrop/Wrapper"
+import Menu from "~/components/Desktop/modules/hoverDrop/Menu"
+import SubMenu from "~/components/Desktop/modules/hoverDrop/SubMenu"
+import Title from "~/components/Desktop/modules/hoverDrop/Title"
 export default {
     components: {
         Wrapper,

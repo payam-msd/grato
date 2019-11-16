@@ -1,15 +1,24 @@
 export const state = () => ({
     cart: {
-        inCart: undefined,
+        inCart: 5,
     },
     navbar: {
         data: undefined,
     },
+    sidebar: {
+        sidebarContent: undefined,
+        isActive: false,
+    },
 })
 
 export const mutations = {
-    NAVBAR_DATA(state, payload) {
+    CATEGORIES_DATA(state, payload) {
         state.navbar.data = payload
+    },
+
+    TOGGLE_SIDEBAR(state, {component}) {
+        state.sidebar.sidebarContent = component
+        state.sidebar.isActive = !state.sidebar.isActive
     },
 }
 
