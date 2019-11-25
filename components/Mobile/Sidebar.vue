@@ -25,6 +25,7 @@ export default {
 
     mounted() {
         gsap.set(this.$el, {
+            autoAlpha: 0,
             x: this.$el.offsetWidth,
         })
     },

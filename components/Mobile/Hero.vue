@@ -10,7 +10,8 @@
         <div class="absolute bottom-0 w-full h-12 text-center">
             <nuxt-link
                 tag="a"
-                class="text-gray-800 font-serif-bold tracking-wide"
+                class="text-gray-800 font-serif-bold tracking-wide
+                focus:outline-none focus:shadow-outline rounded p-1"
                 to="/page"
                 >{{ " خرید گلکسی نوت 10+" }}</nuxt-link
             >

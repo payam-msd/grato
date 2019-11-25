@@ -27,7 +27,7 @@
                 v-scroll-lock="sidebar.isActive"
                 class="w-full h-screen overflow-scroll  flex-1 flex-col justify-start items-stretch px-16 props"
             >
-                <component :is="CartContent" />
+                <component :is="sidebar.sidebarContent" />
 
                 <div class="flex pt-8 justify-between">
                     <p>جمع کل :</p>

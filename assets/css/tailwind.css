@@ -63,6 +63,7 @@ html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+    user-select: none;
     direction: rtl;
 }
 
@@ -71,7 +72,7 @@ html {
 }
 
 .input{
-    @apply shadow-inner appearance-none border rounded border-gray-500 select-none bg-rose-100 h-10 px-2
+    @apply shadow-inner appearance-none border rounded border-gray-500 select-none bg-rose-100 h-10 px-2 mb-2
 }
 
 .icon{
@@ -103,6 +104,15 @@ html {
     opacity: 0;
 }
 
+.cart-prop-m {
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    line-height: 1.4rem;
+    border: 1.5px solid #fff;
+}
+
+
 .cart-prop {
     position: absolute;
     left: -15px;
@@ -129,5 +139,4 @@ html {
     overflow: hidden;
 }
 @tailwind components;
-
 @tailwind utilities;

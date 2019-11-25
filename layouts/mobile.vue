@@ -1,35 +1,31 @@
 <template>
     <div>
         <!-- <div class="makeBGAnimated h-screen w-full fixed inset-0 z-20"></div> -->
-        <!-- <Sidebar /> -->
         <Sidebar />
         <Notification />
-        <NavbarMobile :menu-content="MenuContent" :cart-content="CartContent" />
-        <nuxt />
+        <Navigation :menu-content="MenuContent" :cart-content="CartContent" />
+        <div class="container mx-auto px-4">
+            <nuxt />
+        </div>
         <Footer />
     </div>
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex"
-// import CartContent from "~/components/SidebarContent"
-import Navbar from "@/components/Desktop/Navbar"
-import NavbarMobile from "@/components/Mobile/Navbar"
-import Footer from "@/components/Footer"
+import {mapState} from "vuex"
+import Navigation from "~/components/Mobile/Navbar"
+import Sidebar from "~/components/Mobile/Sidebar"
+import Footer from "~/components/Footer"
 import Notification from "~/components/Notification"
 import MenuContent from "~/components/Mobile/MenuContent"
 import CartContent from "~/components/Mobile/CartContent"
-import Sidebar from "~/components/Mobile/Sidebar"
-// import Sidebar from "@/components/Sidebar"
 
 export default {
     /* eslint-disable no-undef */
     components: {
-        Navbar,
         Sidebar,
-        // Sidebar,
         Notification,
-        NavbarMobile,
+        Navigation,
         Footer,
     },
 
@@ -41,8 +37,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["userErrorCode", "loggedInUser"]),
-        ...mapState(["sidebarOpen"]),
+        ...mapState(["sidebar"]),
     },
 
     watch: {

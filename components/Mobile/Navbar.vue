@@ -2,9 +2,13 @@
     <header
         class="px-6 bg-white flex flex-wrap justify-between items-center py-3"
     >
-        <a tabindex="0" role="button">
+        <a
+            tabindex="0"
+            role="button"
+            class="p-1 focus:outline-none focus:shadow-outline rounded"
+        >
             <Menu
-                class="w-10 -mr-2 fill-current text-gray-800"
+                class="w-8 fill-current text-black focus:outline-none"
                 @click="
                     $store.commit('TOGGLE_SIDEBAR', {component: menuContent})
                 "
@@ -13,7 +17,8 @@
 
         <nuxt-link
             tag="a"
-            class="text-3xl text-green-800 font-dana-bold pt-1"
+            class="p-1 text-2xl text-green-800 font-dana-bold
+            focus:outline-none focus:shadow-outline rounded"
             to="/"
             >{{ "گراتو" }}</nuxt-link
         >
@@ -21,16 +26,14 @@
         <a
             role="button"
             tabindex="0"
-            class="relative flex items-center"
+            class="relative focus:outline-none focus:shadow-outline rounded"
             @click="$store.commit('TOGGLE_SIDEBAR', {component: cartContent})"
         >
-            <cart
-                class="w-7 text-gray-700 hover:text-gray-900"
-                transform="scale(-1,1)"
-            />
+            <cart class="w-7 m-1 text-black" transform="scale(-1,1)" />
             <span
                 v-if="cart.inCart"
-                class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white text-xs rounded-full inline-flex justify-center items-center"
+                class="cart-prop-m w-6 h-6 bg-teal-500 text-white text-xs
+                rounded-full flex justify-center items-center"
                 >{{ cart.inCart }}</span
             >
         </a>

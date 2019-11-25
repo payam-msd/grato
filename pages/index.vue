@@ -52,22 +52,22 @@ export default {
         ...mapGetters(["isAuthenticated"]),
     },
 
-    async asyncData({app}) {
-        return {
-            products: await app.$FETCH_PRODUCTS.index(),
-            // latest: await app.$FETCH_LATEST_PRODUCTS.index(),
-            // bestsellers: await app.$FETCH_BESTSELLERS.index(),
-            // shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),
-            // instantSuggestions: await app.$FETCH_INSTANT_SUGGESTIONS.index(),
-            // specialOffers: await app.$FETCH_SPECIAL_OFFERS.index(),
-        }
-    },
+    // async asyncData({app}) {
+    //     return {
+    //         products: await app.$FETCH_PRODUCTS.index(),
+    // latest: await app.$FETCH_LATEST_PRODUCTS.index(),
+    // bestsellers: await app.$FETCH_BESTSELLERS.index(),
+    // shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),
+    // instantSuggestions: await app.$FETCH_INSTANT_SUGGESTIONS.index(),
+    // specialOffers: await app.$FETCH_SPECIAL_OFFERS.index(),
+    //     }
+    // },
 
-    async fetch({app, store}) {
-        await app.$FETCH_CATEGORIES
-            .index()
-            .then(res => store.commit("CATEGORIES_DATA", res))
-    },
+    // async fetch({app, store}) {
+    //     await app.$FETCH_CATEGORIES
+    //         .index()
+    //         .then(res => store.commit("CATEGORIES_DATA", res))
+    // },
 
     mounted() {
         if (this.isAuthenticated) {

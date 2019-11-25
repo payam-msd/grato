@@ -1,134 +1,119 @@
 <template>
-    <div class="container mx-auto">
-        <div class="flex items-center">
-            <div class="w-full lg:w-1/2 p-6 lg:mt-12 lg:mx-8">
-                <form class="w-full lg:w-3/5" @submit.prevent="Register">
-                    <div class="p-3 pb-4">
-                        <h1 class="text-black  text-2xl">
-                            {{ "ثبت نام" }}
-                        </h1>
-                    </div>
-                    <div class="py-2">
-                        <div class="flex justify-start items-end">
-                            <UserIcon
-                                stroke-width="1.7"
-                                class="text-gray-700 w-8 h-8"
-                            />
-                            <label class="text-gray-900 mx-1 " for="username"
-                                >نام کاربری</label
-                            >
-                        </div>
-                    </div>
-                    <div class="mb-3 relative">
-                        <input
-                            id="username"
-                            ref="username"
-                            v-model.lazy="$v.form.username.$model"
-                            class="input w-4/5 focus:border-2 focus:border-black focus:outline-none focus:bg-white"
-                            type="text"
-                            @keyup.enter="$refs.email.focus()"
-                        />
-                    </div>
-                    <div class="py-2">
-                        <div class="flex justify-start items-end">
-                            <MailIcon
-                                stroke-width="1.7"
-                                class="text-gray-700 w-8 h-8"
-                            />
-                            <label class="text-gray-900 mx-1 " for="email"
-                                >ایمیل</label
-                            >
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <input
-                            id="email"
-                            ref="email"
-                            v-model.lazy="$v.form.email.$model"
-                            class="input w-4/5 focus:bg-white focus:outline-none focus:border-2 focus:border-black"
-                            type="text"
-                            @keyup.enter="$refs.password.focus()"
-                        />
-                    </div>
-                    <div class="py-2">
-                        <div class="flex justify-start items-end">
-                            <LockIcon
-                                stroke-width="1.7"
-                                class="text-gray-700 w-8 h-8"
-                            />
-                            <label class="text-gray-900 mx-1 " for="email"
-                                >کلمه عبور</label
-                            >
-                        </div>
-                    </div>
-                    <div class="mb-4 relative">
-                        <div
-                            class="w-16 inset-y-0 absolute left-0 ml-16 appearance-none"
-                        >
-                            <EyeIcon
-                                v-show="!hidePassword"
-                                stroke-width="1.7"
-                                class="login-icon inset-center "
-                                @click="hidePassword = !hidePassword"
-                            />
-                            <CloseEye
-                                v-show="!!hidePassword"
-                                class="login-icon inset-center"
-                                @click="hidePassword = !hidePassword"
-                            />
-                        </div>
-                        <input
-                            id="password"
-                            ref="password"
-                            v-model.lazy="$v.form.password.$model"
-                            class="w-4/5 input focus:bg-white focus:outline-none focus:border-2 focus:border-black"
-                            autocomplete="new-password"
-                            :type="passwordType"
-                        />
-                    </div>
+    <div class="h-screen flex justify-center lg:justify-start items-center">
+        <form class="w-full lg:w-1/3" @submit.prevent="Register">
+            <h1 class="text-black text-2xl">
+                {{ "ثبت نام" }}
+            </h1>
 
-                    <div class="text-sm text-gray-800 pl-16 py-2 inline-flex">
-                        <div class="py-1 px-2">
-                            <input v-model="rulesAgreed" type="checkbox" />
-                        </div>
-                        <p>
-                            <nuxt-link
-                                tag="a"
-                                class=" text-blue-500 hover:underline mx-1"
-                                to="/page"
-                                >{{ "حریم خصوصی" }}
-                            </nuxt-link>
-                            {{ "و" }}
-                            <nuxt-link
-                                tag="a"
-                                class=" text-blue-500 hover:underline mx-1"
-                                to="/page"
-                                >{{ "شرایط و قوانین" }}</nuxt-link
-                            >
-                            استفاده از سرویس های سایت گراتو را مطالعه نموده و با
-                            کلیه موارد آن موافقم.
-                        </p>
-                    </div>
-                    <div class="my-4">
-                        <button
-                            :disabled="rulesAgreed == true ? false : true"
-                            type="submit"
-                            :class="{'cursor-not-allowed': !rulesAgreed}"
-                            class="btn text-sm py-3 px-6 pl-2 hover:bg-gray-900 hover:text-white"
-                        >
-                            <span>ثبت نام در گراتو</span>
-                            <SendIcon class="icon w-10" />
-                        </button>
-                        <nuxt-link
-                            tag="span"
-                            class=" mx-3 text-xs text-gray-700"
-                            to="/"
-                            >{{ "یا برگشت به فروشگاه" }}</nuxt-link
-                        >
-                    </div>
-                </form>
+            <div class="text-sm flex text-gray-700">
+                <p>{{ "قبلا ثبت نام کرده اید ؟‌" }}</p>
+                <nuxt-link
+                    tag="a"
+                    class="text-xs text-blue-500 hover:underline mx-1"
+                    to="/auth/login"
+                    >{{ "وارد شوید" }}</nuxt-link
+                >
             </div>
-        </div>
+
+            <div class="my-6">
+                <div class="py-1">
+                    <label class="text-sm lg:text-base text-gray-900 mx-1 ">{{
+                        "نام کاربری"
+                    }}</label>
+                </div>
+                <input
+                    ref="username"
+                    v-model.lazy="$v.form.username.$model"
+                    class="input w-4/5 focus:border-2
+                    focus:border-black focus:outline-none focus:bg-white"
+                    type="text"
+                    @keyup.enter="$refs.email.focus()"
+                />
+
+                <div class="py-1">
+                    <label
+                        class="text-sm lg:text-base text-gray-900
+                    mx-1 "
+                        >ایمیل</label
+                    >
+                </div>
+                <input
+                    ref="email"
+                    v-model.lazy="$v.form.email.$model"
+                    class="input w-4/5 focus:bg-white focus:outline-none focus:border-2 focus:border-black"
+                    type="text"
+                    @keyup.enter="$refs.password.focus()"
+                />
+
+                <div class="py-1">
+                    <label class="text-sm lg:text-base text-gray-900 mx-1 "
+                        >کلمه عبور</label
+                    >
+                </div>
+                <div class="relative">
+                    <div
+                        class="w-16 mb-2 inset-y-0 absolute left-0 ml-16 appearance-none"
+                    >
+                        <EyeIcon
+                            v-show="!hidePassword"
+                            stroke-width="1.7"
+                            class="login-icon inset-center "
+                            @click="hidePassword = !hidePassword"
+                        />
+                        <CloseEye
+                            v-show="!!hidePassword"
+                            class="login-icon inset-center"
+                            @click="hidePassword = !hidePassword"
+                        />
+                    </div>
+                    <input
+                        ref="password"
+                        v-model.lazy="$v.form.password.$model"
+                        class="w-4/5 input focus:bg-white focus:outline-none focus:border-2 focus:border-black"
+                        autocomplete="new-password"
+                        :type="passwordType"
+                    />
+                </div>
+
+                <div class="text-sm text-gray-800 pl-16 py-2 inline-flex">
+                    <div class="py-1 px-2">
+                        <input v-model="rulesAgreed" type="checkbox" />
+                    </div>
+                    <p>
+                        <nuxt-link
+                            tag="a"
+                            class=" text-blue-500 hover:underline mx-1"
+                            to="/page"
+                            >{{ "حریم خصوصی" }}
+                        </nuxt-link>
+                        {{ "و" }}
+                        <nuxt-link
+                            tag="a"
+                            class=" text-blue-500 hover:underline mx-1"
+                            to="/page"
+                            >{{ "شرایط و قوانین" }}</nuxt-link
+                        >
+                        استفاده از سرویس های سایت گراتو را مطالعه نموده و با
+                        کلیه موارد آن موافقم.
+                    </p>
+                </div>
+            </div>
+
+            <div class="my-4">
+                <button
+                    :disabled="rulesAgreed == true ? false : true"
+                    type="submit"
+                    :class="{'cursor-not-allowed': !rulesAgreed}"
+                    class="btn text-sm py-3 px-6 pl-2 hover:bg-gray-900 hover:text-white"
+                >
+                    <span>ثبت نام در گراتو</span>
+                    <SendIcon class="icon w-10" />
+                </button>
+                <nuxt-link tag="a" class="mx-3 text-xs text-gray-700" to="/">{{
+                    "یا برگشت به فروشگاه"
+                }}</nuxt-link>
+            </div>
+        </form>
     </div>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
     <div>
         <Notification v-if="$route.name === 'auth-login'" />
-        <nuxt />
+        <div class="container mx-auto px-4 lg:px-6">
+            <nuxt />
+        </div>
         <Footer />
     </div>
 </template>

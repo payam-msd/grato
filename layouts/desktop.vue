@@ -3,23 +3,25 @@
         <!-- <div class="makeBGAnimated h-screen w-full fixed inset-0 z-20"></div> -->
         <Notification />
         <Sidebar />
-        <Navbar :cart-content="CartContent" />
-        <nuxt />
+        <Navigation :cart-content="CartContent" />
+        <div class="container mx-auto">
+            <nuxt />
+        </div>
         <Footer />
     </div>
 </template>
 
 <script>
-import Navbar from "@/components/Desktop/Navbar"
-import Footer from "@/components/Footer"
+import Navigation from "~/components/Desktop/Navbar"
+import Footer from "~/components/Footer"
 import Notification from "~/components/Notification"
-import Sidebar from "@/components/Desktop/Sidebar"
+import Sidebar from "~/components/Desktop/Sidebar"
 import CartContent from "~/components/Desktop/SidebarContent"
 
 export default {
     /* eslint-disable no-undef */
     components: {
-        Navbar,
+        Navigation,
         Sidebar,
         Notification,
         Footer,
