@@ -1,38 +1,33 @@
 <template>
-    <div v-on-clickaway="handleClickOutSide" @click="toggle">
-        <slot />
-    </div>
+	<div v-click-listener="handleClickOutSide" @click="toggle">
+		<slot />
+	</div>
 </template>
 
 <script>
-import {mixin as clickaway} from "vue-clickaway"
 export default {
-    name: "AppDropdown",
+	provide() {
+		return {
+			sharedState: this.sharedState,
+		}
+	},
 
-    mixins: [clickaway],
+	data() {
+		return {
+			sharedState: {
+				active: false,
+			},
+		}
+	},
 
-    provide() {
-        return {
-            sharedState: this.sharedState,
-        }
-    },
-
-    data() {
-        return {
-            sharedState: {
-                active: false,
-            },
-        }
-    },
-
-    methods: {
-        toggle() {
-            this.sharedState.active = !this.sharedState.active
-        },
-        handleClickOutSide() {
-            this.sharedState.active = false
-        },
-    },
+	methods: {
+		toggle() {
+			this.sharedState.active = !this.sharedState.active
+		},
+		handleClickOutSide() {
+			this.sharedState.active = false
+		},
+	},
 }
 </script>
 

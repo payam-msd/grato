@@ -1,34 +1,33 @@
 <template>
-    <div class="fixed w-4/5 bg-red-500 h-screen z-50">
-        <component :is="sidebar.sidebarContent" />
-    </div>
+	<div class="fixed w-4/5 bg-red-500 h-screen z-50">
+		<component :is="sidebar.sidebarContent" />
+	</div>
 </template>
 
 <script>
-import {mapState} from "vuex"
+import {mapState} from 'vuex'
 export default {
-    computed: {
-        ...mapState(["sidebar"]),
-    },
+	computed: {
+		...mapState(['sidebar']),
+	},
 
-    watch: {
-        "sidebar.isActive"(isActive) {
-            const tl = gsap
-            const direction = isActive ? 0 : this.$el.offsetWidth
-            tl.to(this.$el, {
-                duration: 0.75,
-                x: direction,
-                ease: "power2.In",
-            })
-        },
-    },
+	watch: {
+		'sidebar.isActive'(isActive) {
+			const tl = gsap
+			const direction = isActive ? 0 : this.$el.offsetWidth
+			tl.to(this.$el, {
+				duration: 0.75,
+				x: direction,
+				ease: 'power2.In',
+			})
+		},
+	},
 
-    mounted() {
-        gsap.set(this.$el, {
-            autoAlpha: 0,
-            x: this.$el.offsetWidth,
-        })
-    },
+	mounted() {
+		gsap.set(this.$el, {
+			x: this.$el.offsetWidth,
+		})
+	},
 }
 </script>
 

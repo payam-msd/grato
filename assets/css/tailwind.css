@@ -67,12 +67,24 @@ html {
     direction: rtl;
 }
 
+svg{
+    @apply fill-current inline
+}
+
+.primary {
+    @apply text-gray-800 ;
+}
+.secondary {
+    @apply text-gray-600;
+}
+
 .btn{
     @apply bg-black text-gray-100 rounded font-dana-bold
 }
 
 .input{
-    @apply shadow-inner appearance-none border rounded border-gray-500 select-none bg-rose-100 h-10 px-2 mb-2
+    @apply shadow-inner appearance-none border rounded border-gray-500
+    select-none bg-rose-100 h-10 px-2 mb-2
 }
 
 .icon{
@@ -115,8 +127,8 @@ html {
 
 .cart-prop {
     position: absolute;
-    left: -15px;
-    top: -10px;
+    left: -11px;
+    top: -6px;
     line-height: 1.4rem;
     border: 1.5px solid #fff;
 }
@@ -128,15 +140,6 @@ html {
     transform: translate(-50%, -50%);
 }
 
-.sidebar-props {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    height: auto;
-    width: 40%;
-    overflow: hidden;
-}
 @tailwind components;
 @tailwind utilities;
+

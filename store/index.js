@@ -1,51 +1,51 @@
 export const state = () => ({
-    cart: {
-        inCart: 5,
-    },
-    navbar: {
-        data: undefined,
-    },
-    sidebar: {
-        sidebarContent: undefined,
-        isActive: false,
-    },
+	cart: {
+		inCart: 5,
+	},
+	navbar: {
+		data: undefined,
+	},
+	sidebar: {
+		sidebarContent: undefined,
+		isActive: false,
+	},
 })
 
 export const mutations = {
-    CATEGORIES_DATA(state, payload) {
-        state.navbar.data = payload
-    },
+	CATEGORIES_DATA(state, payload) {
+		state.navbar.data = payload
+	},
 
-    TOGGLE_SIDEBAR(state, {component}) {
-        state.sidebar.sidebarContent = component
-        state.sidebar.isActive = !state.sidebar.isActive
-    },
+	TOGGLE_SIDEBAR(state, {component}) {
+		state.sidebar.sidebarContent = component
+		state.sidebar.isActive = !state.sidebar.isActive
+	},
 }
 
 export const actions = {}
 
 export const getters = {
-    navbarMenu(state) {
-        var data = state.navbar.data
-        if (data !== undefined) {
-            return data.filter(item => item.title)
-        }
-    },
+	navbarMenu(state) {
+		var data = state.navbar.data
+		if (data !== undefined) {
+			return data.filter(item => item.title)
+		}
+	},
 
-    navbarSubMenu(state) {
-        var data = state.navbar.data
-        if (data !== undefined) {
-            return data.filter(item => item.children)
-        }
-    },
+	navbarSubMenu(state) {
+		var data = state.navbar.data
+		if (data !== undefined) {
+			return data.filter(item => item.children)
+		}
+	},
 
-    isAuthenticated(state) {
-        return state.auth.loggedIn
-    },
+	isAuthenticated(state) {
+		return state.auth.loggedIn
+	},
 
-    userDetail(state) {
-        return state.auth.user
-    },
+	userDetail(state) {
+		return state.auth.user
+	},
 }
 
 // import {sum_of_orders} from "../functions/calculatePrice"

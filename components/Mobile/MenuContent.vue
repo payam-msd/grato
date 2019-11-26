@@ -1,14 +1,14 @@
 <template>
-    <div class="p-4 flex">
-        <a
-            role="button"
-            tabindex="0"
-            @click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
-        >
-            x
-        </a>
-        THERE WE ARE MENU CONTENT
-    </div>
+	<div class="p-4 flex">
+		<a
+			role="button"
+			tabindex="0"
+			@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
+		>
+			x
+		</a>
+		THERE WE ARE MENU CONTENT
+	</div>
 </template>
 
 <script>

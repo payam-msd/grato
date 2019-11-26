@@ -24,6 +24,8 @@ module.exports = {
         "no-undef": "off",
         "prefer-const": "off",
         "no-console": "off",
-        "vue/no-unused-components": "off"
+        "vue/no-unused-components": "off",
+        "vue/require-component-is": "off",
+        "vue/attributes-order": "off"
     }
 }

@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <!-- <component :is="errorPage" :error="error" /> -->
-    </div>
+	<div>
+		<!-- <component :is="errorPage" :error="error" /> -->
+	</div>
 </template>
 
 <script>
