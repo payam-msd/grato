@@ -1,13 +1,27 @@
 <template>
-	<div class="p-4 flex">
+	<div
+		class="w-full h-full overflow-y-auto flex flex-col justify-start items-stretch px-4"
+	>
+		<div class="flex pt-8 justify-between">
+			<p>جمع کل :</p>
+			<span>{{ sumOfList | numeral('0,0') }}</span>
+		</div>
+
 		<a
 			role="button"
 			tabindex="0"
-			@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
+			class="btn w-full py-3 mx-auto text-center"
+			@click="
+				$router.push({
+					name: 'checkou  t',
+					query: {
+						redirect: `/product/${$route.params.id}`,
+					},
+				})
+			"
 		>
-			x
+			{{ 'بررسی خرید' }}
 		</a>
-		THERE WE ARE CART CONTENT
 	</div>
 </template>
 

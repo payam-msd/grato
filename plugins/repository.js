@@ -40,7 +40,7 @@ export default (ctx, inject) => {
 	// inject("FETCH_USER_ORDERS", repositories.userOrders)
 	// inject("FETCH_PROVINCES", repositories.fetchProvinces)
 
-	// inject("SHOW_PRODUCT_DETAIL", repositories.showProductDetail)
+	inject('SHOW_PRODUCT_DETAIL', repositories.showProductDetail)
 	// inject("SHOW_PRODUCT_COLORS", repositories.showProductColors)
 	// inject("SHOW_PROVINCES_CITIES", repositories.showProvincesCities)
 

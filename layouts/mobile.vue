@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<!-- <div class="makeBGAnimated h-screen w-full fixed inset-0 z-20"></div> -->
+		<div ref="cover"></div>
 		<Sidebar />
 		<Notification />
 		<Navigation :menu-content="MenuContent" :cart-content="CartContent" />
@@ -39,14 +39,19 @@ export default {
 	},
 
 	watch: {
-		//     sidebarOpen(newValue) {
-		//         const tl = gsap
-		//         const autoAlpha = newValue ? 1 : 0
-		//         tl.to(".makeBGAnimated", 0.75, {autoAlpha})
-		//     },
-		// },
-		// mounted() {
-		//     gsap.set(".makeBGAnimated", {autoAlpha: 0})
+		'sidebar.isActive'(newValue) {
+			const {cover} = this.$refs
+			var setOpacity = newValue ? 1 : 0
+			var setClass = newValue ? '+=z-40 fixed inset-0' : ''
+			gsap.to(cover, {
+				duration: 0.75,
+				autoAlpha: setOpacity,
+				css: {
+					background: '#24344763',
+					classList: setClass,
+				},
+			})
+		},
 	},
 }
 </script>

@@ -39,9 +39,8 @@ module.exports = {
 	},
 	variants: {
 		backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-		fontFamily: ['hover'],
 		border: ['focus', 'hover'],
-		borderWidth: ['focus'],
+		borderWidth: ['focus', 'hover'],
 		borderColor: ['focus', 'hover'],
 	},
 	plugins: [],

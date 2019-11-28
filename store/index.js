@@ -4,6 +4,7 @@ export const state = () => ({
 	},
 	navbar: {
 		data: undefined,
+		rmFixedNav: false,
 	},
 	sidebar: {
 		sidebarContent: undefined,
@@ -16,13 +17,57 @@ export const mutations = {
 		state.navbar.data = payload
 	},
 
+	RM_FIXED_NAV(state) {
+		state.navbar.rmFixedNav = !state.navbar.rmFixedNav
+	},
+
 	TOGGLE_SIDEBAR(state, {component}) {
 		state.sidebar.sidebarContent = component
 		state.sidebar.isActive = !state.sidebar.isActive
 	},
 }
 
-export const actions = {}
+export const actions = {
+	async UPDATE_CART({dispatch}, orderDetail) {
+		const {id} = orderDetail
+		const data = {
+			order_items: [
+				{
+					item_id: id,
+					quantity: 1,
+				},
+			],
+		}
+		await this.$ADD_TO_CART.post(data)
+		// .then(() => {
+		// 	dispatch('GET_CART_DATA')
+		// })
+	},
+
+	async GET_CART_DATA({commit}) {
+		const {
+			cart_items: orders_list = {},
+			items_count: count = {},
+		} = await this.$FETCH_CART_DATA.index()
+
+		commit('setOrders', orders_list)
+		commit('setSumOfList', {sum: sum_of_orders(orders_list)})
+		commit('setInCart', count)
+	},
+
+	async RemoveFromCart(cxt, product_detail) {
+		const {productID, itemID} = product_detail
+		const required_details = {
+			params: [
+				{
+					item_id: itemID,
+					quantity: 1,
+				},
+			],
+		}
+		await this.$DELETE_FORM_CART.delete(productID, required_details)
+	},
+}
 
 export const getters = {
 	navbarMenu(state) {

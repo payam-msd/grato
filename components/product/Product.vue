@@ -73,12 +73,6 @@ export default {
 			default: () => {},
 		},
 	},
-
-	computed: {
-		propDefault() {
-			return this.$store.state.productData.data.slice(0, 12)
-		},
-	},
 }
 </script>
 

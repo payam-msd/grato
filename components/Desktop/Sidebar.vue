@@ -1,5 +1,5 @@
 <template>
-	<div class="fixed inset-y-0 w-sidebar z-50 bg-white shadow-2xl">
+	<div id="sidebar" class="fixed inset-y-0 w-sidebar z-50 bg-white shadow-2xl">
 		<Notification class="shadow-inner" />
 
 		<div
@@ -51,12 +51,24 @@ export default {
 	},
 	watch: {
 		'sidebar.isActive'(isActive) {
-			const tl = gsap
 			const direction = isActive ? 0 : this.$el.offsetWidth
-			tl.to(this.$el, {
+			const _vm = this
+
+			gsap.delayedCall(0.25, () => {
+				isActive
+					? document.body.classList.add('overflow-y-hidden')
+					: document.body.classList.remove('overflow-y-hidden')
+			})
+
+			gsap.to(this.$el, {
 				duration: 0.75,
 				x: direction,
 				ease: 'power1.out',
+				onComplete() {
+					isActive
+						? document.body.addEventListener('click', _vm.closeEvent)
+						: document.body.removeEventListener('click', _vm.closeEvent)
+				},
 			})
 		},
 	},
@@ -67,6 +79,17 @@ export default {
 		gsap.set(this.$el, {
 			x: this.$el.offsetWidth,
 		})
+	},
+
+	methods: {
+		closeEvent(e) {
+			const clickedOutside = !e.target.closest('#sidebar')
+			if (clickedOutside) {
+				this.$store.commit('TOGGLE_SIDEBAR', {
+					component: undefined,
+				})
+			}
+		},
 	},
 }
 </script>

@@ -44,7 +44,7 @@
 						class="relative focus:outline-none focus:shadow-outline rounded"
 						@click="
 							$store.commit('TOGGLE_SIDEBAR', {
-								component: cartContent,
+								component: undefined,
 							})
 						"
 					>
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from 'vuex'
+import {mapGetters} from 'vuex'
 import BrandCategories from '~/components/Desktop/navigation/hoverDrop/BrandCategories'
 import profile from '~/components/Desktop/navigation/profile/Dropdown'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'
@@ -77,13 +77,6 @@ export default {
 		thinLine,
 	},
 
-	props: {
-		cartContent: {
-			type: Object,
-			default: () => {},
-		},
-	},
-
 	data() {
 		return {
 			isNavbarFixed: false,
@@ -94,27 +87,30 @@ export default {
 
 	computed: {
 		...mapGetters(['isAuthenticated']),
-		...mapState(['sidebarOpen', 'cart']),
+		isProductDetail() {
+			return this.$store.state.navbar.rmFixedNav
+		},
 	},
 
 	watch: {
 		isNavbarFixed(newValue) {
-			var tl = gsap
 			var {navbar} = this.$refs
 
-			newValue && !this.isProtected
-				? tl.set(navbar, {
-						css: {
-							classList:
-								'+=fixed top-0 w-full z-20 rounded-b shadow-lg bg-white flex flex-wrap items-center py-2 lg:py-4',
-						},
-				  })
-				: tl.set(navbar, {
-						css: {
-							classList:
-								'-=w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8',
-						},
-				  })
+			if (newValue) {
+				gsap.set(navbar, {
+					css: {
+						classList:
+							'+=fixed top-0 w-full z-20 rounded-b shadow-lg bg-white flex flex-wrap items-center py-2 lg:py-4',
+					},
+				})
+			} else {
+				gsap.set(navbar, {
+					css: {
+						classList:
+							'-=w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8',
+					},
+				})
+			}
 		},
 		$route(route) {
 			route.name === 'auth-login' || route.name === 'auth-register'
@@ -130,18 +126,22 @@ export default {
 		window.removeEventListener('scroll', this.onscroll)
 	},
 	methods: {
-		// openSidebar() {
-		//     this.$store.dispatch("toggleSidebar", {component: this.content})
-		// },
 		onscroll() {
 			const currentScrollPosition =
 				window.pageYOffset || document.documentElement.scrollTop
+
 			// ? Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
 			if (currentScrollPosition < 0) {
 				return
 			}
-			// Here we determine whether we need to show or hide the navbar
-			this.isNavbarFixed = currentScrollPosition > this.lastScrollPosition
+
+			if (this.isProtected || this.isProductDetail) {
+				this.isNavbarFixed = false
+			} else {
+				// Here we determine whether we need to show or hide the navbar
+				this.isNavbarFixed = currentScrollPosition > this.lastScrollPosition
+			}
+
 			// if (
 			//     Math.abs(currentScrollPosition - this.lastScrollPosition) < 60
 			// ) {
