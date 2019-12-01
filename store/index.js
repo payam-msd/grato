@@ -1,6 +1,9 @@
+import {calculatePrice} from '~/functions/calculatePrice'
 export const state = () => ({
 	cart: {
-		inCart: 5,
+		cartItems: undefined,
+		inCart: undefined,
+		sum: undefined,
 	},
 	navbar: {
 		data: undefined,
@@ -25,39 +28,45 @@ export const mutations = {
 		state.sidebar.sidebarContent = component
 		state.sidebar.isActive = !state.sidebar.isActive
 	},
+
+	USER_ORDERS(state, payload) {
+		state.cart.cartItems = payload
+	},
+
+	ORDER_DETAIL(state, payload) {
+		state.cart.inCart = payload.items_count
+		state.cart.sum = payload.sum
+	},
 }
 
 export const actions = {
-	async UPDATE_CART({dispatch}, orderDetail) {
-		const {id} = orderDetail
-		const data = {
+	async ADD_TO_CART({dispatch}, orderDetail) {
+		const {itemID, quantity} = orderDetail
+
+		const requiredDetail = {
 			order_items: [
 				{
-					item_id: id,
-					quantity: 1,
+					item_id: itemID,
+					// ? quantity here's dynamic coz quantity of (1) will add an item and (-1) will remove the item
+					quantity,
 				},
 			],
 		}
-		await this.$ADD_TO_CART.post(data)
-		// .then(() => {
-		// 	dispatch('GET_CART_DATA')
-		// })
+		await this.$ADD_TO_CART.post(requiredDetail).then(() => {
+			dispatch('GET_CART_DATA')
+		})
 	},
 
 	async GET_CART_DATA({commit}) {
-		const {
-			cart_items: orders_list = {},
-			items_count: count = {},
-		} = await this.$FETCH_CART_DATA.index()
+		const {cart_items = {}, items_count = 0} = await this.$FETCH_CART.index()
 
-		commit('setOrders', orders_list)
-		commit('setSumOfList', {sum: sum_of_orders(orders_list)})
-		commit('setInCart', count)
+		commit('USER_ORDERS', cart_items)
+		commit('ORDER_DETAIL', {items_count, sum: calculatePrice(cart_items)})
 	},
 
-	async RemoveFromCart(cxt, product_detail) {
-		const {productID, itemID} = product_detail
-		const required_details = {
+	async REMOVE_FROM_CART(ctx, productDetail) {
+		const {productID, itemID} = productDetail
+		const requiredDetail = {
 			params: [
 				{
 					item_id: itemID,
@@ -65,7 +74,7 @@ export const actions = {
 				},
 			],
 		}
-		await this.$DELETE_FORM_CART.delete(productID, required_details)
+		await this.$DELETE_FORM_CART.delete(productID, requiredDetail)
 	},
 }
 
@@ -104,7 +113,7 @@ export const getters = {
 //     inCart: null,
 //     ordersList: [],
 //     orderDetails: [],
-//     sumOfList: 0,
+//     cart.sum: 0,
 //     // * Error code are all stored here
 //     userErrorCode: null,
 //     // * Cart Sidebar and associated content is here
@@ -158,8 +167,8 @@ export const getters = {
 //     setLatestCartInfo(state, payload) {
 //         state.orderDetails.push(payload)
 //     },
-//     setSumOfList(state, payload) {
-//         state.sumOfList = payload.sum
+//     setcart.sum(state, payload) {
+//         state.cart.sum = payload.sum
 //     },
 //     setOrders(state, payload) {
 //         state.ordersList = payload
@@ -233,7 +242,7 @@ export const getters = {
 //         } = await this.$FETCH_CART_DATA.index()
 
 //         commit("setOrders", orders_list)
-//         commit("setSumOfList", {sum: sum_of_orders(orders_list)})
+//         commit("setcart.sum", {sum: sum_of_orders(orders_list)})
 //         commit("setInCart", count)
 //     },
 

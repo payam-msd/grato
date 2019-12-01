@@ -2,7 +2,7 @@
 	<div>
 		<div class="flex justify-around my-8 ">
 			<div
-				class="flex items-center justify-between w-40 h-10 border
+				class="flex items-center justify-between w-40 h-12  border
                     border-gray-800 rounded hover:border-2"
 				v-for="lvl in guaranties"
 				:key="lvl.id"

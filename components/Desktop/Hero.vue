@@ -1,5 +1,5 @@
 <template>
-	<div :class="{'mt-32': isNavbarFixed}" class="hero-grid">
+	<div :class="{'mt-20 lg:mt-32': isNavbarFixed}" class="hero-grid">
 		<div class="w-full h-special">
 			<img
 				class="w-full h-full object-cover"
@@ -8,7 +8,7 @@
 			/>
 		</div>
 
-		<div class="relative w-full h-special">
+		<div class="hidden relative w-full h-special lg:block">
 			<img
 				class="w-full h-full object-cover"
 				src="https://source.unsplash.com/Q0oo_CeBfUY"
@@ -77,9 +77,19 @@ export default {
 <style scoped>
 .hero-grid {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 	grid-column-gap: 6px;
 	grid-row-gap: 0px;
+}
+
+@screen lg {
+	.hero-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr;
+		grid-column-gap: 6px;
+		grid-row-gap: 0px;
+	}
 }
 </style>

@@ -1,286 +1,181 @@
 <template>
-	<div class="flex">
-		<div class="w-55 bg-rose-100">
-			<div class="pr-28 pl-16 py-12 text-gray-800">
-				<nuxt-link
-					class="text-5xl text-green-800 font-serif-bold tracking-wide"
-					to="/"
-				>
-					گراتو
-				</nuxt-link>
-				<div class="py-4 flex justify-between items-center">
-					<h1 class="text-black text-lg">اطلاعات شخصی</h1>
-					<h1 class="text-xs text-blue-800">
-						قبلا ثبت نام کرده اید ؟
-						<nuxt-link class="text-black hover:underline" to="/auth/login">
-							وارد شوید
-						</nuxt-link>
-					</h1>
-				</div>
-				<input
-					ref="email"
-					v-model="form.email"
-					class="w-full px-4 my-4 h-12 rounded border border-gray-400 focus:border-black focus:border-2 focus:outline-none"
-					type="text"
-					placeholder="ایمیل"
-				/>
-				<input id="newsletter" class="input" type="checkbox" />
-				<label class="label pr-1 text-sm" for="newsletter">
-					من رو از آخرین تخفیف ها باخبر کن
-				</label>
-				<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
-				<form class="w-full" @submit.prevent="handleUserDetail">
-					<div class="flex flex-wrap mb-6">
-						<div class="w-full md:w-1/2 pl-2 mb-6 md:mb-0">
-							<label
-								class="block pr-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="grid-first-name"
-							>
-								نام
-							</label>
-							<input
-								id="grid-first-name"
-								v-model="form.first_name"
-								class="appearance-none block w-full text-gray-700 border border-gray-400 focus:border-2 focus:border-black rounded h-12 px-4 leading-tight focus:outline-none focus:bg-white"
-								type="text"
-								placeholder="امیر"
-							/>
-						</div>
-						<div class="w-full md:w-1/2">
-							<label
-								class="block pr-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="grid-last-name"
-							>
-								نام خانوادگی
-							</label>
-							<input
-								id="grid-last-name"
-								v-model="form.last_name"
-								class="appearance-none block w-full text-gray-700 border border-gray-400 focus:border-2 focus:border-black rounded h-12 px-4 leading-tight focus:outline-none focus:bg-white"
-								type="text"
-								placeholder="مقصودی"
-							/>
-						</div>
-					</div>
-					<div class="flex flex-wrap mb-6">
-						<div class="w-full">
-							<label
-								class="block pr-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="grid-address"
-							>
-								آدرس
-							</label>
-							<input
-								id="grid-address"
-								v-model="userAddress"
-								class="appearance-none block w-full text-gray-700 border border-gray-400 rounded h-12 px-4 mb-3 leading-tight focus:outline-none focus:border-black focus:border-2"
-								type="text"
-								placeholder="خیابان خسروی پلاک ۱"
-							/>
-						</div>
-					</div>
-					<div class="flex flex-wrap mb-2">
-						<div class="w-full md:w-1/2 pl-2 mb-6 md:mb-0">
-							<label
-								class="block pr-4 pr-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="grid-state"
-							>
-								استان
-							</label>
-							<div class="relative">
-								<select
-									id="grid-state"
-									v-model="state"
-									class="block appearance-none w-full border bg-white border-gray-400 text-gray-700 h-12 px-4 pr-12 rounded leading-tight focus:outline-none focus:border-2 focus:border-black"
+	<div class="bg-rose-100">
+		<div class="relative w-full lg:pt-10 lg:px-24 ">
+			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">
+				گراتو
+			</nuxt-link>
+			<OrderSummary />
+		</div>
+		<div class="flex flex-col lg:flex-row">
+			<div class="w-full h-full lg:w-3/5 bg-rose-100">
+				<div class="mx-4 lg:mr-24 lg:ml-20  text-gray-800">
+					<div class="pb-4">
+						<div class="py-6 flex justify-between items-center">
+							<h1 class="text-black text-lg">{{ 'اطلاعات تماس' }}</h1>
+							<h1 class="text-xs">
+								{{ 'حساب دیگری دارید؟' }}
+								<nuxt-link
+									class="text-blue-500 hover:underline"
+									to="/auth/login"
 								>
-									<option disabled value>انتخاب</option>
-									<option
-										v-for="(province, id) in provinces"
-										:key="id"
-										:value="{province}"
-									>
-										{{ province.name }}
-									</option>
-								</select>
-								<div
-									class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-								>
-									<svg
-										class="fill-current mr-2 h-4 w-4"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 20 20"
-									>
-										<path
-											d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-										/>
-									</svg>
-									<svg
-										id="thin-line"
-										class="inline text-gray-500 -mr-2"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 32 32"
-										width="26"
-										height="26"
-										stroke="currentcolor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width=".7"
-									>
-										<path d="M9 2 L9 35" />
-									</svg>
-								</div>
+									وارد شوید
+								</nuxt-link>
+							</h1>
+						</div>
+
+						<input
+							ref="email"
+							@keyup.enter="$refs.firstName.focus()"
+							v-model="form.email"
+							class="input-checkout w-full focus:border-black
+                    focus:border-2 focus:outline-none placeholder-gray-700"
+							type="text"
+							placeholder="ایمیل"
+						/>
+						<input id="newsletter" class="checkbox" type="checkbox" />
+						<label class="label pr-1 text-sm" for="newsletter">
+							من رو از آخرین تخفیف ها باخبر کن
+						</label>
+					</div>
+
+					<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
+					<form class="w-full" @submit.prevent="handleUserDetail">
+						<div class="flex">
+							<div class="w-1/2 pl-1 lg:pl-2">
+								<input
+									ref="firstName"
+									@keyup.enter="$refs.lastName.focus()"
+									v-model="form.first_name"
+									class="input-checkout block w-full
+                                focus:border-2 focus:border-black
+                                focus:outline-none focus:bg-white placeholder-gray-700"
+									type="text"
+									placeholder="نام"
+								/>
+							</div>
+							<div class="w-1/2 pr-1 lg:pr-2">
+								<input
+									ref="lastName"
+									@keyup.enter="$refs.address.focus()"
+									v-model="form.last_name"
+									class="input-checkout block w-full
+                                focus:border-2
+                                focus:border-black rounded
+                                focus:outline-none focus:bg-white
+                                placeholder-gray-700"
+									type="text"
+									placeholder="نام خانوادگی"
+								/>
 							</div>
 						</div>
-						<div class="w-full md:w-1/2 mb-6 md:mb-0">
-							<label
-								class="block pr-4 uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="grid-state"
-							>
-								شهر
-							</label>
-							<div class="relative">
-								<select
-									id="grid-city"
-									v-model="city"
-									class="block appearance-none w-full bg-white border border-gray-400 text-gray-700 h-12 px-4 pr-12 rounded leading-tight focus:outline-none focus:border-2 focus:border-black"
-								>
-									<option disabled value>ابتدا استان را انتخاب نمایید</option>
-									<option v-for="(item, id) in citiesData" :key="id">
-										{{ item.name }}
-									</option>
-								</select>
-								<div
-									class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-								>
-									<svg
-										class="fill-current mr-2 h-4 w-4"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 20 20"
+
+						<input
+							ref="address"
+							@keyup.enter="$refs.state.focus()"
+							v-model="userAddress"
+							class="input-checkout block w-full focus:outline-none
+                        focus:border-black focus:border-2 placeholder-gray-700"
+							type="text"
+							placeholder="آدرس"
+						/>
+
+						<div class="flex">
+							<div class="w-full pl-1 lg:pl-2">
+								<div class="relative">
+									<select
+										ref="state"
+										@keyup.enter="$refs.city.focus()"
+										v-model="selectedState"
+										class="input-checkout block appearance-none w-full focus:outline-none focus:border-2
+                                    bg-white focus:border-black"
 									>
-										<path
-											d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-										/>
-									</svg>
-									<svg
-										id="thin-line"
-										class="inline text-gray-500 -mr-2"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 32 32"
-										width="26"
-										height="26"
-										stroke="currentcolor"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width=".7"
+										<template v-for="province in provinces">
+											<option :value="province.id" :key="province.id">
+												{{ province.name }}
+											</option>
+										</template>
+									</select>
+									<div
+										class="pointer-events-none absolute
+                                    inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
-										<path d="M9 2 L9 35" />
-									</svg>
+										<IconThinLine class="w-7" />
+										<IconCheveronDown class="w-7" />
+									</div>
+								</div>
+							</div>
+							<div class="w-full pr-1 lg:pr-2">
+								<div class="relative">
+									<select
+										ref="city"
+										@keyup.up="$refs.number.focus()"
+										v-model="selectedCity"
+										class="input-checkout block appearance-none
+                                    w-full bg-white focus:outline-none
+                                    focus:border-2 focus:border-black"
+									>
+										<template v-for="city in citiesData">
+											<option :key="city.id" :value="city.id">
+												{{ city.name }}
+											</option>
+										</template>
+									</select>
+									<div
+										class="pointer-events-none absolute
+                                    inset-y-0 left-0 flex items-center px-2 text-gray-700"
+									>
+										<IconThinLine class="w-7" />
+										<IconCheveronDown class="w-7" />
+									</div>
 								</div>
 							</div>
 						</div>
 
+						<input
+							type="number"
+							ref="number"
+							@keyup.enter="$refs.continue.focus()"
+							v-model="form.phone_num"
+							class="input-checkout block w-full appearance-none
+                                focus:border-2
+                                focus:border-black rounded
+                                focus:outline-none focus:bg-white
+                                placeholder-gray-700"
+							placeholder="شماره موبایل"
+						/>
+
 						<div
-							class="flex flex-row-reverse justify-between items-center py-8 w-full"
+							class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full"
 						>
 							<button
-								class="bg-black h-16 w-1/3 text-md font-serif-bold rounded text-gray-100 hover:bg-gray-900"
+								ref="continue"
+								class="w-full btn btn--lg lg:w-auto
+                            hover:bg-gray-900 focus:outline-none focus:shadow-outline"
 								type="submit"
 							>
 								ادامه خرید
 							</button>
 							<nuxt-link
-								class="text-xs hover:text-black hover:underline"
+								v-if="$route.params.id === undefined"
+								class="mt-2 lg:mt-0 text-xs hover:text-black hover:underline p-2
+                                focus:outline-none focus:shadow-outline rounded"
+								to="/"
+							>
+								{{ 'برگشت' }}
+							</nuxt-link>
+							<nuxt-link
+								v-else
+								class="mt-2 lg:mt-0 text-xs hover:text-black hover:underline p-2
+                            focus:outline-none focus:shadow-outline rounded"
 								:to="$route.query.redirect"
 							>
-								<ChevronRightIcon
-									class="inline mb-1"
-									stroke-width="3"
-									height="12"
-									width="12"
-								/>
+								<IconCheveronRight class="w-7" />
 								برگشت به محصول
 							</nuxt-link>
 						</div>
-						<div class="border-b border-gray-400 w-full"></div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div class="w-2/5 border-r border-gray-400">
-			<div class="pl-20 mr-12 mt-16 text-sm">
-				<div v-for="(order, index) in ordersList" :key="index">
-					<div class="w-full flex flex-row-reverse justify-start my-6">
-						<div class="relative border border-gray-400 rounded">
-							<span
-								class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white text-xs rounded-full inline-flex justify-center"
-							>
-								{{ order.quantity }}
-							</span>
-							<img
-								:src="order.product.media.images[0].path"
-								class="object-scale-down rounded-lg w-32 h-20"
-							/>
-						</div>
-						<div class="flex flex-col ml-auto">
-							<h1
-								class="font-serif text-sm -mt-1 pb-3 tracking-wide text-gray-900"
-							>
-								{{ order.product.title }}
-							</h1>
-							<span class="pt-8 text-gray-800">
-								{{
-									calculatePrice(order.item.price, order.quantity)
-										| numeral('0,0')
-								}}
-							</span>
-						</div>
-					</div>
-					<div class="flex h-px w-full bg-gray-400"></div>
+						<div class="thin-line"></div>
+					</form>
 				</div>
-				<div class="my-6 relative">
-					<input
-						class="border border-gray-400 px-4 h-12 rounded w-full focus:border-black focus:border-2 focus:outline-none appearance-none"
-						placeholder="کد کارت تخفیف یا هدیه"
-						type="text"
-					/>
-					<div class="absolute left-0 ml-1 button-prop">
-						<svg
-							id="thin-line"
-							class="inline text-gray-500"
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 32 32"
-							width="26"
-							height="26"
-							stroke="currentcolor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width=".7"
-						>
-							<path d="M9 2 L9 35" />
-						</svg>
-						<button
-							class="h-10 w-20 rounded bg-black text-gray-100 font-serif-bold"
-						>
-							ثبت
-						</button>
-					</div>
-				</div>
-				<div class="flex h-px w-full bg-gray-400"></div>
-				<div class="my-6">
-					<p class="text-gray-800 flex justify-between">
-						هزینه پست:
-						<span>صفحه بعد حساب شده</span>
-					</p>
-					<p class="text-gray-800 flex justify-between mt-2">
-						جمع سفارشات:
-						<span>{{ sumOfList | numeral('0,0') }}</span>
-					</p>
-				</div>
-				<div class="flex h-px w-full bg-gray-400"></div>
-				<p class="text-gray-900 text-lg py-6 flex justify-between mt-2">
-					جمع کل:
-					<span>{{ sumOfList | numeral('0,0') }}</span>
-				</p>
 			</div>
 		</div>
 	</div>
@@ -288,9 +183,11 @@
 
 <script>
 import {mapState, mapGetters} from 'vuex'
-import ChevronRightIcon from '~/assets/svg/icons/icon-cheveron-right-circle.svg'
+import IconCheveronRight from '~/assets/svg/icons/icon-cheveron-right-circle.svg'
+import IconCheveronDown from '~/assets/svg/icons/icon-cheveron-down.svg'
+import IconThinLine from '~/assets/svg/thin-line.svg'
+import OrderSummary from '~/components/Desktop/OrderSummary.vue'
 export default {
-	/* eslint-disable prefer-const */
 	name: 'Checkout',
 	middleware: 'guest',
 	head() {
@@ -306,50 +203,62 @@ export default {
 		}
 	},
 	components: {
-		ChevronRightIcon,
+		IconCheveronRight,
+		IconCheveronDown,
+		IconThinLine,
+		OrderSummary,
 	},
+
 	data() {
 		return {
-			// * Cities Data will store here
-			citiesData: null,
-
 			// * Form handling happens here
-			state: null,
-			city: null,
-			userAddress: null,
+			selectedState: 11, // default to khorasan
+			selectedCity: 130, // default to mashhad
+			userAddress: undefined,
 			form: {
-				email: null,
-				first_name: null,
-				last_name: null,
+				email: undefined,
+				first_name: undefined,
+				last_name: undefined,
+				phone_num: undefined,
 			},
 		}
 	},
+
 	computed: {
-		...mapState(['provinces', 'ordersList', 'sumOfList']),
-		...mapGetters(['isAuthenticated']),
+		...mapState(['cart']),
+		...mapGetters(['isAuthenticated', 'userDetail']),
 	},
+
 	watch: {
-		async state(newValue) {
-			const data = await this.$SHOW_PROVINCES_CITIES.showCities(
-				newValue.province.id,
-			)
-			this.citiesData = data
+		async selectedState(newID, oldID) {
+			this.citiesData = await this.$SHOW_PROVINCES_CITIES.showCities(newID)
 		},
 	},
-	mounted() {
-		this.$nextTick(() => {
-			const {email} = this.$refs
-			email.focus()
-			email.setSelectionRange(0, email.value.length)
-		})
-		if (this.isAuthenticated) {
-			this.$store.dispatch('GetCartData')
+
+	async asyncData({app}) {
+		return {
+			provinces: await app.$FETCH_PROVINCES.index(),
+			citiesData: await app.$SHOW_PROVINCES_CITIES.showCities(11),
 		}
 	},
+
+	mounted() {
+		this.$nextTick(() => {
+			const {email, firstName} = this.$refs
+			email.focus()
+			email.setSelectionRange(0, email.value.length)
+			this.$store.dispatch('GET_CART_DATA')
+			if (this.isAuthenticated) {
+				firstName.focus()
+				firstName.setSelectionRange(0, firstName.value.length)
+				this.form.email = this.userDetail.email
+			}
+		})
+	},
+
 	methods: {
-		handleUserDetail() {},
-		calculatePrice(price, quantity) {
-			return price * quantity
+		handleUserDetail() {
+			this.$UPDATE_USER_INFO.update(this.form)
 		},
 	},
 }
@@ -361,7 +270,7 @@ export default {
 	padding-left: 15px;
 	text-indent: -15px;
 }
-.input {
+.checkbox {
 	width: 15px;
 	height: 13px;
 	padding: 0;
@@ -370,16 +279,5 @@ export default {
 	position: relative;
 	top: -4px;
 	overflow: hidden;
-}
-.cart-prop {
-	position: absolute;
-	left: -15px;
-	top: -10px;
-	line-height: 1.4rem;
-	border: 1.5px solid #fff;
-}
-.button-prop {
-	top: 50%;
-	transform: translateY(-50%);
 }
 </style>

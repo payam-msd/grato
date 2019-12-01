@@ -1,6 +1,7 @@
 <template>
 	<div
-		class="h-screen flex flex-col lg:flex-row jusutify-center lg:justify-between items-center"
+		class="h-full flex flex-col lg:flex-row jusutify-center
+        lg:justify-between items-center container mx-auto px-6 py-10 lg:py-32"
 	>
 		<form class="w-full my-6 lg:my-0 lg:w-1/3" @submit.prevent="Login">
 			<h1 class="text-black text-lg lg:text-2xl">
@@ -59,10 +60,7 @@
 			</div>
 
 			<div class="my-4">
-				<button
-					type="submit"
-					class="btn text-sm py-3 px-6 pl-2 hover:bg-gray-900 hover:text-white"
-				>
+				<button type="submit" class="btn btn--md  pl-2 hover:bg-gray-900">
 					<span>ورود به گراتو</span>
 					<SendIcon class="icon w-10" />
 				</button>
@@ -80,10 +78,13 @@
 			</p>
 			<div class="my-10">
 				<nuxt-link
+					tabindex="0"
+					role="button"
+					tag="a"
 					to="/auth/register"
-					class="btn py-3 px-12 text-sm tracking-wide"
+					class="btn btn--md px-14 tracking-wide"
 				>
-					<span>ثبت نام</span>
+					ثبت نام
 				</nuxt-link>
 			</div>
 		</div>
@@ -98,6 +99,7 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
 	name: 'Login',
+	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
 	middleware: 'guest',
 
 	head() {

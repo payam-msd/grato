@@ -1,5 +1,8 @@
 <template>
-	<div class="h-screen flex justify-center lg:justify-start items-center">
+	<div
+		class="h-full flex justify-center lg:justify-start items-center
+        container mx-auto px-6 py-6 lg:py-12"
+	>
 		<form class="w-full lg:w-1/3" @submit.prevent="Register">
 			<h1 class="text-black text-2xl">
 				{{ 'ثبت نام' }}
@@ -108,7 +111,7 @@
 					:disabled="rulesAgreed == true ? false : true"
 					type="submit"
 					:class="{'cursor-not-allowed': !rulesAgreed}"
-					class="btn text-sm py-3 px-6 pl-2 hover:bg-gray-900 hover:text-white"
+					class="btn btn--md hover:bg-gray-900"
 				>
 					<span>ثبت نام در گراتو</span>
 					<SendIcon class="icon w-10" />
@@ -128,6 +131,7 @@ import CloseEye from '~/assets/svg/closeEye.svg'
 import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
+	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
 	middleware: 'guest',
 	head() {
 		return {

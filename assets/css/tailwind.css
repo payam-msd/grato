@@ -89,16 +89,28 @@ svg{
 }
 
 .btn{
-    @apply bg-black text-gray-100 rounded font-dana-bold
+    @apply bg-black text-gray-100 text-center font-dana-bold rounded
+}
+
+.btn--md{
+    @apply py-3 px-4 text-sm
+}
+
+.btn--lg{
+    @apply py-4 px-12
 }
 
 .input{
-    @apply shadow-inner appearance-none border rounded border-gray-500
-    select-none bg-rose-100 h-10 px-2 mb-2
+    @apply border rounded border-gray-400
+    h-10 px-2 mb-2
+}
+
+.input-checkout{
+    @apply border border-gray-400 rounded px-3 h-12 mb-2
 }
 
 .thin-line{
-    @apply h-px bg-gray-500
+    @apply h-px bg-gray-400
 }
 
 .icon{
@@ -116,8 +128,9 @@ svg{
     transform: translate(-50%, -50%);
 }
 
-.makeBGAnimated {
-    background-color: rgba(0, 0, 0, 0.3);
+.inset-y-center{
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .page-enter-active,

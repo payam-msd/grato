@@ -5,7 +5,7 @@
 			class="w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8"
 		>
 			<div
-				class="flex-1 flex justify-between items-center container mx-auto px-6"
+				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
 			>
 				<nuxt-link
 					class="text-3xl font-dana-bold text-green-700 tracking-wider"
@@ -14,18 +14,17 @@
 				>
 					گراتو
 				</nuxt-link>
-
 				<BrandCategories />
 
-				<div class="w-full lg:flex lg:items-center lg:w-auto">
+				<div class="w-full lg:w-auto flex lg:items-center justify-end">
 					<div
-						class="items-center justify-between text-base text-gray-700 pt-4 lg:pt-0 lg:flex"
+						class="items-center justify-between text-base text-gray-700 lg:flex"
 					>
 						<profile v-if="isAuthenticated" />
 
 						<nuxt-link
 							v-else
-							class="py-3 px-0 rounded border border-gray-400 block lg:px-6 focus:border-black"
+							class="py-3 rounded border border-gray-400 block lg:px-6 focus:border-black"
 							to="/auth/login"
 							tag="a"
 						>
@@ -34,7 +33,7 @@
 					</div>
 
 					<thinLine
-						class="icon w-8 fill-current text-gray-400"
+						class="w-7 lg:mx-1 "
 						transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 					/>
 
@@ -50,12 +49,13 @@
 					>
 						<BagIcon class="w-7 m-1" transform="scale(-1, 1)" />
 
-						<!-- <span
-                            v-if="cart.inCart"
-                            class="cart-prop w-6 h-6 bg-teal-500 text-white text-xs
+						<span
+							v-if="cart.inCart"
+							class="cart-prop w-6 h-6 bg-teal-500 text-white text-xs
                             rounded-full flex justify-center items-center"
-                            >{{ cart.inCart }}</span
-                        > -->
+						>
+							{{ cart.inCart }}
+						</span>
 					</a>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 import BrandCategories from '~/components/Desktop/navigation/hoverDrop/BrandCategories'
 import profile from '~/components/Desktop/navigation/profile/Dropdown'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'
@@ -80,13 +80,13 @@ export default {
 	data() {
 		return {
 			isNavbarFixed: false,
-			isProtected: false,
 			lastScrollPosition: 55,
 		}
 	},
 
 	computed: {
 		...mapGetters(['isAuthenticated']),
+		...mapState(['cart']),
 		isProductDetail() {
 			return this.$store.state.navbar.rmFixedNav
 		},
@@ -112,11 +112,6 @@ export default {
 				})
 			}
 		},
-		$route(route) {
-			route.name === 'auth-login' || route.name === 'auth-register'
-				? (this.isProtected = true)
-				: (this.isProtected = false)
-		},
 	},
 
 	mounted() {
@@ -135,7 +130,7 @@ export default {
 				return
 			}
 
-			if (this.isProtected || this.isProductDetail) {
+			if (this.isProductDetail) {
 				this.isNavbarFixed = false
 			} else {
 				// Here we determine whether we need to show or hide the navbar
@@ -154,4 +149,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scope>
+#menu-toggle:checked + #menu {
+	display: hidden;
+}
+</style>

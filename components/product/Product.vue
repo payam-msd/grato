@@ -44,7 +44,9 @@
 			<nuxt-link
 				to="/somewhere"
 				tag="a"
-				class="px-6 rounded py-4 bg-black mx-auto text-gray-100 hover:bg-gray-900"
+				tabindex="0"
+				role="button"
+				class="btn btn--md hover:bg-gray-900"
 			>
 				{{ `ادامه ${listDetail.listName}` }}
 				<iconArrowLeftCircle class="icon w-7" />

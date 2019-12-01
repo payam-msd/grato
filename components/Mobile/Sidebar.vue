@@ -1,5 +1,5 @@
 <template>
-	<div id="sidebar" class="fixed w-4/5 bg-white h-screen shadow-2xl z-50">
+	<div id="sidebar" class="fixed w-11/12 bg-white h-screen shadow-2xl z-50">
 		<Notification class="shadow-inner" />
 		<component :is="sidebar.sidebarContent" />
 	</div>
@@ -14,7 +14,7 @@ export default {
 	},
 
 	computed: {
-		...mapState(['sidebar']),
+		...mapState(['cart', 'sidebar']),
 	},
 
 	watch: {
@@ -22,8 +22,12 @@ export default {
 			const tl = gsap
 			const _vm = this
 			const direction = isActive ? 0 : this.$el.offsetWidth
+			if (isActive && this.cart.cartItems === undefined) {
+				this.$store.dispatch('GET_CART_DATA')
+			}
+
 			tl.to(this.$el, {
-				duration: 0.75,
+				duration: 0.45,
 				x: direction,
 				ease: 'power2.In',
 				onComplete() {

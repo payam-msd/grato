@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<Notification v-if="$route.name === 'auth-login' || 'product-id'" />
-		<Navigation />
+		<!-- <Notification /> -->
+		<!-- <Navigation /> -->
 		<nuxt />
-		<Footer />
+		<!-- <Footer /> -->
 	</div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-	<Fragment>
+	<div class="ml-auto hidden lg:block">
 		<Title>
 			<a slot="title">
 				{{ title1 }}
@@ -10,12 +10,11 @@
 				<SubMenu :id="id" :items="navbarSubMenu" slot="subMenu" />
 			</Wrapper>
 		</Title>
-	</Fragment>
+	</div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
-import {Fragment} from 'vue-fragment'
 import Wrapper from '~/components/Desktop/modules/hoverDrop/Wrapper'
 import Menu from '~/components/Desktop/modules/hoverDrop/Menu'
 import SubMenu from '~/components/Desktop/modules/hoverDrop/SubMenu'
@@ -26,7 +25,6 @@ export default {
 		Menu,
 		SubMenu,
 		Title,
-		Fragment,
 	},
 
 	data() {

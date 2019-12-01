@@ -1,32 +1,23 @@
 <template>
-	<div id="sidebar" class="fixed inset-y-0 w-sidebar z-50 bg-white shadow-2xl">
+	<div
+		id="sidebar"
+		class="fixed inset-y-0 w-11/12 lg:w-sidebar z-50 bg-white shadow-2xl"
+	>
 		<Notification class="shadow-inner" />
 
 		<div
-			class="w-full h-full overflow-y-auto flex flex-col justify-start items-stretch px-16"
+			class="w-full h-full overflow-y-auto flex flex-col justify-start
+            items-stretch px-6 lg:px-16 pb-16"
 		>
 			<SidebarContent />
 
-			<div class="flex pt-8 justify-between">
+			<div class="flex justify-between py-8">
 				<p>جمع کل :</p>
-				<span>{{ sumOfList | numeral('0,0') }}</span>
+				<span>{{ cart.sum | numeral('0,0') }}</span>
 			</div>
-
-			<a
-				role="button"
-				tabindex="0"
-				class="btn w-full py-4 mx-auto text-center"
-				@click="
-					$router.push({
-						name: 'checkout',
-						query: {
-							redirect: `/product/${$route.params.id}`,
-						},
-					})
-				"
-			>
+			<nuxt-link class="btn btn--lg" to="payment/checkout">
 				{{ 'بررسی خرید' }}
-			</a>
+			</nuxt-link>
 		</div>
 	</div>
 </template>
@@ -41,18 +32,21 @@ export default {
 		Notification,
 		SidebarContent,
 	},
-	data() {
-		return {
-			price: null,
-		}
-	},
+
 	computed: {
-		...mapState(['sidebar']),
+		...mapState(['sidebar', 'cart']),
 	},
 	watch: {
+		'$route'(to, from) {
+			document.body.classList.remove('overflow-y-hidden')
+		},
 		'sidebar.isActive'(isActive) {
 			const direction = isActive ? 0 : this.$el.offsetWidth
 			const _vm = this
+
+			if (isActive && this.cart.cartItems === undefined) {
+				this.$store.dispatch('GET_CART_DATA')
+			}
 
 			gsap.delayedCall(0.25, () => {
 				isActive
@@ -72,8 +66,9 @@ export default {
 			})
 		},
 	},
-	beforeDestroy() {
+	beforeRouteLeave(from, to, next) {
 		this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
+		next()
 	},
 	mounted() {
 		gsap.set(this.$el, {

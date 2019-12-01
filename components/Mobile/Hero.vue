@@ -3,7 +3,7 @@
 		<div class="w-full h-special">
 			<img
 				class="w-full h-full object-cover"
-				src="https://source.unsplash.com/Q0oo_CeBfUY"
+				src="https://source.unsplash.com/collection/962362/"
 				alt
 			/>
 		</div>
@@ -11,7 +11,7 @@
 			<nuxt-link
 				tag="a"
 				class="text-gray-800 font-serif-bold tracking-wide
-                 focus:outline-none focus:shadow-outline rounded p-1"
+                focus:outline-none focus:shadow-outline rounded p-1"
 				to="/page"
 			>
 				{{ ' خرید گلکسی نوت 10+' }}

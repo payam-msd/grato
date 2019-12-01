@@ -1,6 +1,6 @@
 <template>
 	<header
-		class="px-6 bg-white flex flex-wrap justify-between items-center py-3"
+		class="px-3 bg-white flex flex-wrap justify-between items-center py-3"
 	>
 		<a
 			tabindex="0"

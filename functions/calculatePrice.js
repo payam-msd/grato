@@ -1,11 +1,10 @@
-/* eslint-disable camelcase */
-export function sum_of_orders(orders_list) {
+export function calculatePrice(orders) {
 	const arrOfPrices = []
 	let totalPrice = 0
-	if (!orders_list.length) {
+	if (!orders.length) {
 		return totalPrice
 	}
-	orders_list.forEach(e => {
+	orders.forEach(e => {
 		const final = e.quantity * e.item.price
 		arrOfPrices.push(final)
 	})

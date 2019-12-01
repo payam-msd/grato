@@ -1,7 +1,10 @@
 <template>
 	<div class="bg-gray-100">
-		<div class="container mx-auto px-8 flex justify-between py-12">
-			<div class="w-2/5 pl-32">
+		<div
+			class="container mx-auto px-4 lg:px-8 flex flex-col-reverse lg:flex-row
+            lg:justify-between py-10 lg:py-12"
+		>
+			<div class="w-full lg:w-2/5 lg:pl-32">
 				<div class="my-4">
 					<h3 class="text-xl pb-1">{{ product.title }}</h3>
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
@@ -47,7 +50,7 @@
 				<ProductExtraDetail :data="titles" />
 			</div>
 
-			<div class="w-3/5">
+			<div class="w-full lg:w-3/5">
 				<img
 					class="w-full h-full object-cover bg-center"
 					:src="product.media.images[0].path"
@@ -69,6 +72,7 @@ import ProductExtraDetail from '~/components/product/productDetail/ProductExtraD
 
 export default {
 	/* eslint-disable camelcase */
+	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
 	name: 'ProductID',
 	meta: {
 		title: '',
@@ -159,8 +163,9 @@ export default {
 				})
 			}
 			new Promise((resolve, reject) => {
-				this.$store.dispatch('UPDATE_CART', {
-					id: this.userSelectedGuaranty.id,
+				this.$store.dispatch('ADD_TO_CART', {
+					itemID: this.userSelectedGuaranty.id,
+					quantity: 1,
 				})
 				resolve()
 			}).then(() => {
