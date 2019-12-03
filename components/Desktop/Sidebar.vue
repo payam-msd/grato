@@ -13,7 +13,7 @@
 
 			<div class="flex justify-between py-8">
 				<p>جمع کل :</p>
-				<span>{{ cart.sum | numeral('0,0') }}</span>
+				<span>{{ cart.sum | currency }}</span>
 			</div>
 			<nuxt-link class="btn btn--lg" to="payment/checkout">
 				{{ 'بررسی خرید' }}

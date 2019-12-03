@@ -11,7 +11,7 @@
 			<nuxt-link
 				tag="a"
 				class="text-gray-800 font-serif-bold tracking-wide
-                focus:outline-none focus:shadow-outline rounded p-1"
+                  p-1"
 				to="/page"
 			>
 				{{ ' خرید گلکسی نوت 10+' }}

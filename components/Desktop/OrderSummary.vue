@@ -11,7 +11,7 @@
 				{{ 'خلاصه خرید' }}
 			</span>
 			<IconCheveronDown class="w-7 ml-auto" />
-			<span>{{ cart.sum | numeral('0,0') }}</span>
+			<span>{{ cart.sum | currency }}</span>
 		</div>
 
 		<div
@@ -40,8 +40,7 @@
 							</h1>
 							<span class="pt-8 text-gray-800">
 								{{
-									calculatePrice(order.item.price, order.quantity)
-										| numeral('0,0')
+									calculatePrice(order.item.price, order.quantity) | currency
 								}}
 							</span>
 						</div>
@@ -71,13 +70,13 @@
 					</p>
 					<p class="text-gray-800 flex justify-between mt-2">
 						جمع سفارشات:
-						<span>{{ cart.sum | numeral('0,0') }}</span>
+						<span>{{ cart.sum | currency }}</span>
 					</p>
 				</div>
 				<div class="thin-line"></div>
 				<p class="text-gray-900 text-base py-6 flex justify-between mt-2">
 					جمع کل:
-					<span class="text-xl">{{ cart.sum | numeral('0,0') }}</span>
+					<span class="text-xl">{{ cart.sum | currency }}</span>
 				</p>
 			</div>
 		</div>

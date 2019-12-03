@@ -40,7 +40,7 @@
 					<a
 						role="button"
 						tabindex="0"
-						class="relative focus:outline-none focus:shadow-outline rounded"
+						class="relative  "
 						@click="
 							$store.commit('TOGGLE_SIDEBAR', {
 								component: undefined,

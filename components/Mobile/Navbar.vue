@@ -2,11 +2,7 @@
 	<header
 		class="px-3 bg-white flex flex-wrap justify-between items-center py-3"
 	>
-		<a
-			tabindex="0"
-			role="button"
-			class="p-1 focus:outline-none focus:shadow-outline rounded"
-		>
+		<a tabindex="0" role="button" class="p-1  ">
 			<Menu
 				class="w-8 focus:outline-none focus:shadow-outline"
 				@click="$store.commit('TOGGLE_SIDEBAR', {component: menuContent})"
@@ -16,7 +12,7 @@
 		<nuxt-link
 			tag="a"
 			class="p-1 text-2xl text-green-800 font-dana-bold
-            focus:outline-none focus:shadow-outline rounded"
+             "
 			to="/"
 		>
 			{{ 'گراتو' }}
@@ -25,7 +21,7 @@
 		<a
 			role="button"
 			tabindex="0"
-			class="relative focus:outline-none focus:shadow-outline rounded"
+			class="relative  "
 			@click="$store.commit('TOGGLE_SIDEBAR', {component: cartContent})"
 		>
 			<BagIcon class="w-7 m-1" transform="scale(-1,1)" />

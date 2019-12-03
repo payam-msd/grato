@@ -4,7 +4,7 @@
 			role="button"
 			tabindex="0"
 			class="w-auto h-auto py-1 flex items-center justify-around focus:outline-none
-            focus:outline-none focus:shadow-outline rounded"
+             "
 		>
 			<UserIcon class="icon w-7" />
 			<CheveronDown class="icon w-7" />

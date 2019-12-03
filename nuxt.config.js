@@ -1,3 +1,4 @@
+require('dotenv').config()
 export default {
 	mode: 'universal',
 	head: {
@@ -33,8 +34,7 @@ export default {
 	 ** Plugins to load before mounting the App
 	 */
 	plugins: [
-		// {src: "~/plugins/vue-swatches.js", mode: "client"},
-		{src: '~/plugins/vue-numeral-filter.js', mode: 'client'},
+		{src: '~/plugins/currency.js'},
 		{src: '~/plugins/axios.js'},
 		{src: '~/plugins/vuelidate.js'},
 		{src: '~/plugins/repository.js'},
@@ -43,23 +43,28 @@ export default {
 	/*
 	 ** Nuxt.js dev-modules
 	 */
-	buildModules: [
-		'@nuxtjs/eslint-module',
-		'@nuxtjs/auth',
-		'@nuxtjs/tailwindcss',
-		'@nuxtjs/google-analytics',
-	],
+	buildModules: [],
 
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: ['@nuxtjs/axios', '@nuxtjs/device'],
+	modules: [
+		'@nuxtjs/axios',
+		'@nuxtjs/pwa',
+		// '@nuxtjs/sentry',
+		'@nuxtjs/eslint-module',
+		'@nuxtjs/tailwindcss',
+		'@nuxtjs/device',
+		'@nuxtjs/google-analytics',
+		'@nuxtjs/auth',
+		'@nuxtjs/dotenv',
+	],
 
 	/*
 	 ** Axios module configuration
 	 */
 	axios: {
-		baseURL: 'http://test.api.shop.ratin.cloud/v1/',
+		baseURL: process.env.API_KEY,
 		debug: false,
 		retry: {
 			retries: 3,
@@ -93,25 +98,27 @@ export default {
 			home: '/',
 			logout: '/auth/login',
 		},
-		fullPathRedirect: true,
-		watchLoggedIn: true,
-		resetOnError: true,
 		token: {
 			prefix: 'token_',
 		},
 	},
 
-	googleAnalytics: {
-		id: 'UA-894237434-1',
-	},
+	// sentry: {
+	// 	dsn: process.env.SENTRY_DSN,
+	// 	config: {}, // Additional config
+	// },
 
-	vue: {
-		config: {
-			performance: true,
-			devtools: true,
-			productionTip: true,
-		},
-	},
+	// googleAnalytics: {
+	// 	id: 'UA-894237434-1',
+	// },
+
+	// vue: {
+	// 	config: {
+	// 		performance: true,
+	// 		devtools: true,
+	// 		productionTip: true,
+	// 	},
+	// },
 
 	pageTransition: 'page',
 
@@ -119,7 +126,6 @@ export default {
 	 ** Build configuration
 	 */
 	build: {
-		transpile: ['vue-bytesize-icons'],
 		extend(config, ctx) {
 			if (ctx.isDev) {
 				config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'

@@ -27,8 +27,7 @@
 							ref="email"
 							@keyup.enter="$refs.firstName.focus()"
 							v-model="form.email"
-							class="input-checkout w-full focus:border-black
-                    focus:border-2 focus:outline-none placeholder-gray-700"
+							class="input-checkout w-full placeholder-gray-700"
 							type="text"
 							placeholder="ایمیل"
 						/>
@@ -46,9 +45,7 @@
 									ref="firstName"
 									@keyup.enter="$refs.lastName.focus()"
 									v-model="form.first_name"
-									class="input-checkout block w-full
-                                focus:border-2 focus:border-black
-                                focus:outline-none focus:bg-white placeholder-gray-700"
+									class="input-checkout block w-full placeholder-gray-700"
 									type="text"
 									placeholder="نام"
 								/>
@@ -58,11 +55,7 @@
 									ref="lastName"
 									@keyup.enter="$refs.address.focus()"
 									v-model="form.last_name"
-									class="input-checkout block w-full
-                                focus:border-2
-                                focus:border-black rounded
-                                focus:outline-none focus:bg-white
-                                placeholder-gray-700"
+									class="input-checkout block w-full placeholder-gray-700"
 									type="text"
 									placeholder="نام خانوادگی"
 								/>
@@ -73,8 +66,7 @@
 							ref="address"
 							@keyup.enter="$refs.state.focus()"
 							v-model="userAddress"
-							class="input-checkout block w-full focus:outline-none
-                        focus:border-black focus:border-2 placeholder-gray-700"
+							class="input-checkout block w-full placeholder-gray-700"
 							type="text"
 							placeholder="آدرس"
 						/>
@@ -86,8 +78,7 @@
 										ref="state"
 										@keyup.enter="$refs.city.focus()"
 										v-model="selectedState"
-										class="input-checkout block appearance-none w-full focus:outline-none focus:border-2
-                                    bg-white focus:border-black"
+										class="input-checkout block  w-full focus:border-black"
 									>
 										<template v-for="province in provinces">
 											<option :value="province.id" :key="province.id">
@@ -110,9 +101,7 @@
 										ref="city"
 										@keyup.up="$refs.number.focus()"
 										v-model="selectedCity"
-										class="input-checkout block appearance-none
-                                    w-full bg-white focus:outline-none
-                                    focus:border-2 focus:border-black"
+										class="input-checkout block  w-full"
 									>
 										<template v-for="city in citiesData">
 											<option :key="city.id" :value="city.id">
@@ -136,10 +125,7 @@
 							ref="number"
 							@keyup.enter="$refs.continue.focus()"
 							v-model="form.phone_num"
-							class="input-checkout block w-full appearance-none
-                                focus:border-2
-                                focus:border-black rounded
-                                focus:outline-none focus:bg-white
+							class="input-checkout block w-full
                                 placeholder-gray-700"
 							placeholder="شماره موبایل"
 						/>
@@ -149,28 +135,27 @@
 						>
 							<button
 								ref="continue"
-								class="w-full btn btn--lg lg:w-auto
-                            hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+								class="w-full btn btn--lg lg:w-auto"
 								type="submit"
 							>
 								ادامه خرید
 							</button>
 							<nuxt-link
 								v-if="$route.params.id === undefined"
-								class="mt-2 lg:mt-0 text-xs hover:text-black hover:underline p-2
-                                focus:outline-none focus:shadow-outline rounded"
+								class="mt-2 lg:mt-0 tertiary-link
+                                 "
 								to="/"
 							>
 								{{ 'برگشت' }}
 							</nuxt-link>
 							<nuxt-link
 								v-else
-								class="mt-2 lg:mt-0 text-xs hover:text-black hover:underline p-2
-                            focus:outline-none focus:shadow-outline rounded"
+								class="mt-2 lg:mt-0 tertiary-link
+                             "
 								:to="$route.query.redirect"
 							>
 								<IconCheveronRight class="w-7" />
-								برگشت به محصول
+								{{ 'برگشت به محصول' }}
 							</nuxt-link>
 						</div>
 						<div class="thin-line"></div>
@@ -189,7 +174,7 @@ import IconThinLine from '~/assets/svg/thin-line.svg'
 import OrderSummary from '~/components/Desktop/OrderSummary.vue'
 export default {
 	name: 'Checkout',
-	middleware: 'guest',
+	// middleware: 'guest',
 	head() {
 		return {
 			title: 'اطلاعات حساب',

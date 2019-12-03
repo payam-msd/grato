@@ -10,11 +10,7 @@
 
 			<div class="text-sm flex text-gray-700">
 				<p>{{ 'قبلا ثبت نام کرده اید ؟‌' }}</p>
-				<nuxt-link
-					tag="a"
-					class="text-xs text-blue-500 hover:underline mx-1"
-					to="/auth/login"
-				>
+				<nuxt-link tag="a" class="tertiary-link mx-1" to="/auth/login">
 					{{ 'وارد شوید' }}
 				</nuxt-link>
 			</div>
@@ -28,8 +24,7 @@
 				<input
 					ref="username"
 					v-model.lazy="$v.form.username.$model"
-					class="input w-4/5 focus:border-2
-                    focus:border-black focus:outline-none focus:bg-white"
+					class="input w-4/5"
 					type="text"
 					@keyup.enter="$refs.email.focus()"
 				/>
@@ -45,7 +40,7 @@
 				<input
 					ref="email"
 					v-model.lazy="$v.form.email.$model"
-					class="input w-4/5 focus:bg-white focus:outline-none focus:border-2 focus:border-black"
+					class="input w-4/5 "
 					type="text"
 					@keyup.enter="$refs.password.focus()"
 				/>
@@ -74,7 +69,7 @@
 					<input
 						ref="password"
 						v-model.lazy="$v.form.password.$model"
-						class="w-4/5 input focus:bg-white focus:outline-none focus:border-2 focus:border-black"
+						class="w-4/5 input"
 						autocomplete="new-password"
 						:type="passwordType"
 					/>
@@ -116,7 +111,7 @@
 					<span>ثبت نام در گراتو</span>
 					<SendIcon class="icon w-10" />
 				</button>
-				<nuxt-link tag="a" class="mx-3 text-xs text-gray-700" to="/">
+				<nuxt-link tag="a" class="tertiary-link" to="/">
 					{{ 'یا برگشت به فروشگاه' }}
 				</nuxt-link>
 			</div>

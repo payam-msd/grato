@@ -16,7 +16,7 @@
 							class="text-sm lg:text-base text-gray-900 py-2"
 							:to="link.route"
 						>
-							<a class="focus:outline-none focus:shadow-outline rounded p-1">
+							<a class="  p-1">
 								{{ link.name }}
 							</a>
 						</nuxt-link>
@@ -34,9 +34,7 @@
 							tag="li"
 							class="text-sm lg:text-base text-gray-900 py-2"
 						>
-							<a
-								class="focus:outline-none focus:shadow-outline      rounded p-1"
-							>
+							<a class=" p-1">
 								{{ link.name }}
 							</a>
 						</nuxt-link>

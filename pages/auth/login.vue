@@ -16,8 +16,7 @@
 				<input
 					ref="email"
 					v-model.lazy="$v.form.email.$model"
-					class="input w-4/5 focus:outline-none focus:border-2
-                focus:border-black focus:bg-white"
+					class="input w-4/5"
 					type="text"
 					@keyup.enter="$refs.password.focus()"
 				/>
@@ -32,7 +31,7 @@
 						<EyeIcon
 							v-show="!hidePassword"
 							stroke-width="1.7"
-							class="login-icon inset-center "
+							class="login-icon inset-center"
 							@click="hidePassword = !hidePassword"
 						/>
 						<CloseEye
@@ -44,7 +43,7 @@
 					<input
 						ref="password"
 						v-model.lazy="$v.form.password.$model"
-						class="input w-4/5 focus:outline-none focus:border-2 focus:border-black focus:bg-white "
+						class="input w-4/5 "
 						:type="passwordType"
 					/>
 				</div>
@@ -64,7 +63,7 @@
 					<span>ورود به گراتو</span>
 					<SendIcon class="icon w-10" />
 				</button>
-				<nuxt-link tag="a" class="mx-3 text-xs text-gray-700" to="/">
+				<nuxt-link tag="a" class="tertiary-link" to="/">
 					{{ 'یا برگشت به فروشگاه' }}
 				</nuxt-link>
 			</div>
@@ -78,8 +77,6 @@
 			</p>
 			<div class="my-10">
 				<nuxt-link
-					tabindex="0"
-					role="button"
 					tag="a"
 					to="/auth/register"
 					class="btn btn--md px-14 tracking-wide"

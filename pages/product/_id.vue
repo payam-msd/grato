@@ -12,9 +12,8 @@
 						{{
 							userSelectedGuaranty === undefined
 								? product.minimum_price
-								: userSelectedGuaranty.price | numeral('0,0')
+								: userSelectedGuaranty.price | currency
 						}}
-						تومان
 					</span>
 				</div>
 
@@ -34,12 +33,12 @@
 						class="btn w-full p-4 hover:bg-gray-900 mb-2"
 						@click.prevent="handleAddToCart"
 					>
-						اضافه به سبد خرید
+						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="w-7" />
 					</button>
 					<span v-if="userSelectedGuaranty" class="text-red-600">
 						{{ userSelectedGuaranty.quantity }}
-						عدد باقی مانده
+						{{ 'عدد باقی مانده' }}
 					</span>
 				</div>
 

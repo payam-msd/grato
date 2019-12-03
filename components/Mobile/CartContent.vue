@@ -6,30 +6,10 @@
 
 		<div class="flex py-8 justify-between">
 			<p>جمع کل :</p>
-			<span>{{ sumOfList | numeral('0,0') }}</span>
+			<span>{{ sumOfList | currency }}</span>
 		</div>
 
-		<nuxt-link
-			tag="a"
-			role="button"
-			tabindex="0"
-			v-if="$route.params.id === undefined"
-			class="btn btn--lg"
-			to="payment/checkout"
-		>
-			{{ 'بررسی خرید' }}
-		</nuxt-link>
-		<nuxt-link
-			v-else
-			tag="a"
-			role="button"
-			tabindex="0"
-			class="btn btn--lg"
-			:to="{
-				name: 'payment-checkout',
-				query: {redirect: `/product/${$route.params.id}`},
-			}"
-		>
+		<nuxt-link class="btn btn--lg" to="payment/checkout">
 			{{ 'بررسی خرید' }}
 		</nuxt-link>
 	</div>

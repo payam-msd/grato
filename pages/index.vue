@@ -40,6 +40,11 @@ export default {
 		HeroMobile,
 		ProdcutsNav,
 	},
+	// data() {
+	// 	return {
+	// 		products: ['test'],
+	// 	}
+	// },
 
 	computed: {
 		...mapGetters(['isAuthenticated']),

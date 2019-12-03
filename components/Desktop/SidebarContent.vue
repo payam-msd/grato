@@ -45,7 +45,7 @@
 					</span>
 
 					<span class="tracking-wider">
-						{{ item.item.price | numeral('0,0') }}
+						{{ item.item.price | currency }}
 					</span>
 				</div>
 			</div>

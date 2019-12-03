@@ -15,7 +15,10 @@
     "dependencies": {
         "@nuxtjs/auth": "^4.8.4",
         "@nuxtjs/axios": "^5.3.6",
+        "@nuxtjs/dotenv": "^1.4.1",
         "@nuxtjs/google-analytics": "^2.2.1",
+        "@nuxtjs/pwa": "^3.0.0-beta.19",
+        "@nuxtjs/sentry": "^3.0.1",
         "nuxt": "^2.0.0"
     },
     "devDependencies": {
@@ -32,9 +35,9 @@
         "eslint-plugin-prettier": "^3.1.1",
         "jest": "^24.1.0",
         "prettier": "^1.18.2",
+        "vue-currency-filter": "^3.4.3",
         "vue-fragment": "^1.5.1",
         "vue-jest": "^4.0.0-0",
-        "vue-numeral-filter": "^1.1.1",
         "vue-svg-loader": "^0.14.0",
         "vue-template-compiler": "^2.6.10",
         "vuelidate": "^0.7.4"
