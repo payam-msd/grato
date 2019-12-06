@@ -1,25 +1,12 @@
 <template>
 	<div class="relative">
-		<header
-			ref="navbar"
-			class="w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8"
-		>
-			<div
-				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
-			>
-				<nuxt-link
-					class="text-3xl font-dana-bold text-green-700 tracking-wider"
-					tag="a"
-					to="/"
-				>
-					گراتو
-				</nuxt-link>
+		<header ref="navbar" class="w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8">
+			<div class="flex justify-between items-center container mx-auto px-4 lg:px-6">
+				<nuxt-link class="text-3xl font-dana-bold text-green-700 tracking-wider" tag="a" to="/">گراتو</nuxt-link>
 				<BrandCategories />
 
 				<div class="w-full lg:w-auto flex lg:items-center justify-end">
-					<div
-						class="items-center justify-between text-base text-gray-700 lg:flex"
-					>
+					<div class="items-center justify-between text-base text-gray-700 lg:flex">
 						<profile v-if="isAuthenticated" />
 
 						<nuxt-link
@@ -27,35 +14,25 @@
 							class="py-3 rounded border border-gray-400 block lg:px-6 focus:border-black"
 							to="/auth/login"
 							tag="a"
-						>
-							{{ 'ورود به حساب کاربری' }}
-						</nuxt-link>
+						>{{ 'ورود به حساب کاربری' }}</nuxt-link>
 					</div>
 
-					<thinLine
-						class="w-7 lg:mx-1 "
-						transform="rotate( 90, 0, 0 ) scale(1.5,1)"
-					/>
+					<thinLine class="w-7 lg:mx-1" transform="rotate( 90, 0, 0 ) scale(1.5,1)" />
 
 					<a
 						role="button"
+						class="flex items-center"
 						tabindex="0"
-						class="relative  "
-						@click="
-							$store.commit('TOGGLE_SIDEBAR', {
-								component: undefined,
-							})
-						"
+						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
 					>
 						<BagIcon class="w-7 m-1" transform="scale(-1, 1)" />
 
-						<span
+						<div
 							v-if="cart.inCart"
-							class="cart-prop w-6 h-6 bg-teal-500 text-white text-xs
-                            rounded-full flex justify-center items-center"
+							class="flex justify-center w-5 h-5 border mt-1 border-black text-xs rounded-full"
 						>
-							{{ cart.inCart }}
-						</span>
+							<span class="text-black self-end">{{ cart.inCart }}</span>
+						</div>
 					</a>
 				</div>
 			</div>

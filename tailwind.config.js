@@ -12,6 +12,9 @@ module.exports = {
 		extend: {
 			spacing: {
 				'special': '80vh',
+				'present': '95vh',
+				'present-w': '90vw',
+				'slider': '50vh',
 				'sidebar': '36%',
 				'special-wrapper': '75vh',
 				'7': '1.8rem',

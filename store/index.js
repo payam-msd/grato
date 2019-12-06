@@ -16,6 +16,10 @@ export const state = () => ({
 })
 
 export const mutations = {
+	RESET_CART(state) {
+		state.cart = {}
+	},
+
 	CATEGORIES_DATA(state, payload) {
 		state.navbar.data = payload
 	},

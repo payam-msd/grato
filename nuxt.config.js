@@ -93,6 +93,7 @@ export default {
 				},
 			},
 		},
+		fullPathRedirect: true,
 		redirect: {
 			login: '/',
 			home: '/',

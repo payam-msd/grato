@@ -156,13 +156,15 @@ export default {
 	methods: {
 		async Login() {
 			try {
-				await this.$auth.loginWith('local', {
-					data: {
-						email: this.form.email,
-						password: this.form.password,
-					},
-				})
-				this.$router.push(this.$route.query.redirect || '/')
+				await this.$auth
+					.loginWith('local', {
+						data: {
+							email: this.form.email,
+							password: this.form.password,
+						},
+					})
+					.then(this.$store.dispatch('GET_CART_DATA'))
+				// this.$router.push(this.$route.query.redirect || '/')
 			} catch (error) {
 				// Error 😨
 				window.onNuxtReady(() => {

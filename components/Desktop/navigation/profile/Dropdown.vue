@@ -49,9 +49,9 @@
 						<ExportIcon height="28" width="28" class="text-gray-700" />
 						<a
 							class="text-sm w-full text-gray-darker px-3"
-							@click.once="$auth.logout()"
+							@click.once="handleLogout"
 						>
-							خروج از حساب کاربری
+							{{ 'خروج از حساب کاربری' }}
 						</a>
 					</li>
 				</ItemDetail>
@@ -82,6 +82,13 @@ export default {
 
 	computed: {
 		...mapGetters(['isAuthenticated']),
+	},
+
+	methods: {
+		handleLogout() {
+			this.$auth.logout()
+			this.$store.commit('RESET_CART')
+		},
 	},
 }
 </script>

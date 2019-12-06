@@ -1,5 +1,5 @@
 export default function({app: {$auth}, redirect}) {
-	if ($auth.loggedIn) {
+	if ($auth.$state.loggedIn) {
 		return redirect('/')
 	}
 }

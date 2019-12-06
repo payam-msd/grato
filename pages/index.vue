@@ -7,6 +7,9 @@
 			<HeroMobile />
 		</template>
 		<ProdcutsNav :products="products" />
+		<Present />
+		<Slider />
+		<Instagram />
 	</div>
 </template>
 
@@ -15,6 +18,9 @@ import {mapGetters} from 'vuex'
 import Hero from '~/components/Desktop/Hero'
 import HeroMobile from '~/components/Mobile/Hero'
 import ProdcutsNav from '~/components/ProductsNav'
+import Present from '~/components/Present'
+import Slider from '~/components/Slider'
+import Instagram from '~/components/FollowInsta'
 
 export default {
 	name: 'Home',
@@ -39,12 +45,10 @@ export default {
 		Hero,
 		HeroMobile,
 		ProdcutsNav,
+		Present,
+		Slider,
+		Instagram,
 	},
-	// data() {
-	// 	return {
-	// 		products: ['test'],
-	// 	}
-	// },
 
 	computed: {
 		...mapGetters(['isAuthenticated']),
@@ -62,12 +66,8 @@ export default {
 		await app.$FETCH_CATEGORIES
 			.index()
 			.then(res => store.commit('CATEGORIES_DATA', res))
-	},
 
-	mounted() {
-		// if (this.isAuthenticated) {
-		//     this.$store.dispatch("GetCartData")
-		// }
+		if (store.getters.isAuthenticated) await store.dispatch('GET_CART_DATA')
 	},
 }
 </script>

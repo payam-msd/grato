@@ -174,7 +174,7 @@ import IconThinLine from '~/assets/svg/thin-line.svg'
 import OrderSummary from '~/components/Desktop/OrderSummary.vue'
 export default {
 	name: 'Checkout',
-	// middleware: 'guest',
+	middleware: 'user',
 	head() {
 		return {
 			title: 'اطلاعات حساب',

@@ -38,6 +38,7 @@
         "vue-currency-filter": "^3.4.3",
         "vue-fragment": "^1.5.1",
         "vue-jest": "^4.0.0-0",
+        "vue-product-carousel": "^1.2.0",
         "vue-svg-loader": "^0.14.0",
         "vue-template-compiler": "^2.6.10",
         "vuelidate": "^0.7.4"

@@ -37,16 +37,13 @@ export default {
 		...mapState(['sidebar', 'cart']),
 	},
 	watch: {
-		'$route'(to, from) {
+		'$route'() {
+			document.body.removeEventListener('click', this.closeEvent)
 			document.body.classList.remove('overflow-y-hidden')
 		},
 		'sidebar.isActive'(isActive) {
 			const direction = isActive ? 0 : this.$el.offsetWidth
 			const _vm = this
-
-			if (isActive && this.cart.cartItems === undefined) {
-				this.$store.dispatch('GET_CART_DATA')
-			}
 
 			gsap.delayedCall(0.25, () => {
 				isActive
@@ -66,10 +63,7 @@ export default {
 			})
 		},
 	},
-	beforeRouteLeave(from, to, next) {
-		this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
-		next()
-	},
+
 	mounted() {
 		gsap.set(this.$el, {
 			x: this.$el.offsetWidth,
@@ -79,10 +73,8 @@ export default {
 	methods: {
 		closeEvent(e) {
 			const clickedOutside = !e.target.closest('#sidebar')
-			if (clickedOutside) {
-				this.$store.commit('TOGGLE_SIDEBAR', {
-					component: undefined,
-				})
+			if (clickedOutside && this.sidebar.isActive) {
+				this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
 			}
 		},
 	},

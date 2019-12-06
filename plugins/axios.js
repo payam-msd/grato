@@ -3,8 +3,6 @@ export default ({app: {$axios}, error, env}) => {
 	$axios.setHeader('Accept', 'application/json')
 	$axios.setHeader('Domain', env.DOMAIN)
 	$axios.onRequest(config => {
-		console.log(`domain is : ${env.DOMAIN}`)
-
 		console.log(`Request sent to : ${config.url}`)
 	})
 	$axios.onError(err => {
