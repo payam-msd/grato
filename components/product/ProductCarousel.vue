@@ -2,7 +2,7 @@
 	<div class="relative w-full h-auto">
 		<!--  MAIN BG -->
 		<div class="w-full h-present">
-			<div class="bg-contain bg-center bg-no-repeat h-full w-full" :style="bgi(currentSlide)"></div>
+			<ImageMagnifier :url="currentSlide" :scale="2.5" />
 		</div>
 		<!-- /MAIN BG -->
 
@@ -22,7 +22,9 @@
 		</div>
 
 		<!-- ARROW BUTTONS -->
-		<div class="absolute inset-x-0 inset-y-center flex flex-row-reverse justify-between">
+		<div
+			class="absolute inset-x-0 inset-y-center flex flex-row-reverse justify-between"
+		>
 			<a @click.prevent="handleArrowLeft()" href="#" class="w-20 self-center">
 				<IconCheveronLeft transform="rotate(90, 0 ,0)" />
 			</a>
@@ -35,10 +37,12 @@
 </template>
 
 <script>
+import ImageMagnifier from '~/components/product/ProductMagnifier'
 import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	components: {
 		IconCheveronLeft,
+		ImageMagnifier,
 	},
 	props: {
 		images: {
@@ -51,6 +55,8 @@ export default {
 		return {
 			current: 0,
 			next: 0,
+			url:
+				'https://images.unsplash.com/photo-1575446508869-cfde746c0239?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 		}
 	},
 	computed: {
@@ -94,5 +100,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
