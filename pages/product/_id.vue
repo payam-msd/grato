@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-gray-100">
 		<div
-			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-16"
+			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-10"
 		>
 			<div class="w-full lg:w-2/5 lg:pl-32">
 				<div class="my-4">
@@ -30,7 +30,7 @@
 						@click.prevent="handleAddToCart"
 					>
 						{{ 'اضافه به سبد خرید' }}
-						<IconAdd class="w-7" />
+						<IconAdd class="inline w-7" />
 					</button>
 					<span v-if="userSelectedGuaranty" class="text-red-600">
 						{{ userSelectedGuaranty.quantity }}
@@ -104,7 +104,6 @@ export default {
 				'https://images.unsplash.com/photo-1575446508869-cfde746c0239?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 				'https://images.unsplash.com/photo-1573073749310-1d5d9a5431b6?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 				'https://images.unsplash.com/photo-1573156899216-52624965d7b1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1573715397262-adf477ba73e5?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 				'https://images.unsplash.com/photo-1573715397262-adf477ba73e5?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 			],
 
