@@ -52,6 +52,7 @@ export default {
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
 		// '@nuxtjs/sentry',
+		'@nuxtjs/redirect-module',
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/device',
@@ -95,7 +96,7 @@ export default {
 		},
 		fullPathRedirect: true,
 		redirect: {
-			login: '/',
+			login: '/auth/login',
 			home: '/',
 			logout: '/auth/login',
 		},
@@ -103,6 +104,10 @@ export default {
 			prefix: 'token_',
 		},
 	},
+
+	redirect: [
+		// Redirect options here
+	],
 
 	// sentry: {
 	// 	dsn: process.env.SENTRY_DSN,

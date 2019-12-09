@@ -1,12 +1,12 @@
 <template>
 	<div
-		class="relative h-full flex justify-center items-center overflow-hidden"
+		class="relative w-full h-full flex justify-center items-center overflow-hidden"
 		:ref="id"
 		@mousemove="mousemove"
 		@mouseover="mouseover"
 		@mouseleave="mouseleave"
 	>
-		<img class="h-present" v-show="showImg" :src="imgUrl" />
+		<img class="object-cover w-auto bg-center h-present" v-show="showImg" :src="imgUrl" />
 		<div class="mouse-cover z-10"></div>
 	</div>
 </template>

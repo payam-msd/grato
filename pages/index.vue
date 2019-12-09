@@ -62,6 +62,12 @@ export default {
 		}
 	},
 
+	mounted() {
+		this.$nextTick(() => {
+			console.log(' here :' + this.$auth.$state.redirect)
+		})
+	},
+
 	async fetch({app, store}) {
 		await app.$FETCH_CATEGORIES
 			.index()

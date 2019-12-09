@@ -1,0 +1,283 @@
+<template>
+	<div class="relative">
+		<div class="block-image">
+			<!-- Main image -->
+			<ProductMagnifier
+				:url="currentSlide"
+				class="main-image"
+				:class="{ 'background-loading': bgLoading }"
+			/>
+			<!-- /Main image -->
+
+			<!-- Slides preview -->
+			<div class="block-image-carousel swipe invisible" ref="swipeWrap">
+				<div class="swipe-wrap lg:hidden">
+					<div v-for="(image, index) in images" :key="index">
+						<a :style="bgi(image)" :class="{ 'background-loading': itemsBgLoading}" href="#"></a>
+					</div>
+				</div>
+			</div>
+			<!-- /Slides preview -->
+
+			<!-- SLIDE PREVIEWS  (for mobile)-->
+			<div class="h-auto w-full flex flex-row-reverse flex-wrap justify-center py-4">
+				<template v-for="(img, index) in images">
+					<a
+						:key="index"
+						ref="slide"
+						@click.prevent="onSlideClick(index)"
+						:class="{'border border-black opacity-75': index === current}"
+						class="w-12 h-12 lg:w-20 lg:h-20 my-1 bg-cover mx-1"
+						href="#"
+						:style="bgi(img)"
+					></a>
+				</template>
+			</div>
+			<!--/ SLIDE PREVIEWS  (for mobile)-->
+		</div>
+
+		<!-- ARROW BUTTONS -->
+		<div
+			class="hidden w-full h-auto absolute inset-x-0 inset-y-center lg:flex flex-row-reverse justify-between"
+		>
+			<a @click.prevent="onArrowLeft()" href="#" class="w-20 self-center">
+				<IconCheveronLeft transform="rotate(90, 0 ,0)" />
+			</a>
+			<a @click.prevent="onArrowRight()" href="#" class="w-20 self-center">
+				<IconCheveronLeft transform="rotate(-90, 0 ,0)" />
+			</a>
+		</div>
+		<!--/ ARROW BUTTONS -->
+	</div>
+</template>
+<script>
+import Swipe from 'swipejs'
+import ProductMagnifier from '~/components/product/productDetail/ProductMagnifier'
+import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
+
+export default {
+	components: {
+		ProductMagnifier,
+		IconCheveronLeft,
+	},
+	swipe: null,
+	props: {
+		images: {
+			type: Array,
+			required: true,
+			default: () => [],
+		},
+	},
+	data() {
+		return {
+			// current slide id
+			current: 0,
+			// next slide id
+			next: 0,
+			// main image loading status
+			bgLoading: true,
+			// image pagination loading status
+			itemsBgLoading: true,
+			// is Swipe mode active
+			swipeActive: false,
+		}
+	},
+	computed: {
+		/**
+		 * Computed current slide image
+		 * @returns {?String}
+		 */
+		currentSlide() {
+			return this.images[this.current]
+		},
+
+		/**
+		 * Computed styles of main image
+		 */
+		mainImageStyle() {
+			return Object.assign({}, this.bgi(this.currentSlide))
+		},
+	},
+	methods: {
+		/**
+		 * Fires on slide change in Swipe mode
+		 * @param {Number} index Changed slide index
+		 */
+		onSwipe(index) {
+			this.next = index
+			this.smoothChange()
+		},
+
+		/**
+		 * Shortcut for Background Image in css
+		 */
+		bgi(url) {
+			return {
+				backgroundImage: `url('${url}')`,
+			}
+		},
+
+		/**
+		 * Fires on next slide click
+		 */
+		onSlideClick(index) {
+			// prevent change if slide already correct
+			if (this.current === index || this.next === index) return
+
+			this.next = index
+			this.smoothChange()
+
+			// call slide in swipe mode (if needed)
+			if (this.swipeActive) {
+				this.$options.swipe.slide(index, 400)
+			}
+		},
+
+		/**
+		 * Makes smooth change for current slide
+		 */
+		smoothChange() {
+			this.bgLoading = true
+			setTimeout(() => {
+				this.current = this.next
+				this.bgLoading = false
+			}, 400)
+		},
+
+		/**
+		 * Makes smooth change for preview icons
+		 */
+		smoothChangeItems() {
+			this.itemsBgLoading = true
+			setTimeout(() => {
+				this.itemsBgLoading = false
+			}, 400)
+		},
+
+		/**
+		 * Activates Swipe mode (if possible)
+		 */
+		activateSwipe() {
+			// prevent Swipe mode on big screens
+			if (window.innerWidth > 1024) return
+
+			// use Swipe lib and save instance to $options
+			this.$options.swipe = new Swipe(this.$refs.swipeWrap, {
+				speed: 400,
+				continuous: true,
+				disableScroll: false,
+				stopPropagation: false,
+				callback: this.onSwipe,
+			})
+			this.swipeActive = true
+		},
+
+		onArrowLeft() {
+			setTimeout(() => {
+				this.current++
+				if (this.current > this.images.length - 1) return (this.current = 0)
+			}, 400)
+		},
+
+		onArrowRight() {
+			setTimeout(() => {
+				this.current--
+				if (this.current < 0) return (this.current = this.images.length - 1)
+			}, 400)
+		},
+	},
+	watch: {
+		images() {
+			// on images change -> gracefully move to the first slide
+			this.onSlideClick(0)
+		},
+	},
+
+	/**
+	 * Fires on component ready state
+	 */
+	mounted() {
+		this.smoothChange()
+		this.smoothChangeItems()
+		this.activateSwipe()
+	},
+}
+</script>
+<style>
+.block-image {
+	height: 100%;
+	transition: right 0.3s ease-in-out;
+}
+.block-image .swipe-dots {
+	display: none;
+}
+.block-image .main-image {
+	display: block;
+	height: 100%;
+	width: 100%;
+	background: no-repeat 50% 50%;
+	background-size: cover;
+	transition: opacity 0.4s ease-out;
+}
+.block-image .main-image.background-loading {
+	opacity: 0;
+}
+.block-image .block-image-carousel {
+	transition: transform 0.3s ease-in-out;
+}
+
+.block-image .block-image-carousel a {
+	display: block;
+	background: no-repeat center center;
+	background-size: cover;
+	transition: opacity 0.4s ease-out;
+}
+
+.block-image .block-image-carousel a.background-loading {
+	opacity: 0;
+}
+
+.swipe,
+.swipe-wrap {
+	visibility: visible;
+	height: 100%;
+}
+.swipe-wrap > div {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+	.block-image {
+		height: 650px;
+	}
+	.block-image .main-image {
+		display: none;
+	}
+	.block-image .block-image-carousel {
+		overflow: hidden;
+		position: relative;
+		top: auto;
+		left: auto;
+		width: 100%;
+		height: 500px;
+	}
+	.block-image .block-image-carousel .swipe-wrap {
+		position: relative;
+		top: auto;
+		left: auto;
+		transform: none;
+		height: 100%;
+		width: 100%;
+	}
+	.block-image .block-image-carousel .swipe-wrap > div {
+		height: 100%;
+	}
+	.block-image .block-image-carousel a {
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+	}
+}
+</style>

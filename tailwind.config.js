@@ -20,6 +20,7 @@ module.exports = {
 				'7': '1.8rem',
 				'14': '3.4rem',
 				'68': '22rem',
+				'78': '32rem',
 			},
 			colors: {
 				rose: {

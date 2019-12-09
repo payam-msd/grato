@@ -54,7 +54,7 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import ProductCarousel from '~/components/product/ProductCarousel'
+import ProductCarousel from '~/components/product/productDetail/ProductCarousel'
 import ChevronBottomIcon from '~/assets/svg/icons/icon-cheveron-down.svg'
 import CheckmarkIcon from '~/assets/svg/icons/icon-check.svg'
 import IconAdd from '~/assets/svg/icons/icon-add.svg'
@@ -101,10 +101,12 @@ export default {
 			userSelectedGuaranty: undefined,
 
 			images: [
-				'https://images.unsplash.com/photo-1575446508869-cfde746c0239?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1573073749310-1d5d9a5431b6?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1573156899216-52624965d7b1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1573715397262-adf477ba73e5?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://source.unsplash.com/Pvx24X1uiq4',
+				'https://images.unsplash.com/photo-1526854497059-89ac894e3168?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://images.unsplash.com/photo-1517439270744-8d9287c2f8f8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://images.unsplash.com/photo-1530319067432-f2a729c03db5?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
 			],
 
 			titles: [
@@ -156,23 +158,17 @@ export default {
 
 	methods: {
 		handleAddToCart() {
-			// if (!this.isAuthenticated) {
-			// 	this.$router.push({
-			// 		name: 'auth-register',
-			// 		query: {redirect: `/product/${this.id}`},
-			// 	})
-			// }
-			new Promise((resolve, reject) => {
+			if (this.isAuthenticated) {
 				this.$store.dispatch('ADD_TO_CART', {
 					itemID: this.userSelectedGuaranty.id,
 					quantity: 1,
 				})
-				resolve()
-			}).then(() => {
 				this.$store.commit('TOGGLE_SIDEBAR', {
 					component: undefined,
 				})
-			})
+			}
+			console.log(this.$auth.$state.redirect)
+			// this.$router.push({name: "payment-checkout"})
 		},
 	},
 }

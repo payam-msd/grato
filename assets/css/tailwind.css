@@ -189,11 +189,15 @@ html {
 	@apply underline text-gray-800;
 }
 
-/* .btn:focus,
+.h-present-2 {
+	height: 30vh;
+}
+
+.btn:focus,
 a:focus,
 .tertiary-link:focus {
 	@apply outline-none shadow-outline rounded;
-} */
+}
 
 @tailwind components;
 @tailwind utilities;

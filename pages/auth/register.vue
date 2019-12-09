@@ -1,25 +1,18 @@
 <template>
 	<div
-		class="h-full flex justify-center lg:justify-start items-center
-        container mx-auto px-6 py-6 lg:py-12"
+		class="h-full flex justify-center lg:justify-start items-center container mx-auto px-6 py-6 lg:py-12"
 	>
 		<form class="w-full lg:w-1/3" @submit.prevent="Register">
-			<h1 class="text-black text-2xl">
-				{{ 'ثبت نام' }}
-			</h1>
+			<h1 class="text-black text-2xl">{{ 'ثبت نام' }}</h1>
 
 			<div class="text-sm flex text-gray-700">
 				<p>{{ 'قبلا ثبت نام کرده اید ؟‌' }}</p>
-				<nuxt-link tag="a" class="tertiary-link mx-1" to="/auth/login">
-					{{ 'وارد شوید' }}
-				</nuxt-link>
+				<nuxt-link tag="a" class="text-xs mx-1 text-blue-600" to="/auth/login">{{ 'وارد شوید' }}</nuxt-link>
 			</div>
 
 			<div class="my-6">
 				<div class="py-1">
-					<label class="text-sm lg:text-base text-gray-900 mx-1 ">
-						{{ 'نام کاربری' }}
-					</label>
+					<label class="text-sm lg:text-base text-gray-900 mx-1">{{ 'نام کاربری' }}</label>
 				</div>
 				<input
 					ref="username"
@@ -30,34 +23,25 @@
 				/>
 
 				<div class="py-1">
-					<label
-						class="text-sm lg:text-base text-gray-900
-                    mx-1 "
-					>
-						ایمیل
-					</label>
+					<label class="text-sm lg:text-base text-gray-900 mx-1">ایمیل</label>
 				</div>
 				<input
 					ref="email"
 					v-model.lazy="$v.form.email.$model"
-					class="input w-4/5 "
+					class="input w-4/5"
 					type="text"
 					@keyup.enter="$refs.password.focus()"
 				/>
 
 				<div class="py-1">
-					<label class="text-sm lg:text-base text-gray-900 mx-1 ">
-						کلمه عبور
-					</label>
+					<label class="text-sm lg:text-base text-gray-900 mx-1">کلمه عبور</label>
 				</div>
 				<div class="relative">
-					<div
-						class="w-16 mb-2 inset-y-0 absolute left-0 ml-16 appearance-none"
-					>
+					<div class="w-16 mb-2 inset-y-0 absolute left-0 ml-16 appearance-none">
 						<EyeIcon
 							v-show="!hidePassword"
 							stroke-width="1.7"
-							class="login-icon inset-center "
+							class="login-icon inset-center"
 							@click="hidePassword = !hidePassword"
 						/>
 						<CloseEye
@@ -80,22 +64,13 @@
 						<input v-model="rulesAgreed" type="checkbox" />
 					</div>
 					<p>
-						<nuxt-link
-							tag="a"
-							class=" text-blue-500 hover:underline mx-1"
-							to="/page"
-						>
-							{{ 'حریم خصوصی' }}
-						</nuxt-link>
+						<nuxt-link tag="a" class="text-blue-500 hover:underline mx-1" to="/page">{{ 'حریم خصوصی' }}</nuxt-link>
 						{{ 'و' }}
 						<nuxt-link
 							tag="a"
-							class=" text-blue-500 hover:underline mx-1"
+							class="text-blue-500 hover:underline mx-1"
 							to="/page"
-						>
-							{{ 'شرایط و قوانین' }}
-						</nuxt-link>
-						استفاده از سرویس های سایت گراتو را مطالعه نموده و با کلیه موارد آن
+						>{{ 'شرایط و قوانین' }}</nuxt-link>استفاده از سرویس های سایت گراتو را مطالعه نموده و با کلیه موارد آن
 						موافقم.
 					</p>
 				</div>
@@ -111,9 +86,7 @@
 					<span>ثبت نام در گراتو</span>
 					<SendIcon class="icon w-10" />
 				</button>
-				<nuxt-link tag="a" class="tertiary-link" to="/">
-					{{ 'یا برگشت به فروشگاه' }}
-				</nuxt-link>
+				<nuxt-link tag="a" class="tertiary-link" to="/">{{ 'یا برگشت به فروشگاه' }}</nuxt-link>
 			</div>
 		</form>
 	</div>
@@ -127,7 +100,7 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
 	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
-	middleware: 'guest',
+	middleware: ['guest'],
 	head() {
 		return {
 			meta: [

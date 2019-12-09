@@ -2,6 +2,7 @@
 	<div>
 		<!-- <Notification /> -->
 		<!-- <Navigation /> -->
+		<busyOverlay />
 		<nuxt />
 		<!-- <Footer /> -->
 	</div>
@@ -11,11 +12,14 @@
 import Footer from '~/components/Footer'
 import Notification from '~/components/Notification'
 import Navigation from '~/components/Desktop/Navbar'
+import busyOverlay from '~/components/busy-overlay'
+
 export default {
 	components: {
 		Footer,
 		Notification,
 		Navigation,
+		busyOverlay,
 	},
 }
 </script>

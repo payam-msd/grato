@@ -1,25 +1,20 @@
 <template>
 	<div class="bg-rose-100">
-		<div class="relative w-full lg:pt-10 lg:px-24 ">
-			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">
-				گراتو
-			</nuxt-link>
+		<div class="relative w-full lg:pt-10 lg:px-24">
+			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">گراتو</nuxt-link>
+			<!-- ORDER SUMMARY -->
 			<OrderSummary />
+			<!-- /ORDER SUMMARY -->
 		</div>
 		<div class="flex flex-col lg:flex-row">
 			<div class="w-full h-full lg:w-3/5 bg-rose-100">
-				<div class="mx-4 lg:mr-24 lg:ml-20  text-gray-800">
+				<div class="mx-4 lg:mr-24 lg:ml-20 text-gray-800">
 					<div class="pb-4">
 						<div class="py-6 flex justify-between items-center">
 							<h1 class="text-black text-lg">{{ 'اطلاعات تماس' }}</h1>
 							<h1 class="text-xs">
 								{{ 'حساب دیگری دارید؟' }}
-								<nuxt-link
-									class="text-blue-500 hover:underline"
-									to="/auth/login"
-								>
-									وارد شوید
-								</nuxt-link>
+								<nuxt-link class="text-blue-500 hover:underline" to="/auth/login">وارد شوید</nuxt-link>
 							</h1>
 						</div>
 
@@ -32,9 +27,7 @@
 							placeholder="ایمیل"
 						/>
 						<input id="newsletter" class="checkbox" type="checkbox" />
-						<label class="label pr-1 text-sm" for="newsletter">
-							من رو از آخرین تخفیف ها باخبر کن
-						</label>
+						<label class="label pr-1 text-sm" for="newsletter">من رو از آخرین تخفیف ها باخبر کن</label>
 					</div>
 
 					<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
@@ -78,17 +71,14 @@
 										ref="state"
 										@keyup.enter="$refs.city.focus()"
 										v-model="selectedState"
-										class="input-checkout block  w-full focus:border-black"
+										class="input-checkout block w-full focus:border-black"
 									>
 										<template v-for="province in provinces">
-											<option :value="province.id" :key="province.id">
-												{{ province.name }}
-											</option>
+											<option :value="province.id" :key="province.id">{{ province.name }}</option>
 										</template>
 									</select>
 									<div
-										class="pointer-events-none absolute
-                                    inset-y-0 left-0 flex items-center px-2 text-gray-700"
+										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
 										<IconThinLine class="w-7" />
 										<IconCheveronDown class="w-7" />
@@ -101,17 +91,14 @@
 										ref="city"
 										@keyup.up="$refs.number.focus()"
 										v-model="selectedCity"
-										class="input-checkout block  w-full"
+										class="input-checkout block w-full"
 									>
 										<template v-for="city in citiesData">
-											<option :key="city.id" :value="city.id">
-												{{ city.name }}
-											</option>
+											<option :key="city.id" :value="city.id">{{ city.name }}</option>
 										</template>
 									</select>
 									<div
-										class="pointer-events-none absolute
-                                    inset-y-0 left-0 flex items-center px-2 text-gray-700"
+										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
 										<IconThinLine class="w-7" />
 										<IconCheveronDown class="w-7" />
@@ -125,35 +112,18 @@
 							ref="number"
 							@keyup.enter="$refs.continue.focus()"
 							v-model="form.phone_num"
-							class="input-checkout block w-full
-                                placeholder-gray-700"
+							class="input-checkout block w-full placeholder-gray-700"
 							placeholder="شماره موبایل"
 						/>
 
-						<div
-							class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full"
-						>
-							<button
-								ref="continue"
-								class="w-full btn btn--lg lg:w-auto"
-								type="submit"
-							>
-								ادامه خرید
-							</button>
+						<div class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full">
+							<button ref="continue" class="w-full btn btn--lg lg:w-auto" type="submit">ادامه خرید</button>
 							<nuxt-link
 								v-if="$route.params.id === undefined"
-								class="mt-2 lg:mt-0 tertiary-link
-                                 "
+								class="mt-2 lg:mt-0 tertiary-link"
 								to="/"
-							>
-								{{ 'برگشت' }}
-							</nuxt-link>
-							<nuxt-link
-								v-else
-								class="mt-2 lg:mt-0 tertiary-link
-                             "
-								:to="$route.query.redirect"
-							>
+							>{{ 'برگشت' }}</nuxt-link>
+							<nuxt-link v-else class="mt-2 lg:mt-0 tertiary-link" :to="$route.query.redirect">
 								<IconCheveronRight class="w-7" />
 								{{ 'برگشت به محصول' }}
 							</nuxt-link>
@@ -174,7 +144,7 @@ import IconThinLine from '~/assets/svg/thin-line.svg'
 import OrderSummary from '~/components/Desktop/OrderSummary.vue'
 export default {
 	name: 'Checkout',
-	middleware: 'user',
+	middleware: ['auth'],
 	head() {
 		return {
 			title: 'اطلاعات حساب',
