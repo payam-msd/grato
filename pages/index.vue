@@ -62,13 +62,7 @@ export default {
 		}
 	},
 
-	mounted() {
-		this.$nextTick(() => {
-			console.log(' here :' + this.$auth.$state.redirect)
-		})
-	},
-
-	async fetch({app, store}) {
+	async fetch({app, store, env}) {
 		await app.$FETCH_CATEGORIES
 			.index()
 			.then(res => store.commit('CATEGORIES_DATA', res))

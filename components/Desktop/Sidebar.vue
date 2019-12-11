@@ -1,13 +1,12 @@
 <template>
 	<div
-		id="sidebar"
 		class="fixed inset-y-0 w-11/12 lg:w-sidebar z-50 bg-white shadow-2xl"
+		id="sidebar"
 	>
 		<Notification class="shadow-inner" />
 
 		<div
-			class="w-full h-full overflow-y-auto flex flex-col justify-start
-            items-stretch px-6 lg:px-16 pb-16"
+			class="w-full h-full overflow-y-auto flex flex-col justify-start items-stretch px-6 lg:px-16 pb-16"
 		>
 			<SidebarContent />
 
@@ -15,9 +14,7 @@
 				<p>جمع کل :</p>
 				<span>{{ cart.sum | currency }}</span>
 			</div>
-			<nuxt-link class="btn btn--lg" to="payment/checkout">
-				{{ 'بررسی خرید' }}
-			</nuxt-link>
+			<nuxt-link class="btn btn--lg" to="/payment/checkout">{{ 'بررسی خرید' }}</nuxt-link>
 		</div>
 	</div>
 </template>

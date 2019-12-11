@@ -5,6 +5,7 @@ export default (ctx, inject) => {
 		//*  Post
 		createUser: repositoryWithAxios('users'),
 		addToCart: repositoryWithAxios('user/self/cart/items'),
+		userDetail: repositoryWithAxios('user/self/addresses'),
 
 		// * Update
 		userInfo: repositoryWithAxios('user/self'),
@@ -30,6 +31,7 @@ export default (ctx, inject) => {
 
 	inject('ADD_USER', repositories.createUser)
 	inject('ADD_TO_CART', repositories.addToCart)
+	inject('ADD_USER_DETIAL', repositories.userDetail)
 
 	inject('FETCH_CATEGORIES', repositories.categories)
 	inject('FETCH_PRODUCTS', repositories.products)

@@ -1,5 +1,7 @@
 <template>
-	<div class="w-full h-full overflow-y-auto flex flex-col justify-start items-stretch px-4">
+	<div
+		class="w-full h-full overflow-y-auto flex flex-col justify-start items-stretch px-4"
+	>
 		<SidebarContent />
 
 		<div class="flex py-8 justify-between">
@@ -7,7 +9,7 @@
 			<span>{{ sumOfList | currency }}</span>
 		</div>
 
-		<nuxt-link class="btn btn--lg" to="payment/checkout">{{ 'بررسی خرید' }}</nuxt-link>
+		<nuxt-link class="btn btn--lg" to="/payment/checkout">{{ 'بررسی خرید' }}</nuxt-link>
 	</div>
 </template>
 

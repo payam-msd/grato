@@ -18,21 +18,24 @@
 
 				<div class="bg-gray-400 h-px"></div>
 
-				<Guaranty :guaranties="items" @updatedGuaranty="userSelectedGuaranty = {...$event}" />
+				<Guaranty
+					:guaranties="items"
+					@updatedGuaranty="userSelectedGuaranty = {...$event}"
+				/>
 
 				<div class="my-8 text-center">
 					<button
-						:disabled="userSelectedGuaranty == undefined ? true : false"
 						:class="{
 							'cursor-not-allowed': userSelectedGuaranty == undefined,
 						}"
-						class="btn w-full p-4 hover:bg-gray-900 mb-2"
+						:disabled="userSelectedGuaranty == undefined ? true : false"
 						@click.prevent="handleAddToCart"
+						class="btn w-full p-4 hover:bg-gray-900 mb-2"
 					>
 						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="inline w-7" />
 					</button>
-					<span v-if="userSelectedGuaranty" class="text-red-600">
+					<span class="text-red-600" v-if="userSelectedGuaranty">
 						{{ userSelectedGuaranty.quantity }}
 						{{ 'عدد باقی مانده' }}
 					</span>
@@ -167,8 +170,6 @@ export default {
 					component: undefined,
 				})
 			}
-			console.log(this.$auth.$state.redirect)
-			// this.$router.push({name: "payment-checkout"})
 		},
 	},
 }

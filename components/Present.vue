@@ -1,27 +1,33 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="container mx-auto px-4 lg:px-6 py-24">
-			<h1 class="text-center">{{"تلاش ما براوردن بهترین تجربه خرید است"}}</h1>
+			<h1 class="text-center">{{ 'تلاش ما براوردن بهترین تجربه خرید است' }}</h1>
 			<div class="present-grid py-24">
-				<nuxt-link to="/
-				">
+				<nuxt-link
+					to="/
+				"
+				>
 					<div class="w-full h-present pb-20 lg:pb-0">
 						<img
 							class="w-full h-full object-cover"
-							src="https://source.unsplash.com/collection/962362/"
+							src="https://source.unsplash.com/collection/4408389/1600x900"
 							alt
 						/>
 						<div class="inline-flex w-auto border-b border-black">
-							<p>{{"خرید سامسونگ"}}</p>
+							<p>{{ 'خرید سامسونگ' }}</p>
 							<IconCheveronLeft class="w-7" />
 						</div>
 					</div>
 				</nuxt-link>
 				<nuxt-link to="/">
 					<div class="w-full h-present">
-						<img class="w-full h-full object-cover" src="https://source.unsplash.com/random" alt />
+						<img
+							class="w-full h-full object-cover"
+							src="https://source.unsplash.com/collection/795176/1600x900/"
+							alt
+						/>
 						<div class="inline-flex w-auto border-b border-black">
-							<p>{{"خرید هواوی"}}</p>
+							<p>{{ 'خرید هواوی' }}</p>
 							<IconCheveronLeft class="inline w-7" />
 						</div>
 					</div>
@@ -29,9 +35,13 @@
 			</div>
 			<nuxt-link to="/">
 				<div class="w-full lg:w-present-w h-present-2 lg:h-78">
-					<img class="w-full h-full object-cover" src="https://source.unsplash.com/random" alt />
+					<img
+						class="w-full h-full object-cover"
+						src="https://source.unsplash.com/collection/4585094/1600x900"
+						alt
+					/>
 					<div class="inline-flex w-auto border-b border-black">
-						<p>{{"خرید ایفون"}}</p>
+						<p>{{ 'خرید ایفون' }}</p>
 						<IconCheveronLeft class="inline w-7" />
 					</div>
 				</div>

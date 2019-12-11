@@ -14,84 +14,94 @@
 							<h1 class="text-black text-lg">{{ 'اطلاعات تماس' }}</h1>
 							<h1 class="text-xs">
 								{{ 'حساب دیگری دارید؟' }}
-								<nuxt-link class="text-blue-500 hover:underline" to="/auth/login">وارد شوید</nuxt-link>
+								<nuxt-link
+									class="text-blue-500 hover:underline"
+									to="/auth/login"
+								>وارد شوید</nuxt-link>
 							</h1>
 						</div>
 
 						<input
-							ref="email"
 							@keyup.enter="$refs.firstName.focus()"
-							v-model="form.email"
 							class="input-checkout w-full placeholder-gray-700"
-							type="text"
 							placeholder="ایمیل"
+							ref="email"
+							type="text"
+							v-model="form.email"
 						/>
-						<input id="newsletter" class="checkbox" type="checkbox" />
-						<label class="label pr-1 text-sm" for="newsletter">من رو از آخرین تخفیف ها باخبر کن</label>
+						<input class="checkbox" id="newsletter" type="checkbox" />
+						<label
+							class="label pr-1 text-sm"
+							for="newsletter"
+						>من رو از آخرین تخفیف ها باخبر کن</label>
 					</div>
 
 					<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
-					<form class="w-full" @submit.prevent="handleUserDetail">
+					<form @submit.prevent="onFormClick" class="w-full">
 						<div class="flex">
 							<div class="w-1/2 pl-1 lg:pl-2">
 								<input
-									ref="firstName"
 									@keyup.enter="$refs.lastName.focus()"
-									v-model="form.first_name"
 									class="input-checkout block w-full placeholder-gray-700"
-									type="text"
 									placeholder="نام"
+									ref="firstName"
+									type="text"
+									v-model="form.receiver_first_name"
 								/>
 							</div>
 							<div class="w-1/2 pr-1 lg:pr-2">
 								<input
-									ref="lastName"
 									@keyup.enter="$refs.address.focus()"
-									v-model="form.last_name"
 									class="input-checkout block w-full placeholder-gray-700"
-									type="text"
 									placeholder="نام خانوادگی"
+									ref="lastName"
+									type="text"
+									v-model="form.receiver_last_name"
 								/>
 							</div>
 						</div>
 
 						<input
-							ref="address"
 							@keyup.enter="$refs.state.focus()"
-							v-model="userAddress"
 							class="input-checkout block w-full placeholder-gray-700"
-							type="text"
 							placeholder="آدرس"
+							ref="address"
+							type="text"
+							v-model="form.address"
 						/>
 
 						<div class="flex">
-							<div class="w-full pl-1 lg:pl-2">
+							<div class="w-full lg:pl-1">
 								<div class="relative">
 									<select
-										ref="state"
 										@keyup.enter="$refs.city.focus()"
+										class="input-checkout block w-full focus:border-black pl-8"
+										ref="state"
 										v-model="selectedState"
-										class="input-checkout block w-full focus:border-black"
 									>
 										<template v-for="province in provinces">
-											<option :value="province.id" :key="province.id">{{ province.name }}</option>
+											<option
+												:key="province.id"
+												:value="province.id"
+												class="truncate"
+											>{{ province.name }}</option>
 										</template>
 									</select>
 									<div
 										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
-										<IconThinLine class="w-7" />
-										<IconCheveronDown class="w-7" />
+										<IconThinLine class="w-5 lg:w-7" />
+										<IconCheveronDown class="w-5 lg:w-7" />
 									</div>
 								</div>
 							</div>
-							<div class="w-full pr-1 lg:pr-2">
+							<div class="w-full pr-1 lg:pr-1">
 								<div class="relative">
 									<select
+										@keyup.up="$refs.postalCode.focus()"
+										class="input-checkout block w-full pl-8"
 										ref="city"
-										@keyup.up="$refs.number.focus()"
-										v-model="selectedCity"
-										class="input-checkout block w-full"
+										v-model="form. city_id"
 									>
 										<template v-for="city in citiesData">
 											<option :key="city.id" :value="city.id">{{ city.name }}</option>
@@ -100,30 +110,50 @@
 									<div
 										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
-										<IconThinLine class="w-7" />
-										<IconCheveronDown class="w-7" />
+										<IconThinLine class="w-5 lg:w-7" />
+										<IconCheveronDown class="w-5 lg:w-7" />
 									</div>
 								</div>
+							</div>
+							<div class="w-full pr-1 lg:pr-2">
+								<input
+									@keyup.enter="$refs.address.focus()"
+									class="input-checkout block w-full placeholder-gray-700"
+									placeholder="کدپستی"
+									ref="postalCode"
+									type="number"
+									v-model="form.postal_code"
+								/>
 							</div>
 						</div>
 
 						<input
-							type="number"
-							ref="number"
 							@keyup.enter="$refs.continue.focus()"
-							v-model="form.phone_num"
 							class="input-checkout block w-full placeholder-gray-700"
 							placeholder="شماره موبایل"
+							ref="number"
+							type="number"
+							v-model="form.tell"
 						/>
 
-						<div class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full">
-							<button ref="continue" class="w-full btn btn--lg lg:w-auto" type="submit">ادامه خرید</button>
+						<div
+							class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full"
+						>
+							<button
+								class="w-full btn btn--lg lg:w-auto"
+								ref="continue"
+								type="submit"
+							>ادامه خرید</button>
 							<nuxt-link
-								v-if="$route.params.id === undefined"
 								class="mt-2 lg:mt-0 tertiary-link"
 								to="/"
+								v-if="$route.params.id === undefined"
 							>{{ 'برگشت' }}</nuxt-link>
-							<nuxt-link v-else class="mt-2 lg:mt-0 tertiary-link" :to="$route.query.redirect">
+							<nuxt-link
+								:to="$route.query.redirect"
+								class="mt-2 lg:mt-0 tertiary-link"
+								v-else
+							>
 								<IconCheveronRight class="w-7" />
 								{{ 'برگشت به محصول' }}
 							</nuxt-link>
@@ -167,14 +197,15 @@ export default {
 	data() {
 		return {
 			// * Form handling happens here
-			selectedState: 11, // default to khorasan
-			selectedCity: 130, // default to mashhad
-			userAddress: undefined,
+			selectedState: 11, // default to mashhad
 			form: {
+				city_id: 130, // default to khorasan
 				email: undefined,
-				first_name: undefined,
-				last_name: undefined,
-				phone_num: undefined,
+				receiver_first_name: undefined,
+				receiver_last_name: undefined,
+				tell: undefined,
+				address: undefined,
+				postal_code: undefined,
 			},
 		}
 	},
@@ -203,6 +234,7 @@ export default {
 			email.focus()
 			email.setSelectionRange(0, email.value.length)
 			this.$store.dispatch('GET_CART_DATA')
+
 			if (this.isAuthenticated) {
 				firstName.focus()
 				firstName.setSelectionRange(0, firstName.value.length)
@@ -212,8 +244,8 @@ export default {
 	},
 
 	methods: {
-		handleUserDetail() {
-			this.$UPDATE_USER_INFO.update(this.form)
+		onFormClick() {
+			this.$ADD_USER_DETIAL.post(this.form)
 		},
 	},
 }

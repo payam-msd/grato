@@ -23,11 +23,15 @@
 						>
 							<img
 								class="rounded-full w-8 h-8 border-transparent hover:border-indigo-400"
-								src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
+								src="https://i.pravatar.cc/600"
 								alt
 							/>
 							<p class="text-sm w-full text-gray-darker pr-2">
-								کاربر جدید
+								{{
+									userDetail.first_name === undefined
+										? 'کاربر جدید'
+										: userDetail.first_name
+								}}
 							</p>
 						</nuxt-link>
 					</li>
@@ -79,9 +83,14 @@ export default {
 		ExportIcon,
 		BagIcon,
 	},
+	mounted() {
+		this.$nextTick(() => {
+			console.log(this.userDetail)
+		})
+	},
 
 	computed: {
-		...mapGetters(['isAuthenticated']),
+		...mapGetters(['isAuthenticated', 'userDetail']),
 	},
 
 	methods: {
