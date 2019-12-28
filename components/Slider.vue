@@ -19,7 +19,7 @@
 					<nuxt-link to="/page">
 						<div class="inline-flex w-auto border-b border-black">
 							<a>{{ 'خرید سامسونگ' }}</a>
-							<IconCheveronLeft class="w-7" />
+							<IconCheveronLeft transform="rotate(90, 0 ,0)" class="w-7" />
 						</div>
 					</nuxt-link>
 				</div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-left-circle.svg'
+import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	components: {
 		IconCheveronLeft,

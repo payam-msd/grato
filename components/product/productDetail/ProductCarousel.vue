@@ -4,33 +4,39 @@
 			<!-- Main image -->
 			<ProductMagnifier
 				:url="currentSlide"
+				:class="{'background-loading': bgLoading}"
 				class="main-image"
-				:class="{ 'background-loading': bgLoading }"
 			/>
 			<!-- /Main image -->
 
 			<!-- Slides preview -->
-			<div class="block-image-carousel swipe invisible" ref="swipeWrap">
+			<div ref="swipeWrap" class="block-image-carousel swipe invisible">
 				<div class="swipe-wrap lg:hidden">
 					<div v-for="(image, index) in images" :key="index">
-						<a :style="bgi(image)" :class="{ 'background-loading': itemsBgLoading}" href="#"></a>
+						<a
+							:style="bgi(image)"
+							:class="{'background-loading': itemsBgLoading}"
+							href="#"
+						/>
 					</div>
 				</div>
 			</div>
 			<!-- /Slides preview -->
 
 			<!-- SLIDE PREVIEWS  (for mobile)-->
-			<div class="h-auto w-full flex flex-row-reverse flex-wrap justify-center py-4">
+			<div
+				class="h-auto w-full flex flex-row-reverse flex-wrap justify-center py-4"
+			>
 				<template v-for="(img, index) in images">
 					<a
-						:key="index"
 						ref="slide"
-						@click.prevent="onSlideClick(index)"
+						:key="index"
 						:class="{'border border-black opacity-75': index === current}"
+						:style="bgi(img)"
 						class="w-12 h-12 lg:w-20 lg:h-20 my-1 bg-cover mx-1"
 						href="#"
-						:style="bgi(img)"
-					></a>
+						@click.prevent="onSlideClick(index)"
+					/>
 				</template>
 			</div>
 			<!--/ SLIDE PREVIEWS  (for mobile)-->
@@ -40,10 +46,10 @@
 		<div
 			class="hidden w-full h-auto absolute inset-x-0 inset-y-center lg:flex flex-row-reverse justify-between"
 		>
-			<a @click.prevent="onArrowLeft()" href="#" class="w-20 self-center">
+			<a href="#" class="w-20 self-center" @click.prevent="onArrowLeft()">
 				<IconCheveronLeft transform="rotate(90, 0 ,0)" />
 			</a>
-			<a @click.prevent="onArrowRight()" href="#" class="w-20 self-center">
+			<a href="#" class="w-20 self-center" @click.prevent="onArrowRight()">
 				<IconCheveronLeft transform="rotate(-90, 0 ,0)" />
 			</a>
 		</div>
@@ -97,6 +103,21 @@ export default {
 		mainImageStyle() {
 			return Object.assign({}, this.bgi(this.currentSlide))
 		},
+	},
+	watch: {
+		images() {
+			// on images change -> gracefully move to the first slide
+			this.onSlideClick(0)
+		},
+	},
+
+	/**
+	 * Fires on component ready state
+	 */
+	mounted() {
+		this.smoothChange()
+		this.smoothChangeItems()
+		this.activateSwipe()
 	},
 	methods: {
 		/**
@@ -185,21 +206,6 @@ export default {
 				if (this.current < 0) return (this.current = this.images.length - 1)
 			}, 400)
 		},
-	},
-	watch: {
-		images() {
-			// on images change -> gracefully move to the first slide
-			this.onSlideClick(0)
-		},
-	},
-
-	/**
-	 * Fires on component ready state
-	 */
-	mounted() {
-		this.smoothChange()
-		this.smoothChangeItems()
-		this.activateSwipe()
 	},
 }
 </script>

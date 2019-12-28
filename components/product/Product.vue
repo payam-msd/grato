@@ -7,19 +7,19 @@
 				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2"
 			>
 				<nuxt-link
-					class="bg-cover h-64 lg:h-68 bg-center bg-rose-200 cursor-pointer"
-					tag="div"
 					:style="{
 						backgroundImage: `url(https://source.unsplash.com/Pvx24X1uiq4)`,
 					}"
 					:to="`/product/${item.id}`"
-				></nuxt-link>
+					class="bg-cover h-64 lg:h-68 bg-center bg-rose-200 cursor-pointer"
+					tag="div"
+				/>
 
 				<div class="py-4 pb-4">
 					<div class="text-gray-900 mb-1 cursor-pointer truncate">
 						<nuxt-link
-							class="text-sm lg:text-base pl-3"
 							:to="`/product/${item.id}`"
+							class="text-sm lg:text-base pl-3"
 						>
 							{{ item.title }}
 						</nuxt-link>
@@ -44,7 +44,7 @@
 		<div class="text-center py-24">
 			<nuxt-link to="/somewhere" class="btn btn--lg hover:bg-gray-900">
 				{{ `ادامه ${listDetail.listName}` }}
-				<iconArrowLeftCircle class="icon w-7" />
+				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-7" />
 			</nuxt-link>
 		</div>
 	</div>
@@ -52,11 +52,11 @@
 
 <script>
 import IconDotsVertical from '~/assets/svg/icons/icon-dots-vertical.svg'
-import iconArrowLeftCircle from '~/assets/svg/icons/icon-arrow-thin-left-circle.svg'
+import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	components: {
 		IconDotsVertical,
-		iconArrowLeftCircle,
+		IconCheveronLeft,
 	},
 	props: {
 		data: {

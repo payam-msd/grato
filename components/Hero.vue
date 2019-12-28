@@ -27,7 +27,7 @@
 				>
 					{{ link }}
 					<CheveronLeft class="icon w-4" stroke-width="3" />
-					<div class="h-px mx-auto w-3/5 bg-gray-700"></div>
+					<div class="h-px mx-auto w-3/5 bg-gray-700" />
 				</nuxt-link>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import CheveronLeft from '~/assets/svg/icons/icon-cheveron-left-circle.svg'
+import CheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 
 export default {
 	components: {

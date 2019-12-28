@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div ref="cover"></div>
+		<div ref="cover" />
 		<Sidebar />
 		<Notification />
 		<Navigation :menu-content="MenuContent" :cart-content="CartContent" />
@@ -11,12 +11,12 @@
 
 <script>
 import {mapState} from 'vuex'
-import Navigation from '~/components/Mobile/Navbar'
-import Sidebar from '~/components/Mobile/Sidebar'
+import Navigation from '~/components/__mobile-components__/Navbar'
+import Sidebar from '~/components/__mobile-components__/Sidebar'
 import Footer from '~/components/Footer'
 import Notification from '~/components/Notification'
-import MenuContent from '~/components/Mobile/MenuContent'
-import CartContent from '~/components/Mobile/CartContent'
+import MenuContent from '~/components/__mobile-components__/MenuContent'
+import CartContent from '~/components/__mobile-components__/CartContent'
 
 export default {
 	/* eslint-disable no-undef */

@@ -4,10 +4,10 @@
 			<li
 				v-for="(list, i) in lists"
 				:key="i"
-				class="cursor-pointer py-4"
 				:class="{
 					'border-b border-black': link.isActive && link.id === i,
 				}"
+				class="cursor-pointer py-4"
 				@click="handleClick(i, list.name)"
 			>
 				<a class="text-sm lg:text-base">{{ list.name }}</a>

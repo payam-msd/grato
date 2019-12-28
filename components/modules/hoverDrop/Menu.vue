@@ -3,8 +3,8 @@
 		<li
 			v-for="(title, i) in items"
 			:key="i"
-			class="p-4 hover:bg-white hover:text-gray-900 rounded-r-lg cursor-pointer"
 			@mouseover="activateSubMenu(i)"
+			class="p-4 hover:bg-white hover:text-gray-900 rounded-r-lg cursor-pointer"
 		>
 			<p class="text-sm">
 				{{ title.title }}

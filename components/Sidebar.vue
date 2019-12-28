@@ -1,7 +1,7 @@
 <template>
 	<div
-		class="fixed inset-y-0 w-11/12 lg:w-sidebar z-50 bg-white shadow-2xl"
 		id="sidebar"
+		class="fixed inset-y-0 w-11/12 lg:w-sidebar z-50 bg-white shadow-2xl"
 	>
 		<Notification class="shadow-inner" />
 
@@ -14,15 +14,17 @@
 				<p>جمع کل :</p>
 				<span>{{ cart.sum | currency }}</span>
 			</div>
-			<nuxt-link class="btn btn--lg" to="/payment/checkout">{{ 'بررسی خرید' }}</nuxt-link>
+			<nuxt-link class="btn btn--lg" to="/payment/checkout">
+				{{ 'بررسی خرید' }}
+			</nuxt-link>
 		</div>
 	</div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import SidebarContent from '~/components/Desktop/SidebarContent'
-import Notification from '~/components/Desktop/notification/SidebarNotif'
+import SidebarContent from '~/components/SidebarContent'
+import Notification from '~/components/notification/SidebarNotif'
 
 export default {
 	components: {

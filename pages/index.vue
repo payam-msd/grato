@@ -15,8 +15,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import Hero from '~/components/Desktop/Hero'
-import HeroMobile from '~/components/Mobile/Hero'
+import Hero from '~/components/Hero'
+import HeroMobile from '~/components/__mobile-components__/Hero'
 import ProdcutsNav from '~/components/ProductsNav'
 import Present from '~/components/Present'
 import Slider from '~/components/Slider'
@@ -27,6 +27,15 @@ export default {
 	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
 	meta: {
 		title: 'فروشگاه اینترنتی گراتو',
+	},
+
+	components: {
+		Hero,
+		HeroMobile,
+		ProdcutsNav,
+		Present,
+		Slider,
+		Instagram,
 	},
 	head() {
 		return {
@@ -41,25 +50,8 @@ export default {
 		}
 	},
 
-	components: {
-		Hero,
-		HeroMobile,
-		ProdcutsNav,
-		Present,
-		Slider,
-		Instagram,
-	},
-
 	computed: {
 		...mapGetters(['isAuthenticated']),
-	},
-
-	async asyncData({app}) {
-		return {
-			products: await app.$FETCH_PRODUCTS.index(),
-			shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),
-			instantSuggestions: await app.$FETCH_INSTANT_SUGGESTIONS.index(),
-		}
 	},
 
 	async fetch({app, store, env}) {
@@ -68,6 +60,14 @@ export default {
 			.then(res => store.commit('CATEGORIES_DATA', res))
 
 		if (store.getters.isAuthenticated) await store.dispatch('GET_CART_DATA')
+	},
+
+	async asyncData({app}) {
+		return {
+			products: await app.$FETCH_PRODUCTS.index(),
+			shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),
+			instantSuggestions: await app.$FETCH_INSTANT_SUGGESTIONS.index(),
+		}
 	},
 }
 </script>

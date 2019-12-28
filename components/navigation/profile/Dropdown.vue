@@ -47,7 +47,7 @@
 						</nuxt-link>
 					</li>
 				</ItemDetail>
-				<div class="h-px mx-3 bg-gray-400"></div>
+				<div class="h-px mx-3 bg-gray-400" />
 				<ItemDetail>
 					<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
 						<ExportIcon height="28" width="28" class="text-gray-700" />
@@ -66,9 +66,9 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import Wrapper from '~/components/Desktop/modules/profile/Wrapper'
-import ItemDetail from '~/components/Desktop/modules/profile/ItemDetail'
-import Item from '~/components/Desktop/modules/profile/Item'
+import Wrapper from '~/components/modules/profile/Wrapper'
+import ItemDetail from '~/components/modules/profile/ItemDetail'
+import Item from '~/components/modules/profile/Item'
 import CheveronDown from '~/assets/svg/icons/icon-cheveron-down.svg'
 import UserIcon from '~/assets/svg/icons/icon-user.svg'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'

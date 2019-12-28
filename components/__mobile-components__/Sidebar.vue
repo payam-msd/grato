@@ -7,7 +7,7 @@
 
 <script>
 import {mapState} from 'vuex'
-import Notification from '~/components/Desktop/notification/SidebarNotif'
+import Notification from '~/components/notification/SidebarNotif'
 export default {
 	components: {
 		Notification,

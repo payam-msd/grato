@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import CheveronLeft from '~/assets/svg/icons/icon-cheveron-left-circle.svg'
+import CheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	name: 'HoverItemDetail',
 	components: {

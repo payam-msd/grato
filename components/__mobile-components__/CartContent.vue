@@ -9,12 +9,14 @@
 			<span>{{ sumOfList | currency }}</span>
 		</div>
 
-		<nuxt-link class="btn btn--lg" to="/payment/checkout">{{ 'بررسی خرید' }}</nuxt-link>
+		<nuxt-link class="btn btn--lg" to="/payment/checkout">
+			{{ 'بررسی خرید' }}
+		</nuxt-link>
 	</div>
 </template>
 
 <script>
-import SidebarContent from '~/components/Desktop/SidebarContent'
+import SidebarContent from '~/components/SidebarContent'
 export default {
 	components: {
 		SidebarContent,

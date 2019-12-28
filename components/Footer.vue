@@ -12,9 +12,9 @@
 					<template v-for="(link, i) in colOne">
 						<nuxt-link
 							:key="i"
+							:to="link.route"
 							tag="li"
 							class="text-sm lg:text-base text-gray-900 py-2"
-							:to="link.route"
 						>
 							<a class="  p-1">
 								{{ link.name }}

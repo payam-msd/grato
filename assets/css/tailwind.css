@@ -199,5 +199,9 @@ a:focus,
 	@apply outline-none shadow-outline rounded;
 }
 
+.word-2-space{
+	word-spacing: -2px;
+}
+
 @tailwind components;
 @tailwind utilities;

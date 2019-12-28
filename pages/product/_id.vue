@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-gray-100">
+	<div class="relative bg-gray-100">
 		<div
 			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-10"
 		>
@@ -9,33 +9,33 @@
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
 					<span class="block text-gray-800 pt-3">
 						{{
-						userSelectedGuaranty === undefined
-						? product.minimum_price
-						: userSelectedGuaranty.price | currency
+							userSelectedGuaranty === undefined
+								? product.minimum_price
+								: userSelectedGuaranty.price | currency
 						}}
 					</span>
 				</div>
 
-				<div class="bg-gray-400 h-px"></div>
+				<div class="bg-gray-400 h-px" />
 
 				<Guaranty
 					:guaranties="items"
 					@updatedGuaranty="userSelectedGuaranty = {...$event}"
 				/>
 
-				<div class="my-8 text-center">
+				<div class="fixed lg:static bottom-0 inset-x-0 lg:my-8 text-center">
 					<button
 						:class="{
 							'cursor-not-allowed': userSelectedGuaranty == undefined,
 						}"
 						:disabled="userSelectedGuaranty == undefined ? true : false"
 						@click.prevent="handleAddToCart"
-						class="btn w-full p-4 hover:bg-gray-900 mb-2"
+						class="btn w-full p-4 hover:bg-gray-900"
 					>
 						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="inline w-7" />
 					</button>
-					<span class="text-red-600" v-if="userSelectedGuaranty">
+					<span v-if="userSelectedGuaranty" class="text-red-600">
 						{{ userSelectedGuaranty.quantity }}
 						{{ 'عدد باقی مانده' }}
 					</span>
@@ -43,7 +43,7 @@
 
 				<p class="text-gray-800 text-sm pb-6">{{ product.description }}</p>
 
-				<div class="thin-line"></div>
+				<div class="thin-line" />
 
 				<ProductExtraDetail :data="titles" />
 			</div>
@@ -58,8 +58,8 @@
 <script>
 import {mapGetters} from 'vuex'
 import ProductCarousel from '~/components/product/productDetail/ProductCarousel'
-import ChevronBottomIcon from '~/assets/svg/icons/icon-cheveron-down.svg'
-import CheckmarkIcon from '~/assets/svg/icons/icon-check.svg'
+// import ChevronBottomIcon from '~/assets/svg/icons/icon-cheveron-down.svg'
+// import CheckmarkIcon from '~/assets/svg/icons/icon-check.svg'
 import IconAdd from '~/assets/svg/icons/icon-add.svg'
 
 import Guaranty from '~/components/product/productDetail/Guaranty'
@@ -72,28 +72,12 @@ export default {
 	meta: {
 		title: '',
 	},
-	head() {
-		return {
-			title: this.product.title,
-			meta: [
-				{
-					hid: 'product',
-					name: this.product.title,
-					content: this.product.description,
-				},
-			],
-		}
-	},
-
-	validate({params}) {
-		return /^\d+$/.test(params.id)
-	},
 
 	components: {
 		Guaranty,
 		ProductExtraDetail,
-		CheckmarkIcon,
-		ChevronBottomIcon,
+		// CheckmarkIcon,
+		// ChevronBottomIcon,
 		IconAdd,
 		ProductCarousel,
 	},
@@ -127,6 +111,22 @@ export default {
 				},
 			],
 		}
+	},
+	head() {
+		return {
+			title: this.product.title,
+			meta: [
+				{
+					hid: 'product',
+					name: this.product.title,
+					content: this.product.description,
+				},
+			],
+		}
+	},
+
+	validate({params}) {
+		return /^\d+$/.test(params.id)
 	},
 
 	computed: {

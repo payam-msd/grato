@@ -16,7 +16,7 @@
 			>
 				{{ ' خرید گلکسی نوت 10+' }}
 			</nuxt-link>
-			<div class="h-px w-40 bg-gray-900 mx-auto"></div>
+			<div class="h-px w-40 bg-gray-900 mx-auto" />
 		</div>
 	</div>
 </template>

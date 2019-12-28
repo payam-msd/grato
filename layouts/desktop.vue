@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div ref="cover"></div>
+		<div ref="cover" />
 		<Notification />
 		<Sidebar />
 		<Navigation />
@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Navigation from '~/components/Desktop/Navbar'
+import Navigation from '~/components/Navbar'
 import Footer from '~/components/Footer'
 import Notification from '~/components/Notification'
-import Sidebar from '~/components/Desktop/Sidebar'
+import Sidebar from '~/components/Sidebar'
 
 export default {
 	components: {

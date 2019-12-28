@@ -20,7 +20,9 @@
 						<div class="relative border border-gray-400 rounded">
 							<span
 								class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white text-xs rounded-full inline-flex justify-center"
-							>{{ order.quantity }}</span>
+							>
+								{{ order.quantity }}
+							</span>
 							<!-- <img
 								:src="order.product.media.images[0].path"
 								class="object-scale-down rounded-lg w-32 h-20"
@@ -31,29 +33,31 @@
 							/>
 						</div>
 						<div class="flex flex-col ml-auto">
-							<h1 class="text-sm -mt-1 pb-3 tracking-wide text-gray-900">{{ order.product.title }}</h1>
+							<h1 class="text-sm -mt-1 pb-3 tracking-wide text-gray-900">
+								{{ order.product.title }}
+							</h1>
 							<span class="pt-8 text-gray-800">
 								{{
-								calculatePrice(order.item.price, order.quantity) | currency
+									calculatePrice(order.item.price, order.quantity) | currency
 								}}
 							</span>
 						</div>
 					</div>
-					<div class="thin-line"></div>
+					<div class="thin-line" />
 				</div>
 				<div class="my-6 relative">
 					<input
-						@keyup.enter="$refs.apply.focus()"
 						class="border border-gray-400 px-4 h-12 rounded w-full focus:border-black focus:border-2 focus:outline-none appearance-none"
 						placeholder="کد کارت تخفیف یا هدیه"
 						type="text"
+						@keyup.enter="$refs.apply.focus()"
 					/>
 					<div class="absolute left-0 ml-1 inset-y-center">
 						<ThinLine />
 						<button ref="apply" class="btn h-10 w-20">ثبت</button>
 					</div>
 				</div>
-				<div class="thin-line"></div>
+				<div class="thin-line" />
 				<div class="my-6">
 					<p class="text-gray-800 flex justify-between">
 						هزینه پست:
@@ -64,7 +68,7 @@
 						<span>{{ cart.sum | currency }}</span>
 					</p>
 				</div>
-				<div class="thin-line"></div>
+				<div class="thin-line" />
 				<p class="text-gray-900 text-base py-6 flex justify-between mt-2">
 					جمع کل:
 					<span class="text-xl">{{ cart.sum | currency }}</span>

@@ -1,13 +1,17 @@
 <template>
 	<div
-		class="relative w-full h-full flex justify-center items-center overflow-hidden"
 		:ref="id"
+		class="relative w-full h-full flex justify-center items-center overflow-hidden"
 		@mousemove="mousemove"
 		@mouseover="mouseover"
 		@mouseleave="mouseleave"
 	>
-		<img class="object-cover w-auto bg-center h-present" v-show="showImg" :src="imgUrl" />
-		<div class="mouse-cover z-10"></div>
+		<img
+			v-show="showImg"
+			:src="imgUrl"
+			class="object-cover w-auto bg-center h-present"
+		/>
+		<div class="mouse-cover z-10" />
 	</div>
 </template>
 

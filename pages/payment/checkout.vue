@@ -1,7 +1,9 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="relative w-full lg:pt-10 lg:px-24">
-			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">گراتو</nuxt-link>
+			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">
+				گراتو
+			</nuxt-link>
 			<!-- ORDER SUMMARY -->
 			<OrderSummary />
 			<!-- /ORDER SUMMARY -->
@@ -17,74 +19,77 @@
 								<nuxt-link
 									class="text-blue-500 hover:underline"
 									to="/auth/login"
-								>وارد شوید</nuxt-link>
+								>
+									وارد شوید
+								</nuxt-link>
 							</h1>
 						</div>
 
 						<input
-							@keyup.enter="$refs.firstName.focus()"
+							ref="email"
+							v-model="form.email"
 							class="input-checkout w-full placeholder-gray-700"
 							placeholder="ایمیل"
-							ref="email"
 							type="text"
-							v-model="form.email"
+							@keyup.enter="$refs.firstName.focus()"
 						/>
-						<input class="checkbox" id="newsletter" type="checkbox" />
-						<label
-							class="label pr-1 text-sm"
-							for="newsletter"
-						>من رو از آخرین تخفیف ها باخبر کن</label>
+						<input id="newsletter" class="checkbox" type="checkbox" />
+						<label class="label pr-1 text-sm" for="newsletter">
+							من رو از آخرین تخفیف ها باخبر کن
+						</label>
 					</div>
 
 					<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
-					<form @submit.prevent="onFormClick" class="w-full">
+					<form class="w-full" @submit.prevent="onFormClick">
 						<div class="flex">
 							<div class="w-1/2 pl-1 lg:pl-2">
 								<input
-									@keyup.enter="$refs.lastName.focus()"
+									ref="firstName"
+									v-model="form.receiver_first_name"
 									class="input-checkout block w-full placeholder-gray-700"
 									placeholder="نام"
-									ref="firstName"
 									type="text"
-									v-model="form.receiver_first_name"
+									@keyup.enter="$refs.lastName.focus()"
 								/>
 							</div>
 							<div class="w-1/2 pr-1 lg:pr-2">
 								<input
-									@keyup.enter="$refs.address.focus()"
+									ref="lastName"
+									v-model="form.receiver_last_name"
 									class="input-checkout block w-full placeholder-gray-700"
 									placeholder="نام خانوادگی"
-									ref="lastName"
 									type="text"
-									v-model="form.receiver_last_name"
+									@keyup.enter="$refs.address.focus()"
 								/>
 							</div>
 						</div>
 
 						<input
-							@keyup.enter="$refs.state.focus()"
+							ref="address"
+							v-model="form.address"
 							class="input-checkout block w-full placeholder-gray-700"
 							placeholder="آدرس"
-							ref="address"
 							type="text"
-							v-model="form.address"
+							@keyup.enter="$refs.state.focus()"
 						/>
 
 						<div class="flex">
 							<div class="w-full lg:pl-1">
 								<div class="relative">
 									<select
-										@keyup.enter="$refs.city.focus()"
-										class="input-checkout block w-full focus:border-black pl-8"
 										ref="state"
 										v-model="selectedState"
+										class="input-checkout block w-full focus:border-black pl-8"
+										@keyup.enter="$refs.city.focus()"
 									>
 										<template v-for="province in provinces">
 											<option
 												:key="province.id"
 												:value="province.id"
 												class="truncate"
-											>{{ province.name }}</option>
+											>
+												{{ province.name }}
+											</option>
 										</template>
 									</select>
 									<div
@@ -98,13 +103,15 @@
 							<div class="w-full pr-1 lg:pr-1">
 								<div class="relative">
 									<select
-										@keyup.up="$refs.postalCode.focus()"
-										class="input-checkout block w-full pl-8"
 										ref="city"
-										v-model="form. city_id"
+										v-model="form.city_id"
+										class="input-checkout block w-full pl-8"
+										@keyup.up="$refs.postalCode.focus()"
 									>
 										<template v-for="city in citiesData">
-											<option :key="city.id" :value="city.id">{{ city.name }}</option>
+											<option :key="city.id" :value="city.id">
+												{{ city.name }}
+											</option>
 										</template>
 									</select>
 									<div
@@ -117,48 +124,52 @@
 							</div>
 							<div class="w-full pr-1 lg:pr-2">
 								<input
-									@keyup.enter="$refs.address.focus()"
+									ref="postalCode"
+									v-model="form.postal_code"
 									class="input-checkout block w-full placeholder-gray-700"
 									placeholder="کدپستی"
-									ref="postalCode"
 									type="number"
-									v-model="form.postal_code"
+									@keyup.enter="$refs.address.focus()"
 								/>
 							</div>
 						</div>
 
 						<input
-							@keyup.enter="$refs.continue.focus()"
+							ref="number"
+							v-model="form.tell"
 							class="input-checkout block w-full placeholder-gray-700"
 							placeholder="شماره موبایل"
-							ref="number"
 							type="number"
-							v-model="form.tell"
+							@keyup.enter="$refs.continue.focus()"
 						/>
 
 						<div
 							class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full"
 						>
 							<button
-								class="w-full btn btn--lg lg:w-auto"
 								ref="continue"
+								class="w-full btn btn--lg lg:w-auto"
 								type="submit"
-							>ادامه خرید</button>
+							>
+								ادامه خرید
+							</button>
 							<nuxt-link
+								v-if="$route.params.id === undefined"
 								class="mt-2 lg:mt-0 tertiary-link"
 								to="/"
-								v-if="$route.params.id === undefined"
-							>{{ 'برگشت' }}</nuxt-link>
+							>
+								{{ 'برگشت' }}
+							</nuxt-link>
 							<nuxt-link
+								v-else
 								:to="$route.query.redirect"
 								class="mt-2 lg:mt-0 tertiary-link"
-								v-else
 							>
 								<IconCheveronRight class="w-7" />
 								{{ 'برگشت به محصول' }}
 							</nuxt-link>
 						</div>
-						<div class="thin-line"></div>
+						<div class="thin-line" />
 					</form>
 				</div>
 			</div>
@@ -171,22 +182,10 @@ import {mapState, mapGetters} from 'vuex'
 import IconCheveronRight from '~/assets/svg/icons/icon-cheveron-right-circle.svg'
 import IconCheveronDown from '~/assets/svg/icons/icon-cheveron-down.svg'
 import IconThinLine from '~/assets/svg/thin-line.svg'
-import OrderSummary from '~/components/Desktop/OrderSummary.vue'
+import OrderSummary from '~/components/OrderSummary.vue'
 export default {
 	name: 'Checkout',
 	middleware: ['auth'],
-	head() {
-		return {
-			title: 'اطلاعات حساب',
-			meta: [
-				{
-					hid: 'accountInfo',
-					name: 'اطلاعات حساب',
-					content: 'بررسی خرید و تکمیل اطلاعات حساب',
-				},
-			],
-		}
-	},
 	components: {
 		IconCheveronRight,
 		IconCheveronDown,
@@ -207,6 +206,18 @@ export default {
 				address: undefined,
 				postal_code: undefined,
 			},
+		}
+	},
+	head() {
+		return {
+			title: 'اطلاعات حساب',
+			meta: [
+				{
+					hid: 'accountInfo',
+					name: 'اطلاعات حساب',
+					content: 'بررسی خرید و تکمیل اطلاعات حساب',
+				},
+			],
 		}
 	},
 
