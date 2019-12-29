@@ -1,12 +1,16 @@
 <template>
 	<div
-		class="h-full flex flex-col lg:flex-row jusutify-center lg:justify-between items-center container mx-auto px-6 py-10 lg:py-32"
+		class="container mx-auto px-6 h-full flex flex-col lg:flex-row jusutify-center lg:justify-between items-start"
 	>
-		<form class="w-full my-6 lg:my-0 lg:w-1/3" @submit.prevent="Login">
-			<h1 class="text-black lg:">ورود به حساب کاربری</h1>
-			<div class="my-4">
+		<form
+			class="w-full flex flex-col justify-around lg:w-1/3 py-16"
+			style="height:80vh"
+			@submit.prevent="Login"
+		>
+			<h1 class="text-black ">ورود به حساب کاربری</h1>
+			<div class="">
 				<div class="py-2">
-					<label class="text-black">
+					<label class="text-black text-lg">
 						{{ 'ایمیل یا نام کاربری' }}
 					</label>
 				</div>
@@ -19,7 +23,7 @@
 				/>
 
 				<div class="py-1">
-					<label class="text-black">کلمه عبور</label>
+					<label class="text-black text-lg">کلمه عبور</label>
 				</div>
 				<div class="mb-4 relative">
 					<div
@@ -44,9 +48,6 @@
 						class="input w-4/5"
 					/>
 				</div>
-			</div>
-
-			<div class="pt-5">
 				<nuxt-link
 					class="font-dana  text-blue-700 hover:text-blue-900 hover:underline"
 					to="/auth/recovery"
@@ -55,7 +56,7 @@
 				</nuxt-link>
 			</div>
 
-			<div class="my-4">
+			<div class="">
 				<button type="submit" class="btn btn--md pl-2 hover:bg-gray-900">
 					<span>ورود به گراتو</span>
 					<SendIcon class="icon w-10" />
@@ -65,7 +66,10 @@
 				</nuxt-link>
 			</div>
 		</form>
-		<div class="w-full py-6 lg:p-0 lg:w-1/2">
+		<div
+			class="flex flex-col items-start justify-around w-full lg:w-1/2 py-20"
+			style="height: 50vh"
+		>
 			<h1 class="text-black lg: py-2">
 				ثبت نام در فروشگاه گراتو
 			</h1>

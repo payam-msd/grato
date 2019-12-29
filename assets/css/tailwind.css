@@ -70,7 +70,7 @@ html {
 }
 
 .login-icon {
-	@apply w-5 h-5 text-gray-600 cursor-pointer stroke-current;
+	@apply w-6 ml-8 text-gray-600 cursor-pointer stroke-current;
 }
 
 /* ****************
@@ -89,11 +89,22 @@ html {
 	@apply py-4 px-12;
 }
 
+.secondary-btn{
+	@apply text-base text-gray-600 px-2 py-2;
+}
+.secondary-btn:hover{
+	@apply  text-gray-900;
+}
+
+.tertiary-btn{
+	@apply text-sm w-auto h-auto py-1 border-b border-gray-700 text-gray-900;
+}
+
 /* ****************
  *        FORM INPUT STYLES
 ****************/
 .input {
-	@apply border rounded border-gray-400 h-10 px-2 mb-2 bg-white;
+	@apply border rounded border-gray-500 h-12 px-4 mb-2 bg-white;
 }
 
 .input:focus {
@@ -101,7 +112,7 @@ html {
 }
 
 .input-checkout {
-	@apply border border-gray-400 rounded px-3 h-12 mb-2 bg-white appearance-none;
+	@apply border border-gray-400 rounded px-4 h-12 mb-2 bg-white appearance-none;
 }
 
 .input-checkout:focus {

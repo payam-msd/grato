@@ -1,16 +1,16 @@
 <template>
 	<div class="container mx-auto px-2 lg:px-6">
-		<ul class="flex justify-around items-center w-full lg:w-1/3 mx-auto py-8">
+		<ul class=" w-full lg:w-1/2 flex justify-around items-center mx-auto py-8">
 			<li
 				v-for="(list, i) in lists"
 				:key="i"
 				:class="{
 					'border-b border-black': link.isActive && link.id === i,
 				}"
-				class="cursor-pointer py-4"
+				class="text-lg text-black cursor-pointer py-4"
 				@click="handleClick(i, list.name)"
 			>
-				<a class="lg:text-base">{{ list.name }}</a>
+				{{ list.name }}
 			</li>
 		</ul>
 
@@ -49,6 +49,7 @@ export default {
 				{name: 'تخفیف های استثنایی'},
 				{name: 'پرفروش ترین ها'},
 				{name: 'تازه رسیده ها'},
+				{name: 'متفرقه'},
 			],
 		}
 	},

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import IconCheveronDown from '~/assets/svg/icons/icon-cheveron-down-circle.svg'
+import IconCheveronDown from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	components: {
 		IconCheveronDown,

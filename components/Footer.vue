@@ -5,9 +5,9 @@
 		>
 			<div class="flex flex-initial justify-around pt-12 lg:pt-0">
 				<ul class="lg:my-20">
-					<h5 class="mb-6 text-black p-1">
+					<h3 class="mb-6 text-black p-1">
 						خدمات مشتریان
-					</h5>
+					</h3>
 
 					<template v-for="(link, i) in colOne">
 						<nuxt-link
@@ -24,9 +24,9 @@
 				</ul>
 
 				<ul class="lg:my-20 lg:mx-24">
-					<h5 class="mb-6 text-black p-1">
+					<h3 class="mb-6 text-black p-1">
 						درباره فروشگاه گراتو
-					</h5>
+					</h3>
 					<template v-for="(link, i) in colTwo">
 						<nuxt-link
 							:key="i"
@@ -46,9 +46,9 @@
 				class="my-12 w-full lg:w-40 flex flex-col
                 justify-center text-center"
 			>
-				<p class=" text-green-800 font-dana-bold text-center">
+				<h1 class="text-green-800 font-dana-bold text-center">
 					{{ 'گراتو' }}
-				</p>
+				</h1>
 				<span class="block text-center">{{ year }}</span>
 
 				<ul

@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="h-full flex justify-center lg:justify-start items-center container mx-auto px-6 py-6 lg:py-12"
+		class="h-ful flex justify-center lg:justify-start items-center container mx-auto px-6 py-6 lg:py-12"
 	>
 		<form class="w-full lg:w-1/3" @submit.prevent="Register">
 			<h1 class="text-black ">{{ 'ثبت نام' }}</h1>
@@ -14,7 +14,7 @@
 
 			<div class="my-6">
 				<div class="py-1">
-					<label class="text-gray-900 mx-1">
+					<label class="text-gray-900 mx-1 text-lg">
 						{{ 'نام کاربری' }}
 					</label>
 				</div>
@@ -27,7 +27,7 @@
 				/>
 
 				<div class="py-1">
-					<label class="text-gray-900 mx-1">ایمیل</label>
+					<label class="text-gray-900 mx-1 text-lg">ایمیل</label>
 				</div>
 				<input
 					ref="email"
@@ -38,7 +38,7 @@
 				/>
 
 				<div class="py-1">
-					<label class="text-gray-900 mx-1">
+					<label class="text-gray-900 mx-1 text-lg">
 						کلمه عبور
 					</label>
 				</div>

@@ -19,7 +19,7 @@
 
 						<nuxt-link
 							v-else
-							class="text-gray-800 py-2 lg:py-3 rounded border border-gray-600 block px-3 lg:px-5 focus:border-black"
+							class="text-gray-800 py-3 lg:py-4 rounded block px-3  lg:px-6 border border-gray-500 hover:border-black"
 							to="/auth/login"
 							tag="a"
 						>
@@ -28,15 +28,15 @@
 					</div>
 
 					<thinLine
-						class="w-7 lg:mx-1"
+						class="w-8 lg:mx-1"
 						transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 					/>
 
 					<a
-						class="flex items-center"
+						class="cursor-pointer flex items-center"
 						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
 					>
-						<BagIcon class="w-7 m-1" transform="scale(-1, 1)" />
+						<BagIcon class="w-10 lg:w-8" />
 
 						<div
 							v-if="cart.inCart"

@@ -2,7 +2,7 @@
 	<div class="absolute left-0 top-0 w-3/4 bg-white p-2 shadow-inner">
 		<div v-for="(num, i) in 20" v-show="hoveredItem === i" :key="i">
 			<nuxt-link to="/page">
-				خرید محصول شماره
+				لیست محصولات شماره
 				{{ num }}
 			</nuxt-link>
 		</div>

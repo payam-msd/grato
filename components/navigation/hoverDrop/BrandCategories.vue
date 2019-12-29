@@ -4,7 +4,7 @@
 			class="block cursor-pointer"
 			@mouseenter="sharedState.active = !sharedState.active"
 		>
-			<IconMenu class="inline w-8 lgLw-6" />
+			<IconMenu class="inline w-10 lg:w-8" />
 			<a
 				href="#"
 				class="hidden lg:inline text-gray-800 pl-3 word-2-space cursor-none"
@@ -12,7 +12,7 @@
 				{{ 'دسته بندی کالاها' }}
 			</a>
 			<IconLine
-				class="hidden lg:inline w-6 inline"
+				class="hidden lg:inline w-8"
 				transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 			/>
 		</div>

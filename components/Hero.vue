@@ -16,18 +16,18 @@
 			/>
 
 			<div
-				class="absolute bottom-0 left-0 py-6 mb-24 bg-rose-100 w-1/2 text-center rounded-r-lg"
+				class="w-1/2 absolute bottom-0 left-0 p-8 mb-24 bg-rose-100 rounded-r"
 			>
-				<p class="text-black text-md">
+				<h3>
 					{{ product }}
-				</p>
-				<nuxt-link
-					class=" font-dana text-black hover:text-black"
-					to="/somewhere"
-				>
+				</h3>
+				<nuxt-link class="tertiary-btn" to="/somewhere">
 					{{ link }}
-					<CheveronLeft class="icon w-4" stroke-width="3" />
-					<div class="h-px mx-auto w-3/5 bg-gray-700" />
+					<CheveronLeft
+						transform="rotate(90, 0 ,0)"
+						class="icon w-7"
+						stroke-width="3"
+					/>
 				</nuxt-link>
 			</div>
 		</div>

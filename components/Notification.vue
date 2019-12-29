@@ -1,15 +1,14 @@
 <template>
 	<!-- <component :is="component" v-if="component" :data="data" /> -->
-	<div class="flex justify-center items-center bg-rose-100 h-10">
-		<p class="text-black tracking-wide ">
+	<div class="w-full h-auto py-3 flex justify-center items-center bg-gray-100 ">
+		<h4 class="text-gray-900">
 			{{ 'خرید استثنایی +NOTE 10  در این هفته' }}
-		</p>
+		</h4>
 		<nuxt-link
-			tag="a"
-			class="font-dana-bold bg-black text-gray-100 rounded px-4 mr-3 hover:bg-gray-900"
-			to="/specialSuggestion/id"
+			class="px-4 text-lg font-dana-bold bg-black text-gray-100 mx-4"
+			to="#"
 		>
-			برو
+			{{ 'برو' }}
 		</nuxt-link>
 	</div>
 </template>
