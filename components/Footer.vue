@@ -5,7 +5,7 @@
 		>
 			<div class="flex flex-initial justify-around pt-12 lg:pt-0">
 				<ul class="lg:my-20">
-					<h5 class="mb-6 text-lg text-black lg:text-xl p-1">
+					<h5 class="mb-6 text-black p-1">
 						خدمات مشتریان
 					</h5>
 
@@ -14,7 +14,7 @@
 							:key="i"
 							:to="link.route"
 							tag="li"
-							class="text-sm lg:text-base text-gray-900 py-2"
+							class="text-gray-900 py-2"
 						>
 							<a class="  p-1">
 								{{ link.name }}
@@ -24,7 +24,7 @@
 				</ul>
 
 				<ul class="lg:my-20 lg:mx-24">
-					<h5 class="mb-6 text-lg text-black lg:text-xl p-1">
+					<h5 class="mb-6 text-black p-1">
 						درباره فروشگاه گراتو
 					</h5>
 					<template v-for="(link, i) in colTwo">
@@ -32,7 +32,7 @@
 							:key="i"
 							:to="link.route"
 							tag="li"
-							class="text-sm lg:text-base text-gray-900 py-2"
+							class="text-gray-900 py-2"
 						>
 							<a class=" p-1">
 								{{ link.name }}
@@ -46,7 +46,7 @@
 				class="my-12 w-full lg:w-40 flex flex-col
                 justify-center text-center"
 			>
-				<p class="text-3xl text-green-800 font-dana-bold text-center">
+				<p class=" text-green-800 font-dana-bold text-center">
 					{{ 'گراتو' }}
 				</p>
 				<span class="block text-center">{{ year }}</span>

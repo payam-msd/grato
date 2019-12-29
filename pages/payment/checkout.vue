@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="relative w-full lg:pt-10 lg:px-24">
-			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">
+			<nuxt-link class=" font-dana-bold text-green-700" to="/">
 				گراتو
 			</nuxt-link>
 			<!-- ORDER SUMMARY -->
@@ -13,8 +13,8 @@
 				<div class="mx-4 lg:mr-24 lg:ml-20 text-gray-800">
 					<div class="pb-4">
 						<div class="py-6 flex justify-between items-center">
-							<h1 class="text-black text-lg">{{ 'اطلاعات تماس' }}</h1>
-							<h1 class="text-xs">
+							<h1 class="text-black">{{ 'اطلاعات تماس' }}</h1>
+							<h1 class="">
 								{{ 'حساب دیگری دارید؟' }}
 								<nuxt-link
 									class="text-blue-500 hover:underline"
@@ -34,12 +34,12 @@
 							@keyup.enter="$refs.firstName.focus()"
 						/>
 						<input id="newsletter" class="checkbox" type="checkbox" />
-						<label class="label pr-1 text-sm" for="newsletter">
+						<label class="label pr-1 " for="newsletter">
 							من رو از آخرین تخفیف ها باخبر کن
 						</label>
 					</div>
 
-					<h1 class="text-black text-lg pb-4 pt-8">اطلاعات پرداخت</h1>
+					<h1 class="text-black pb-4 pt-8">اطلاعات پرداخت</h1>
 					<form class="w-full" @submit.prevent="onFormClick">
 						<div class="flex">
 							<div class="w-1/2 pl-1 lg:pl-2">

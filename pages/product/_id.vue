@@ -5,7 +5,7 @@
 		>
 			<div class="w-full lg:w-2/5 lg:pl-32">
 				<div class="my-4">
-					<h3 class="text-xl pb-1">{{ product.title }}</h3>
+					<h3 class=" pb-1">{{ product.title }}</h3>
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
 					<span class="block text-gray-800 pt-3">
 						{{
@@ -29,8 +29,8 @@
 							'cursor-not-allowed': userSelectedGuaranty == undefined,
 						}"
 						:disabled="userSelectedGuaranty == undefined ? true : false"
-						@click.prevent="handleAddToCart"
 						class="btn w-full p-4 hover:bg-gray-900"
+						@click.prevent="handleAddToCart"
 					>
 						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="inline w-7" />
@@ -41,7 +41,7 @@
 					</span>
 				</div>
 
-				<p class="text-gray-800 text-sm pb-6">{{ product.description }}</p>
+				<p class="text-gray-800 pb-6">{{ product.description }}</p>
 
 				<div class="thin-line" />
 
@@ -67,7 +67,7 @@ import ProductExtraDetail from '~/components/product/productDetail/ProductExtraD
 
 export default {
 	/* eslint-disable camelcase */
-	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
+
 	name: 'ProductID',
 	meta: {
 		title: '',

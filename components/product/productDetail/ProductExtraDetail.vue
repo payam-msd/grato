@@ -5,7 +5,7 @@
 				<a
 					role="button"
 					tabindex="0"
-					class="text-sm text-gray-800 py-1 px-1 hover:border-b
+					class="text-gray-800 py-1 px-1 hover:border-b
                         hover:border-black focus:border-b focus:border-black focus:outline-none
                         cursor-pointer"
 				>

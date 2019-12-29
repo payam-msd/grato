@@ -10,7 +10,7 @@
 				class="cursor-pointer py-4"
 				@click="handleClick(i, list.name)"
 			>
-				<a class="text-sm lg:text-base">{{ list.name }}</a>
+				<a class="lg:text-base">{{ list.name }}</a>
 			</li>
 		</ul>
 

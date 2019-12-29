@@ -1,9 +1,9 @@
 <template>
 	<!-- <div class=""> -->
 	<div
-		@mouseover="handleSharedState"
-		class="props2 text-gray-800 text-sm cursor-pointer
+		class="props2 text-gray-800 cursor-pointer
                         overflow-hidden hover:text-black "
+		@mouseover="handleSharedState"
 	>
 		<MenuIcon class="inline w-7" />
 		<slot name="title" />

@@ -3,18 +3,18 @@
 		class="h-full flex justify-center lg:justify-start items-center container mx-auto px-6 py-6 lg:py-12"
 	>
 		<form class="w-full lg:w-1/3" @submit.prevent="Register">
-			<h1 class="text-black text-2xl">{{ 'ثبت نام' }}</h1>
+			<h1 class="text-black ">{{ 'ثبت نام' }}</h1>
 
-			<div class="text-sm flex text-gray-700">
+			<div class="flex text-gray-700">
 				<p>{{ 'قبلا ثبت نام کرده اید ؟‌' }}</p>
-				<nuxt-link tag="a" class="text-xs mx-1 text-blue-600" to="/auth/login">
+				<nuxt-link tag="a" class=" mx-1 text-blue-600" to="/auth/login">
 					{{ 'وارد شوید' }}
 				</nuxt-link>
 			</div>
 
 			<div class="my-6">
 				<div class="py-1">
-					<label class="text-sm lg:text-base text-gray-900 mx-1">
+					<label class="text-gray-900 mx-1">
 						{{ 'نام کاربری' }}
 					</label>
 				</div>
@@ -27,7 +27,7 @@
 				/>
 
 				<div class="py-1">
-					<label class="text-sm lg:text-base text-gray-900 mx-1">ایمیل</label>
+					<label class="text-gray-900 mx-1">ایمیل</label>
 				</div>
 				<input
 					ref="email"
@@ -38,7 +38,7 @@
 				/>
 
 				<div class="py-1">
-					<label class="text-sm lg:text-base text-gray-900 mx-1">
+					<label class="text-gray-900 mx-1">
 						کلمه عبور
 					</label>
 				</div>
@@ -67,7 +67,7 @@
 					/>
 				</div>
 
-				<div class="text-sm text-gray-800 pl-16 py-2 inline-flex">
+				<div class="text-gray-800 pl-16 py-2 inline-flex">
 					<div class="py-1 px-2">
 						<input v-model="rulesAgreed" type="checkbox" />
 					</div>
@@ -118,7 +118,6 @@ import CloseEye from '~/assets/svg/closeEye.svg'
 import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
-	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
 	middleware: ['guest'],
 	components: {
 		EyeIcon,

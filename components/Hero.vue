@@ -22,7 +22,7 @@
 					{{ product }}
 				</p>
 				<nuxt-link
-					class="text-xs font-dana text-black hover:text-black"
+					class=" font-dana text-black hover:text-black"
 					to="/somewhere"
 				>
 					{{ link }}

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="pt-6 text-center">
-			<h1 class="text-black text-2xl">{{ 'سبد خرید' }}</h1>
+			<h1 class="text-black ">{{ 'سبد خرید' }}</h1>
 		</div>
 
 		<div v-for="(item, index) in cart.cartItems" :key="index">
@@ -18,7 +18,7 @@
 						/>
 					</div>
 					<div class="flex flex-col ml-auto">
-						<h1 class="text-sm -mt-1 tracking-wide text-gray-900">
+						<h1 class="-mt-1 tracking-wide text-gray-900">
 							{{ item.product.title }}
 						</h1>
 						<div class="self-end ml-3 mt-2 pt-8">
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between text-xs pb-3">
+				<div class="flex justify-between  pb-3">
 					<span class="bg-green-100 text-green-800 px-4 py-2 rounded-lg">
 						{{ item.item.presets[0].value.value }}
 					</span>

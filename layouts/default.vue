@@ -1,27 +1,50 @@
 <template>
 	<div>
-		<!-- <Notification /> -->
-		<!-- <Navigation /> -->
-		<busyOverlay />
+		<div ref="cover" />
+		<Notification />
+		<Sidebar />
+		<Navigation />
 		<nuxt />
-		<!-- <Footer /> -->
+		<Footer />
 	</div>
 </template>
 
 <script>
-// import Footer from '~/components/Footer'
-// import Notification from '~/components/Notification'
-// import Navigation from '~/components/Navbar'
-import busyOverlay from '~/components/busy-overlay'
+import Navigation from '~/components/Navbar'
+import Footer from '~/components/Footer'
+import Notification from '~/components/Notification'
+import Sidebar from '~/components/Sidebar'
 
 export default {
 	components: {
-		// Footer,
-		// Notification,
-		// Navigation,
-		busyOverlay,
+		Navigation,
+		Sidebar,
+		Notification,
+		Footer,
+	},
+
+	computed: {
+		sidebarOpen() {
+			return this.$store.state.sidebar.isActive
+		},
+	},
+
+	watch: {
+		sidebarOpen(newValue) {
+			const {cover} = this.$refs
+			var setOpacity = newValue ? 1 : 0
+			var setClass = newValue ? '+=z-40 fixed inset-0' : ''
+			gsap.to(cover, {
+				duration: 0.75,
+				autoAlpha: setOpacity,
+				css: {
+					background: '#24344763',
+					classList: setClass,
+				},
+			})
+		},
 	},
 }
 </script>
 
-<style scoped></style>
+<style></style>

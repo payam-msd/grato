@@ -11,7 +11,7 @@
 
 		<nuxt-link
 			tag="a"
-			class="p-1 text-2xl text-green-800 font-dana-bold
+			class="p-1  text-green-800 font-dana-bold
              "
 			to="/"
 		>
@@ -27,7 +27,7 @@
 			<BagIcon class="w-7 m-1" transform="scale(-1,1)" />
 			<span
 				v-if="cart.inCart"
-				class="cart-prop-m w-6 h-6 bg-teal-500 text-white text-xs
+				class="cart-prop-m w-6 h-6 bg-teal-500 text-white
                 rounded-full flex justify-center items-center"
 			>
 				{{ cart.inCart }}

@@ -26,7 +26,7 @@
 								src="https://i.pravatar.cc/600"
 								alt
 							/>
-							<p class="text-sm w-full text-gray-darker pr-2">
+							<p class="w-full text-gray-darker pr-2">
 								{{
 									userDetail.first_name === undefined
 										? 'کاربر جدید'
@@ -39,10 +39,7 @@
 				<ItemDetail>
 					<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
 						<BagIcon height="28" width="28" class="text-gray-700 inline" />
-						<nuxt-link
-							to="/profile"
-							class="text-sm w-full text-gray-darker px-3"
-						>
+						<nuxt-link to="/profile" class="w-full text-gray-darker px-3">
 							سفارش های من
 						</nuxt-link>
 					</li>
@@ -51,10 +48,7 @@
 				<ItemDetail>
 					<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
 						<ExportIcon height="28" width="28" class="text-gray-700" />
-						<a
-							class="text-sm w-full text-gray-darker px-3"
-							@click.once="handleLogout"
-						>
+						<a class="w-full text-gray-darker px-3" @click.once="handleLogout">
 							{{ 'خروج از حساب کاربری' }}
 						</a>
 					</li>

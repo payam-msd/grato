@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<template v-if="$device.isDesktop">
-			<Hero />
-		</template>
-		<template v-if="$device.isMobileOrTablet">
-			<HeroMobile />
-		</template>
+		<Hero />
 		<ProdcutsNav :products="products" />
 		<Present />
 		<Slider />
@@ -16,7 +11,6 @@
 <script>
 import {mapGetters} from 'vuex'
 import Hero from '~/components/Hero'
-import HeroMobile from '~/components/__mobile-components__/Hero'
 import ProdcutsNav from '~/components/ProductsNav'
 import Present from '~/components/Present'
 import Slider from '~/components/Slider'
@@ -24,14 +18,13 @@ import Instagram from '~/components/FollowInsta'
 
 export default {
 	name: 'Home',
-	layout: ctx => (ctx.isDesktop ? 'desktop' : 'mobile'),
+
 	meta: {
 		title: 'فروشگاه اینترنتی گراتو',
 	},
 
 	components: {
 		Hero,
-		HeroMobile,
 		ProdcutsNav,
 		Present,
 		Slider,

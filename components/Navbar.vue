@@ -2,21 +2,13 @@
 	<div class="relative">
 		<header
 			ref="navbar"
-			class="w-full z-20 bg-white shadow-lg flex flex-wrap items-center py-2 lg:py-8"
+			class="w-full z-20 bg-white shadow-lg flex flex-wrap items-center py-6 lg:py-8"
 		>
 			<div
 				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
 			>
-				<!-- <nuxt-link
-					class="text-3xl font-dana-bold text-green-700 tracking-wider ml-3"
-					tag="a"
-					to="/"
-				>
-					گراتو
-				</nuxt-link> -->
-				<!-- <BrandCategories /> -->
 				<!-- SUBSEQUENT NAVBAR  -->
-				<SubNav :isFixed="isNavbarFixed" />
+				<NavCategories :is-fixed="isNavbarFixed" />
 				<!-- /SUBSEQUENT NAVBAR	  -->
 
 				<div class="w-full lg:w-auto flex lg:items-center justify-end">
@@ -27,7 +19,7 @@
 
 						<nuxt-link
 							v-else
-							class="text-sm text-gray-800 py-3 rounded border border-gray-600 block lg:px-5 focus:border-black"
+							class="text-gray-800 py-2 lg:py-3 rounded border border-gray-600 block px-3 lg:px-5 focus:border-black"
 							to="/auth/login"
 							tag="a"
 						>
@@ -41,16 +33,14 @@
 					/>
 
 					<a
-						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
-						role="button"
 						class="flex items-center"
-						tabindex="0"
+						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
 					>
 						<BagIcon class="w-7 m-1" transform="scale(-1, 1)" />
 
 						<div
 							v-if="cart.inCart"
-							class="flex justify-center w-5 h-5 border mt-1 border-black text-xs rounded-full"
+							class="flex justify-center w-5 h-5 border mt-1 border-black  rounded-full"
 						>
 							<span class="text-black self-end">{{ cart.inCart }}</span>
 						</div>
@@ -63,16 +53,14 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
-// import BrandCategories from '~/components/navigation/hoverDrop/BrandCategories'
-import SubNav from '~/components/SubNav'
+import NavCategories from '~/components/NavCategories'
 import profile from '~/components/navigation/profile/Dropdown'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'
 import thinLine from '~/assets/svg/icons/icon-remove.svg'
 export default {
 	components: {
 		profile,
-		SubNav,
-		// BrandCategories,
+		NavCategories,
 		BagIcon,
 		thinLine,
 	},
@@ -103,21 +91,13 @@ export default {
 							'+=fixed top-0 w-full z-20 shadow-lg rounded-b bg-white flex flex-wrap items-center py-2 lg:py-4',
 					},
 				})
-				// gsap.set('#subNav', {
-				// 	classList: '+=fixed bg-white shadow-lg w-full z-20',
-				// 	top: '4.6rem',
-				// })
 			} else {
 				gsap.set(navbar, {
 					css: {
 						classList:
-							'-=w-full z-20 bg-white flex flex-wrap items-center py-2 lg:py-8',
+							'-=w-full z-20 bg-white flex flex-wrap items-center py-6 lg:py-8',
 					},
 				})
-				// gsap.set('#subNav', {
-				// 	classList: '',
-				// 	top: 0,
-				// })
 			}
 		},
 	},

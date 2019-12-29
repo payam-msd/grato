@@ -1,14 +1,21 @@
 <template>
 	<div>
-		<IconMenu class="inline w-6" />
-		<a
-			@mouseover="sharedState.active = !sharedState.active"
-			href="#"
-			class="text-gray-800 text-sm pl-3 word-2-space"
+		<div
+			class="block cursor-pointer"
+			@mouseenter="sharedState.active = !sharedState.active"
 		>
-			{{ 'دسته بندی کالاها' }}
-		</a>
-		<IconLine class="w-6 inline" transform="rotate( 90, 0, 0 ) scale(1.5,1)" />
+			<IconMenu class="inline w-8 lgLw-6" />
+			<a
+				href="#"
+				class="hidden lg:inline text-gray-800 pl-3 word-2-space cursor-none"
+			>
+				{{ 'دسته بندی کالاها' }}
+			</a>
+			<IconLine
+				class="hidden lg:inline w-6 inline"
+				transform="rotate( 90, 0, 0 ) scale(1.5,1)"
+			/>
+		</div>
 		<slot name="dropdown" />
 	</div>
 </template>

@@ -1,6 +1,6 @@
 <template>
 	<div class="flex justify-center items-center bg-rose-100 h-10">
-		<p class="text-gray-900 font-serif-bold tracking-wide text-sm">
+		<p class="text-gray-900 font-serif-bold tracking-wide ">
 			{{ data }}
 		</p>
 		<nuxt-link

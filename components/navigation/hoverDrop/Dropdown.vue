@@ -1,21 +1,14 @@
 <template>
 	<transition name="navbar-dropdown">
 		<div
-			v-click-listener="onClickOutside"
 			v-show="isActive"
+			v-click-listener="onClickOutside"
 			:class="[isNavbarFixed ? 'special-margin-true' : 'special-margin-false']"
-			class="absolute inset-y-auto z-50 mx-auto"
-			style="width: calc(100vw - 10%); height:calc(100vh - 25%);"
+			class="absolute inset-y-auto z-50 dropdown-props"
 		>
-			<div class="bg-white p-3 shadow-inner" style="height: calc(100vh - 25%)">
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
-				<a href="#">test</a>
+			<div class="relative bg-white category-props overflow-hidden ">
+				<slot name="category" />
+				<slot name="subCaregories" />
 			</div>
 		</div>
 	</transition>
@@ -56,9 +49,16 @@ export default {
 	transform: translateY(-5px);
 }
 .special-margin-true {
-	margin-top: 3.2rem;
+	margin-top: 1.6rem;
 }
 .special-margin-false {
-	margin-top: 4.2rem;
+	margin-top: 2.6rem;
+}
+.dropdown-props {
+	width: calc(100vw - 10%);
+	height: calc(100vh - 25%);
+}
+.category-props {
+	height: calc(100vh - 25%);
 }
 </style>

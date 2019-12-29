@@ -17,19 +17,16 @@
 
 				<div class="py-4 pb-4">
 					<div class="text-gray-900 mb-1 cursor-pointer truncate">
-						<nuxt-link
-							:to="`/product/${item.id}`"
-							class="text-sm lg:text-base pl-3"
-						>
+						<nuxt-link :to="`/product/${item.id}`" class="pl-3">
 							{{ item.title }}
 						</nuxt-link>
-						<span class="inline text-sm text-gray-500">(سفید)</span>
+						<span class="inline text-gray-500">(سفید)</span>
 					</div>
 					<div class="py-1">
-						<span v-if="!item.discount" class="text-black text-sm">
+						<span v-if="!item.discount" class="text-black ">
 							{{ item.minimum_price | currency }}
 						</span>
-						<span v-else class="text-red-500 line-through text-sm">
+						<span v-else class="text-red-500 line-through ">
 							{{ item.minimum_price | currency }}
 						</span>
 						<IconDotsVertical

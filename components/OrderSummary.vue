@@ -14,12 +14,12 @@
 			:class="[isOrderSumOpen ? 'visible' : 'hidden']"
 			class="bg-white relative w-full lg:w-2/5 lg:fixed lg:inset-y-0 lg:left-0 lg:block border-r border-gray-400"
 		>
-			<div class="mx-4 lg:ml-24 lg:mr-20 text-sm py-8 scrolling-auto">
+			<div class="mx-4 lg:ml-24 lg:mr-20 py-8 scrolling-auto">
 				<div v-for="(order, index) in cart.cartItems" :key="index">
 					<div class="w-full flex flex-row-reverse justify-start my-6">
 						<div class="relative border border-gray-400 rounded">
 							<span
-								class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white text-xs rounded-full inline-flex justify-center"
+								class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white  rounded-full inline-flex justify-center"
 							>
 								{{ order.quantity }}
 							</span>
@@ -33,7 +33,7 @@
 							/>
 						</div>
 						<div class="flex flex-col ml-auto">
-							<h1 class="text-sm -mt-1 pb-3 tracking-wide text-gray-900">
+							<h1 class="-mt-1 pb-3 tracking-wide text-gray-900">
 								{{ order.product.title }}
 							</h1>
 							<span class="pt-8 text-gray-800">
@@ -71,7 +71,7 @@
 				<div class="thin-line" />
 				<p class="text-gray-900 text-base py-6 flex justify-between mt-2">
 					جمع کل:
-					<span class="text-xl">{{ cart.sum | currency }}</span>
+					<span class="">{{ cart.sum | currency }}</span>
 				</p>
 			</div>
 		</div>
