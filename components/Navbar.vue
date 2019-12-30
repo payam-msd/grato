@@ -1,11 +1,11 @@
 <template>
-	<div class="relative">
+	<div>
 		<header
 			ref="navbar"
 			class="w-full z-20 bg-white shadow-lg flex flex-wrap items-center py-6 lg:py-8"
 		>
 			<div
-				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
+				class="relative flex justify-between items-center container mx-auto px-4 lg:px-6"
 			>
 				<!-- SUBSEQUENT NAVBAR  -->
 				<NavCategories :is-fixed="isNavbarFixed" />
@@ -15,7 +15,7 @@
 					<div
 						class="items-center justify-between text-base text-gray-700 lg:flex"
 					>
-						<profile v-if="isAuthenticated" />
+						<profile v-if="isAuthenticated" :is-fixed="isNavbarFixed" />
 
 						<nuxt-link
 							v-else
@@ -40,9 +40,11 @@
 
 						<div
 							v-if="cart.inCart"
-							class="flex justify-center w-5 h-5 border mt-1 border-black  rounded-full"
+							class="flex w-6 h-6 border border-black  rounded-full mt-1"
 						>
-							<span class="text-black self-end">{{ cart.inCart }}</span>
+							<span class="text-black w-auto h-full mx-auto">
+								{{ cart.inCart }}
+							</span>
 						</div>
 					</a>
 				</div>

@@ -1,19 +1,18 @@
 <template>
 	<Wrapper class="z-30">
-		<a
-			role="button"
-			tabindex="0"
-			class="w-auto h-auto py-1 flex items-center justify-around focus:outline-none
+		<button
+			class="w-full h-full py-3 flex items-center justify-around focus:outline-none
              "
 		>
-			<UserIcon class="icon w-7" />
-			<CheveronDown class="icon w-7" />
-		</a>
+			<UserIcon class="icon w-8" />
+			<CheveronDown class="icon w-8" />
+		</button>
 
 		<Item class="relative">
 			<ul
-				class="w-56 absolute border border-gray-400 bg-white rounded
-                shadow-2 xl mt-5 left-0"
+				class="w-64 absolute bg-white
+                shadow-inner left-0 py-2"
+				:class="[isFixed ? 'special-margin-true' : 'special-margin-false']"
 			>
 				<ItemDetail>
 					<li class="hover:bg-gray-200 cursor-pointer">
@@ -77,14 +76,20 @@ export default {
 		ExportIcon,
 		BagIcon,
 	},
+
+	props: {
+		isFixed: {
+			type: Boolean,
+			default: false,
+		},
+	},
+	computed: {
+		...mapGetters(['isAuthenticated', 'userDetail']),
+	},
 	mounted() {
 		this.$nextTick(() => {
 			console.log(this.userDetail)
 		})
-	},
-
-	computed: {
-		...mapGetters(['isAuthenticated', 'userDetail']),
 	},
 
 	methods: {
@@ -96,4 +101,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.special-margin-true {
+	margin-top: 20%;
+}
+.special-margin-false {
+	margin-top: 39%;
+}
+</style>

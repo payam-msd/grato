@@ -13,7 +13,7 @@
 							src="https://source.unsplash.com/collection/4408389/1600x900"
 							alt
 						/>
-						<div class="inline-flex w-auto border-b border-black">
+						<div class="inline-flex items-center tertiary-btn text-lg">
 							<p>{{ 'خرید سامسونگ' }}</p>
 							<IconCheveronLeft transform="rotate(90, 0 ,0)" class="w-7" />
 						</div>
@@ -26,7 +26,7 @@
 							src="https://source.unsplash.com/collection/795176/1600x900/"
 							alt
 						/>
-						<div class="inline-flex w-auto border-b border-black">
+						<div class="inline-flex items-center tertiary-btn text-lg">
 							<p>{{ 'خرید هواوی' }}</p>
 							<IconCheveronLeft
 								transform="rotate(90, 0 ,0)"
@@ -43,7 +43,7 @@
 						src="https://source.unsplash.com/collection/4585094/1600x900"
 						alt
 					/>
-					<div class="inline-flex w-auto border-b border-black">
+					<div class="inline-flex items-center tertiary-btn text-lg">
 						<p>{{ 'خرید ایفون' }}</p>
 						<IconCheveronLeft transform="rotate(90, 0 ,0)" class="inline w-7" />
 					</div>

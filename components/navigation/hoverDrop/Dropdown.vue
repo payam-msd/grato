@@ -3,8 +3,8 @@
 		<div
 			v-show="isActive"
 			v-click-listener="onClickOutside"
-			:class="[isNavbarFixed ? 'special-margin-true' : 'special-margin-false']"
-			class="absolute inset-y-auto z-50 dropdown-props"
+			:class="[isNavbarFixed ? 'special-top-true' : 'special-top-false']"
+			class="absolute z-50 dropdown-props"
 		>
 			<div class="relative bg-white category-props overflow-hidden ">
 				<slot name="category" />
@@ -48,11 +48,11 @@ export default {
 	opacity: 0;
 	transform: translateY(-5px);
 }
-.special-margin-true {
-	margin-top: 1.6rem;
+.special-top-true {
+	top: 128%;
 }
-.special-margin-false {
-	margin-top: 2.6rem;
+.special-top-false {
+	top: 156%;
 }
 .dropdown-props {
 	width: calc(100vw - 10%);
