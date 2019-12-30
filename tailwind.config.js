@@ -3,9 +3,9 @@ const {colors} = require('tailwindcss/defaultTheme')
 module.exports = {
 	theme: {
 		fontFamily: {
-			'serif': ['sans-serif'],
-			'serif-light': ['sans-serif-light'],
-			'serif-bold': ['sans-serif-bold'],
+			// 'serif': ['sans-serif'],
+			// 'serif-light': ['sans-serif-light'],
+			// 'serif-bold': ['sans-serif-bold'],
 			'dana': ['dana'],
 			'dana-bold': ['dana-bold'],
 		},

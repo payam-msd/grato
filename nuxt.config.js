@@ -15,7 +15,10 @@ export default {
 		link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
 		script: [
 			{
-				src: 'https://unpkg.com/gsap@3.0.0/dist/gsap.js',
+				src:
+					process.env.NODE_ENV === 'production'
+						? 'https://unpkg.com/gsap@3.0.4/dist/gsap.min.js'
+						: 'https://unpkg.com/gsap@3.0.4/dist/gsap.js',
 			},
 		],
 	},
@@ -118,13 +121,13 @@ export default {
 	// 	id: 'UA-894237434-1',
 	// },
 
-	// vue: {
-	// 	config: {
-	// 		performance: true,
-	// 		devtools: true,
-	// 		productionTip: true,
-	// 	},
-	// },
+	vue: {
+		config: {
+			performance: true,
+			devtools: true,
+			productionTip: true,
+		},
+	},
 
 	pageTransition: 'page',
 
