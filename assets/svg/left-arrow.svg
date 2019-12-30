@@ -1,0 +1,13 @@
+<svg
+id="i-arrow-left"
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 32 32"
+class="w-4 inline"
+fill="none"
+stroke="currentcolor"
+stroke-linecap="round"
+stroke-linejoin="round"
+stroke-width="3"
+>
+<path d="M10 6 L2 16 10 26 M2 16 L30 16" />
+</svg>

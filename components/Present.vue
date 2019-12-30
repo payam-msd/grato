@@ -14,8 +14,10 @@
 							alt
 						/>
 						<div class="inline-flex items-center tertiary-btn text-lg">
-							<p>{{ 'خرید سامسونگ' }}</p>
-							<IconCheveronLeft transform="rotate(90, 0 ,0)" class="w-7" />
+							<p>
+								{{ 'خرید سامسونگ' }}
+							</p>
+							<IconLeftArrow class="mr-1" />
 						</div>
 					</div>
 				</nuxt-link>
@@ -28,10 +30,7 @@
 						/>
 						<div class="inline-flex items-center tertiary-btn text-lg">
 							<p>{{ 'خرید هواوی' }}</p>
-							<IconCheveronLeft
-								transform="rotate(90, 0 ,0)"
-								class="inline w-7"
-							/>
+							<IconLeftArrow class="mr-1" />
 						</div>
 					</div>
 				</nuxt-link>
@@ -45,7 +44,7 @@
 					/>
 					<div class="inline-flex items-center tertiary-btn text-lg">
 						<p>{{ 'خرید ایفون' }}</p>
-						<IconCheveronLeft transform="rotate(90, 0 ,0)" class="inline w-7" />
+						<IconLeftArrow class="mr-1" />
 					</div>
 				</div>
 			</nuxt-link>
@@ -54,10 +53,10 @@
 </template>
 
 <script>
-import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
+import IconLeftArrow from '~/assets/svg/left-arrow.svg'
 export default {
 	components: {
-		IconCheveronLeft,
+		IconLeftArrow,
 	},
 }
 </script>

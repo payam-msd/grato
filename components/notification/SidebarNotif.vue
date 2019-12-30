@@ -1,21 +1,19 @@
 <template>
 	<div
-		class="relative flex justify-center items-center h-10 w-full bg-rose-100"
+		class="relative flex justify-center items-center py-3 w-full h-auto bg-gray-200"
 	>
-		<p class="text-gray-900">{{ 'ارسال رایگان برای تهران' }}</p>
+		<h4 class="text-gray-900">{{ 'ارسال رایگان برای تهران' }}</h4>
 
-		<a
-			role="button"
-			tabindex="0"
-			class="focus:outline-none focus:shadow-outline w-7 absolute left-0 rounded"
+		<button
+			class="focus:outline-none w-8 absolute left-0 mx-3 "
 			@click="
 				$store.commit('TOGGLE_SIDEBAR', {
 					component: undefined,
 				})
 			"
 		>
-			<Close class="w-7" />
-		</a>
+			<Close class="w-8" />
+		</button>
 	</div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="pt-6 text-center">
-			<h1 class="text-black ">{{ 'سبد خرید' }}</h1>
+			<h2 class="text-black ">{{ 'سبد خرید' }}</h2>
 		</div>
 
 		<div v-for="(item, index) in cart.cartItems" :key="index">
@@ -14,13 +14,13 @@
 						/>-->
 						<img
 							src="https://images.unsplash.com/photo-1526854497059-89ac894e3168?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-							class="object-scale-down rounded h-24 bg-rose-100"
+							class="object-scale-down h-24 bg-rose-100"
 						/>
 					</div>
 					<div class="flex flex-col ml-auto">
-						<h1 class="-mt-1 tracking-wide text-gray-900">
+						<h3 class="-mt-1 tracking-wide text-gray-900">
 							{{ item.product.title }}
-						</h1>
+						</h3>
 						<div class="self-end ml-3 mt-2 pt-8">
 							<button
 								class="h-8 w-8 -m-1 rounded-r border border-gray-400"
@@ -43,8 +43,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="flex justify-between  pb-3">
-					<span class="bg-green-100 text-green-800 px-4 py-2 rounded-lg">
+				<div class="flex justify-between py-2">
+					<span class=" px-4 py-1 text-base">
 						{{ item.item.presets[0].value.value }}
 					</span>
 

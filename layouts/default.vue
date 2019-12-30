@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<div ref="cover" />
+		<SplashScreen :is-loading="loader" />
 		<Notification />
 		<Sidebar />
 		<Navigation />
@@ -14,6 +15,7 @@ import Navigation from '~/components/Navbar'
 import Footer from '~/components/Footer'
 import Notification from '~/components/Notification'
 import Sidebar from '~/components/Sidebar'
+import SplashScreen from '~/components/SplashScreen'
 
 export default {
 	components: {
@@ -21,6 +23,13 @@ export default {
 		Sidebar,
 		Notification,
 		Footer,
+		SplashScreen,
+	},
+
+	data() {
+		return {
+			loader: true,
+		}
 	},
 
 	computed: {
@@ -43,6 +52,12 @@ export default {
 				},
 			})
 		},
+	},
+
+	mounted() {
+		gsap.delayedCall(1, () => {
+			this.loader = false
+		})
 	},
 }
 </script>

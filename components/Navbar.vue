@@ -32,7 +32,8 @@
 						transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 					/>
 
-					<a
+					<button
+						id="bagButton"
 						class="cursor-pointer flex items-center"
 						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
 					>
@@ -46,7 +47,7 @@
 								{{ cart.inCart }}
 							</span>
 						</div>
-					</a>
+					</button>
 				</div>
 			</div>
 		</header>

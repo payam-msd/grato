@@ -13,8 +13,8 @@
 				<div class="mx-4 lg:mr-24 lg:ml-20 text-gray-800">
 					<div class="pb-4">
 						<div class="py-6 flex justify-between items-center">
-							<h1 class="text-black">{{ 'اطلاعات تماس' }}</h1>
-							<h1 class="">
+							<h3 class="text-black">{{ 'اطلاعات تماس' }}</h3>
+							<h5 class="">
 								{{ 'حساب دیگری دارید؟' }}
 								<nuxt-link
 									class="text-blue-500 hover:underline"
@@ -22,7 +22,7 @@
 								>
 									وارد شوید
 								</nuxt-link>
-							</h1>
+							</h5>
 						</div>
 
 						<input
@@ -39,7 +39,7 @@
 						</label>
 					</div>
 
-					<h1 class="text-black pb-4 pt-8">اطلاعات پرداخت</h1>
+					<h3 class="text-black pb-4 pt-8">اطلاعات پرداخت</h3>
 					<form class="w-full" @submit.prevent="onFormClick">
 						<div class="flex">
 							<div class="w-1/2 pl-1 lg:pl-2">
