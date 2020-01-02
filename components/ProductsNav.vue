@@ -14,15 +14,16 @@
 			</li>
 		</ul>
 
-		<product :data="selectedData" :list-detail="selectedCategory" />
+		<Product :data="selectedData" :list-detail="selectedCategory" />
 	</div>
 </template>
 
 <script>
-import product from '~/components/product/Product'
+import Product from '~/components/product/Product'
+
 export default {
 	components: {
-		product,
+		Product,
 	},
 
 	props: {

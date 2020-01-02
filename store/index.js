@@ -7,8 +7,8 @@ export const state = () => ({
 	},
 	navbar: {
 		data: undefined,
-		rmFixedNav: false,
 	},
+	meta: [],
 	sidebar: {
 		sidebarContent: undefined,
 		isActive: false,
@@ -24,10 +24,6 @@ export const mutations = {
 		state.navbar.data = payload
 	},
 
-	RM_FIXED_NAV(state) {
-		state.navbar.rmFixedNav = !state.navbar.rmFixedNav
-	},
-
 	TOGGLE_SIDEBAR(state, {component}) {
 		state.sidebar.sidebarContent = component
 		state.sidebar.isActive = !state.sidebar.isActive
@@ -40,6 +36,10 @@ export const mutations = {
 	ORDER_DETAIL(state, payload) {
 		state.cart.inCart = payload.items_count
 		state.cart.sum = payload.sum
+	},
+
+	ADD_META(state, payload) {
+		state.meta.push(payload)
 	},
 }
 

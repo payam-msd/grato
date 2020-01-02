@@ -1,13 +1,13 @@
 <template>
 	<div class="relative bg-gray-100">
 		<div
-			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-10"
+			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-16"
 		>
 			<div class="w-full lg:w-2/5 lg:pl-32">
-				<div class="my-4">
+				<div class="mb-4">
 					<h3 class=" pb-1">{{ product.title }}</h3>
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
-					<span class="block text-gray-800 pt-3">
+					<span class="block text-gray-800 pt-8">
 						{{
 							userSelectedGuaranty === undefined
 								? product.minimum_price
@@ -16,29 +16,25 @@
 					</span>
 				</div>
 
-				<div class="bg-gray-400 h-px" />
+				<div class="thin-line" />
 
 				<Guaranty
+					style="height: 30vh"
 					:guaranties="items"
 					@updatedGuaranty="userSelectedGuaranty = {...$event}"
 				/>
 
-				<div class="fixed lg:static bottom-0 inset-x-0 lg:my-8 text-center">
-					<button
-						:class="{
-							'cursor-not-allowed': userSelectedGuaranty == undefined,
-						}"
-						:disabled="userSelectedGuaranty == undefined ? true : false"
-						class="btn w-full p-4 hover:bg-gray-900"
-						@click.prevent="handleAddToCart"
-					>
+				<div
+					class="fixed z-30 lg:static bottom-0 inset-x-0 lg:my-8 text-center"
+				>
+					<button class="btn btn-lg w-full" @click.prevent="handleAddToCart">
 						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="inline w-7" />
 					</button>
-					<span v-if="userSelectedGuaranty" class="text-red-600">
+					<p v-if="userSelectedGuaranty" class="text-red-600 my-2">
 						{{ userSelectedGuaranty.quantity }}
 						{{ 'عدد باقی مانده' }}
-					</span>
+					</p>
 				</div>
 
 				<p class="text-gray-800 pb-6">{{ product.description }}</p>
@@ -69,9 +65,6 @@ export default {
 	/* eslint-disable camelcase */
 
 	name: 'ProductID',
-	meta: {
-		title: '',
-	},
 
 	components: {
 		Guaranty,
@@ -81,6 +74,10 @@ export default {
 		IconAdd,
 		ProductCarousel,
 	},
+	meta: {
+		name: 'محصول',
+		path: `/product/id`,
+	},
 
 	data() {
 		return {
@@ -88,12 +85,10 @@ export default {
 			userSelectedGuaranty: undefined,
 
 			images: [
-				'https://source.unsplash.com/Pvx24X1uiq4',
-				'https://images.unsplash.com/photo-1526854497059-89ac894e3168?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1517439270744-8d9287c2f8f8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
-				'https://images.unsplash.com/photo-1530319067432-f2a729c03db5?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ',
+				'https://source.unsplash.com/collection/4585094/1600x900',
+				'https://source.unsplash.com/collection/962362/1600x900',
+				'https://source.unsplash.com/collection/795176/1600x900',
+				'https://source.unsplash.com/collection/4408389/1600x900',
 			],
 
 			titles: [
@@ -112,6 +107,7 @@ export default {
 			],
 		}
 	},
+
 	head() {
 		return {
 			title: this.product.title,
@@ -133,7 +129,7 @@ export default {
 		...mapGetters(['isAuthenticated']),
 	},
 
-	asyncData({params, app, error}) {
+	asyncData({params, app, error, route}) {
 		try {
 			return app.$SHOW_PRODUCT_DETAIL.show(params.id).then(data => {
 				let guaranties = []
@@ -150,15 +146,6 @@ export default {
 			error({statusCode: e.code, message: e.message})
 		}
 	},
-
-	mounted() {
-		this.$store.commit('RM_FIXED_NAV')
-	},
-
-	beforeDestroy() {
-		this.$store.commit('RM_FIXED_NAV')
-	},
-
 	methods: {
 		handleAddToCart() {
 			if (this.isAuthenticated) {

@@ -49,10 +49,10 @@ export default {
 	transform: translateY(-5px);
 }
 .special-top-true {
-	top: 128%;
+	top: 129%;
 }
 .special-top-false {
-	top: 156%;
+	top: 165%;
 }
 .dropdown-props {
 	width: calc(100vw - 10%);

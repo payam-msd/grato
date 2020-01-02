@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="container mx-auto px-6 py-24">
-			<h1 class="text-center">{{ 'ما را در اینستاگرام دنبال کنید' }}</h1>
+			<h2 class="text-center">{{ 'ما را در اینستاگرام دنبال کنید' }}</h2>
 			<ul class="flex flex-no-wrap">
 				<template v-for="(post, i) in posts">
 					<li

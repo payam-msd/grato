@@ -3,6 +3,16 @@
 		<div ref="cover" />
 		<SplashScreen :is-loading="loader" />
 		<Notification />
+		<!-- <nav class="breadcrumb" aria-label="breadcrumbs">
+			<ul>
+				<li v-for="(item, i) in crumbs" :key="i" :class="item.classes">
+					<nuxt-link :to="item.path">
+						{{ item.name }}
+					</nuxt-link>
+				</li>
+			</ul>
+		</nav> -->
+		<!-- <p>{{ breadcrumbs }}</p> -->
 		<Sidebar />
 		<Navigation />
 		<nuxt />
@@ -36,7 +46,68 @@ export default {
 		sidebarOpen() {
 			return this.$store.state.sidebar.isActive
 		},
+		// breadcrumbs() {
+		// 	return this.$options.breadcrumbs.forEach(e => {
+		// 		return e.title
+		// 	})
 	},
+	// crumbs() {
+	// 	const crumbs = []
+	// 	this.$route.matched.map((item, i, {length}) => {
+	// 		const crumb = {}
+	// 		crumb.path = item.path
+	// 		crumb.name = this.$i18n.t('route.' + (item.name || item.path))
+
+	// 		// is last item?
+	// 		if (i === length - 1) {
+	// 			// is param route? .../.../:id
+	// 			if (item.regex.keys.length > 0) {
+	// 				crumbs.push({
+	// 					path: item.path.replace(/\/:[^/:]*$/, ''),
+	// 					name: this.$i18n.t('route.' + item.name.replace(/-[^-]*$/, '')),
+	// 				})
+	// 				crumb.path = this.$route.path
+	// 				crumb.name = this.$i18n.t('route.' + this.$route.name, [
+	// 					crumb.path.match(/[^/]*$/)[0],
+	// 				])
+	// 			}
+	// 			crumb.classes = 'is-active'
+	// 		}
+
+	// 		crumbs.push(crumb)
+	// 	})
+
+	// 	return crumbs
+	// },
+	// crumbs() {
+	// 	const crumbs = []
+	// 	this.$route.matched.map((item, i, {length}) => {
+	// 		const crumb = {}
+	// 		crumb.path = item.path
+	// 		crumb.name = this.$i18n.t('route.' + (item.name || item.path))
+
+	// 		// is last item?
+	// 		if (i === length - 1) {
+	// 			// is param route? .../.../:id
+	// 			if (item.regex.keys.length > 0) {
+	// 				crumbs.push({
+	// 					path: item.path.replace(/\/:[^/:]*$/, ''),
+	// 					name: this.$i18n.t('route.' + item.name.replace(/-[^-]*$/, '')),
+	// 				})
+	// 				crumb.path = this.$route.path
+	// 				crumb.name = this.$i18n.t('route.' + this.$route.name, [
+	// 					crumb.path.match(/[^/]*$/)[0],
+	// 				])
+	// 			}
+	// 			crumb.classes = 'is-active'
+	// 		}
+
+	// 		crumbs.push(crumb)
+	// 	})
+
+	// 	return crumbs
+	// },
+	// },
 
 	watch: {
 		sidebarOpen(newValue) {
@@ -62,4 +133,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+/* ****************
+ *        PAGE ANIMATION
+****************/
+.page-enter-active,
+.page-leave-active {
+	transition: opacity 0.5s;
+}
+
+.page-enter,
+.page-leave-active {
+	opacity: 0;
+}
+
+.is-active {
+	@apply text-xl text-black;
+}
+</style>

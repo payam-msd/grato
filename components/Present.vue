@@ -1,13 +1,13 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="container mx-auto px-4 lg:px-6 py-24">
-			<h1 class="text-center">{{ 'تلاش ما براوردن بهترین تجربه خرید است' }}</h1>
+			<h2 class="text-center">{{ 'تلاش ما براوردن بهترین تجربه خرید است' }}</h2>
 			<div class="present-grid py-24">
 				<nuxt-link
 					to="/
 				"
 				>
-					<div class="w-full h-present pb-20 lg:pb-0">
+					<div class="w-full pb-20 lg:pb-0" style="height: 85vh">
 						<img
 							class="w-full h-full object-cover"
 							src="https://source.unsplash.com/collection/4408389/1600x900"
@@ -22,7 +22,7 @@
 					</div>
 				</nuxt-link>
 				<nuxt-link to="/">
-					<div class="w-full h-present">
+					<div class="w-full" style="height: 85vh">
 						<img
 							class="w-full h-full object-cover"
 							src="https://source.unsplash.com/collection/795176/1600x900/"
@@ -36,7 +36,7 @@
 				</nuxt-link>
 			</div>
 			<nuxt-link to="/">
-				<div class="w-full lg:w-present-w h-present-2 lg:h-78">
+				<div class="w-full " style="height: 55vh">
 					<img
 						class="w-full h-full object-cover"
 						src="https://source.unsplash.com/collection/4585094/1600x900"

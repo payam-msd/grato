@@ -9,9 +9,11 @@
 		<img
 			v-show="showImg"
 			:src="imgUrl"
-			class="object-cover w-auto bg-center h-present"
+			loading="lazy"
+			class="object-cover w-auto bg-center"
+			style="height: 75vh"
 		/>
-		<div class="mouse-cover z-10" />
+		<div class="mouse-cover" />
 	</div>
 </template>
 
@@ -39,7 +41,7 @@ export default {
 		},
 		scroll: {
 			type: Boolean,
-			default: false,
+			default: true,
 		},
 	},
 	data() {

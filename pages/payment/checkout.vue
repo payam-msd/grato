@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-rose-100">
-		<div class="relative w-full lg:pt-10 lg:px-24">
-			<nuxt-link class=" font-dana-bold text-green-700" to="/">
+		<div class="relative w-full lg:py-12 lg:px-24">
+			<nuxt-link class="text-4xl font-dana-bold text-green-700" to="/">
 				گراتو
 			</nuxt-link>
 			<!-- ORDER SUMMARY -->
@@ -11,10 +11,10 @@
 		<div class="flex flex-col lg:flex-row">
 			<div class="w-full h-full lg:w-3/5 bg-rose-100">
 				<div class="mx-4 lg:mr-24 lg:ml-20 text-gray-800">
-					<div class="pb-4">
-						<div class="py-6 flex justify-between items-center">
-							<h3 class="text-black">{{ 'اطلاعات تماس' }}</h3>
-							<h5 class="">
+					<div class="pb-6">
+						<div class="py-4 flex justify-between items-center">
+							<h4 class="text-black">{{ 'اطلاعات تماس' }}</h4>
+							<h6>
 								{{ 'حساب دیگری دارید؟' }}
 								<nuxt-link
 									class="text-blue-500 hover:underline"
@@ -22,31 +22,37 @@
 								>
 									وارد شوید
 								</nuxt-link>
-							</h5>
+							</h6>
 						</div>
 
 						<input
 							ref="email"
 							v-model="form.email"
-							class="input-checkout w-full placeholder-gray-700"
+							class="input w-full placeholder-gray-700"
 							placeholder="ایمیل"
 							type="text"
 							@keyup.enter="$refs.firstName.focus()"
 						/>
-						<input id="newsletter" class="checkbox" type="checkbox" />
-						<label class="label pr-1 " for="newsletter">
-							من رو از آخرین تخفیف ها باخبر کن
-						</label>
+						<div class="my-2">
+							<input id="newsletter" class="checkbox" type="checkbox" />
+							<label class="label pr-1 " for="newsletter">
+								من رو از آخرین تخفیف ها باخبر کن
+							</label>
+						</div>
 					</div>
 
-					<h3 class="text-black pb-4 pt-8">اطلاعات پرداخت</h3>
-					<form class="w-full" @submit.prevent="onFormClick">
+					<h4 class="text-black pb-4 pt-8">اطلاعات پرداخت</h4>
+					<form
+						class="flex flex-col justify-around w-full"
+						style="height: 50vh"
+						@submit.prevent="onFormClick"
+					>
 						<div class="flex">
 							<div class="w-1/2 pl-1 lg:pl-2">
 								<input
 									ref="firstName"
 									v-model="form.receiver_first_name"
-									class="input-checkout block w-full placeholder-gray-700"
+									class="input placeholder-gray-600"
 									placeholder="نام"
 									type="text"
 									@keyup.enter="$refs.lastName.focus()"
@@ -56,22 +62,23 @@
 								<input
 									ref="lastName"
 									v-model="form.receiver_last_name"
-									class="input-checkout block w-full placeholder-gray-700"
+									class="input placeholder-gray-600"
 									placeholder="نام خانوادگی"
 									type="text"
 									@keyup.enter="$refs.address.focus()"
 								/>
 							</div>
 						</div>
-
-						<input
-							ref="address"
-							v-model="form.address"
-							class="input-checkout block w-full placeholder-gray-700"
-							placeholder="آدرس"
-							type="text"
-							@keyup.enter="$refs.state.focus()"
-						/>
+						<div class="">
+							<input
+								ref="address"
+								v-model="form.address"
+								class="input placeholder-gray-600"
+								placeholder="آدرس"
+								type="text"
+								@keyup.enter="$refs.state.focus()"
+							/>
+						</div>
 
 						<div class="flex">
 							<div class="w-full lg:pl-1">
@@ -79,7 +86,7 @@
 									<select
 										ref="state"
 										v-model="selectedState"
-										class="input-checkout block w-full focus:border-black pl-8"
+										class="input block w-full focus:border-black pl-8"
 										@keyup.enter="$refs.city.focus()"
 									>
 										<template v-for="province in provinces">
@@ -105,7 +112,7 @@
 									<select
 										ref="city"
 										v-model="form.city_id"
-										class="input-checkout block w-full pl-8"
+										class="input block w-full pl-8"
 										@keyup.up="$refs.postalCode.focus()"
 									>
 										<template v-for="city in citiesData">
@@ -126,32 +133,29 @@
 								<input
 									ref="postalCode"
 									v-model="form.postal_code"
-									class="input-checkout block w-full placeholder-gray-700"
+									class="input placeholder-gray-600"
 									placeholder="کدپستی"
 									type="number"
 									@keyup.enter="$refs.address.focus()"
 								/>
 							</div>
 						</div>
-
-						<input
-							ref="number"
-							v-model="form.tell"
-							class="input-checkout block w-full placeholder-gray-700"
-							placeholder="شماره موبایل"
-							type="number"
-							@keyup.enter="$refs.continue.focus()"
-						/>
+						<div class="">
+							<input
+								ref="number"
+								v-model="form.tell"
+								class="input placeholder-gray-600"
+								placeholder="شماره موبایل"
+								type="number"
+								@keyup.enter="$refs.continue.focus()"
+							/>
+						</div>
 
 						<div
 							class="flex flex-col lg:flex-row-reverse justify-between items-center py-8 w-full"
 						>
-							<button
-								ref="continue"
-								class="w-full btn btn--lg lg:w-auto"
-								type="submit"
-							>
-								ادامه خرید
+							<button ref="continue" class="btn btn-lg" type="submit">
+								{{ 'ادامه خرید' }}
 							</button>
 							<nuxt-link
 								v-if="$route.params.id === undefined"
@@ -185,6 +189,11 @@ import IconThinLine from '~/assets/svg/thin-line.svg'
 import OrderSummary from '~/components/OrderSummary.vue'
 export default {
 	name: 'Checkout',
+	layout: 'none',
+	meta: {
+		name: 'صفحه پرداخت',
+		path: '/payment/checkout',
+	},
 	middleware: ['auth'],
 	components: {
 		IconCheveronRight,

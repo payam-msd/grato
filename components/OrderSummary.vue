@@ -19,7 +19,11 @@
 					<div class="w-full flex flex-row-reverse justify-start my-6">
 						<div class="relative border border-gray-400 rounded">
 							<span
-								class="cart-prop w-6 h-6 bg-teal-500 font-bold text-white  rounded-full inline-flex justify-center"
+								class="absolute w-6 h-6 bg-black text-white  rounded-full flex items-center text-sm font-dana-bold justify-center"
+								style="left: -11px;
+								top: -6px;
+								line-height: 1.4rem;
+							"
 							>
 								{{ order.quantity }}
 							</span>
@@ -28,14 +32,14 @@
 								class="object-scale-down rounded-lg w-32 h-20"
 							/>-->
 							<img
-								src="https://images.unsplash.com/photo-1526854497059-89ac894e3168?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-								class="object-center w-32 h-20"
+								src="https://source.unsplash.com/collection/795176/1600x900"
+								class="object-scale-down w-32 h-full"
 							/>
 						</div>
 						<div class="flex flex-col ml-auto">
-							<h1 class="-mt-1 pb-3 tracking-wide text-gray-900">
+							<h4 class="-mt-1 pb-3 text-gray-900">
 								{{ order.product.title }}
-							</h1>
+							</h4>
 							<span class="pt-8 text-gray-800">
 								{{
 									calculatePrice(order.item.price, order.quantity) | currency
@@ -54,7 +58,9 @@
 					/>
 					<div class="absolute left-0 ml-1 inset-y-center">
 						<ThinLine />
-						<button ref="apply" class="btn h-10 w-20">ثبت</button>
+						<button ref="apply" class="btn rounded-sm h-10 w-20">
+							{{ 'ثبت' }}
+						</button>
 					</div>
 				</div>
 				<div class="thin-line" />
@@ -69,10 +75,12 @@
 					</p>
 				</div>
 				<div class="thin-line" />
-				<p class="text-gray-900 text-base py-6 flex justify-between mt-2">
-					جمع کل:
-					<span class="">{{ cart.sum | currency }}</span>
-				</p>
+				<div class="flex justify-between items-center  py-6">
+					<p class="text-gray-900 text-xl ">
+						جمع کل:
+					</p>
+					<h4>{{ cart.sum | currency }}</h4>
+				</div>
 			</div>
 		</div>
 	</div>

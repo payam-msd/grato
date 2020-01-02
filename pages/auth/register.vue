@@ -98,7 +98,7 @@
 					:disabled="rulesAgreed == true ? false : true"
 					:class="{'cursor-not-allowed': !rulesAgreed}"
 					type="submit"
-					class="btn btn--md hover:bg-gray-900"
+					class="btn btn-md hover:bg-gray-900"
 				>
 					<span>ثبت نام در گراتو</span>
 					<SendIcon class="icon w-10" />
@@ -119,6 +119,10 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
 	middleware: ['guest'],
+	meta: {
+		name: 'صفحه ثبت نام',
+		path: '/auth/register',
+	},
 	components: {
 		EyeIcon,
 		CloseEye,
@@ -143,6 +147,7 @@ export default {
 			return !this.hidePassword ? 'text-green-600' : 'text-gray-500'
 		},
 	},
+
 	mounted() {
 		this.$nextTick(() => {
 			const {username} = this.$refs
@@ -156,7 +161,7 @@ export default {
 				{
 					hid: 'register',
 					name: 'ثبت نام',
-					content: 'ثبت نام در گراتو',
+					content: 'ثبت نام  ',
 				},
 			],
 		}

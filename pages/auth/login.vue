@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="">
-					<button type="submit" class="btn btn--md hover:bg-gray-900">
+					<button type="submit" class="btn btn-md hover:bg-gray-900">
 						<span>ورود به گراتو</span>
 						<SendIcon class="icon w-10" />
 					</button>
@@ -71,7 +71,7 @@
 					با ثبت نام در گراتو به راحتی پرداخت خود را انجام دهید
 				</p>
 				<div class="my-10">
-					<nuxt-link tag="a" to="/auth/register" class="btn btn--md px-14">
+					<nuxt-link tag="a" to="/auth/register" class="btn btn-md px-14">
 						ثبت نام
 					</nuxt-link>
 				</div>
@@ -88,6 +88,10 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
 	name: 'Login',
+	meta: {
+		name: 'صفحه ورود',
+		path: '/auth/login',
+	},
 
 	middleware: ['auth'],
 

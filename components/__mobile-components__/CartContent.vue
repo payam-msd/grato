@@ -9,7 +9,7 @@
 			<span>{{ sumOfList | currency }}</span>
 		</div>
 
-		<nuxt-link class="btn btn--lg" to="/payment/checkout">
+		<nuxt-link class="btn btn-lg" to="/payment/checkout">
 			{{ 'بررسی خرید' }}
 		</nuxt-link>
 	</div>

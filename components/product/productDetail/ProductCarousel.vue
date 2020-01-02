@@ -2,11 +2,31 @@
 	<div class="relative">
 		<div class="block-image">
 			<!-- Main image -->
-			<ProductMagnifier
-				:url="currentSlide"
-				:class="{'background-loading': bgLoading}"
-				class="main-image"
-			/>
+			<div class="relative">
+				<ProductMagnifier
+					:url="currentSlide"
+					:class="{'background-loading': bgLoading}"
+					class="main-image"
+				/>
+				<!-- ARROW BUTTONS -->
+				<div class="hidden lg:block w-full h-full">
+					<a
+						href="#"
+						class="absolute inset-y-0 left-0 inline-flex items-center justify-center w-24 self-center"
+						@click.prevent="onArrowLeft()"
+					>
+						<IconCheveronLeft class="w-32" transform="rotate(90, 0 ,0)" />
+					</a>
+					<a
+						href="#"
+						class="absolute inset-y-0 right-0 inline-flex items-center justify-center w-24 self-center"
+						@click.prevent="onArrowRight()"
+					>
+						<IconCheveronLeft class="w-32" transform="rotate(-90, 0 ,0)" />
+					</a>
+				</div>
+				<!--/ ARROW BUTTONS -->
+			</div>
 			<!-- /Main image -->
 
 			<!-- Slides preview -->
@@ -41,19 +61,6 @@
 			</div>
 			<!--/ SLIDE PREVIEWS  (for mobile)-->
 		</div>
-
-		<!-- ARROW BUTTONS -->
-		<div
-			class="hidden w-full h-auto absolute inset-x-0 inset-y-center lg:flex flex-row-reverse justify-between"
-		>
-			<a href="#" class="w-20 self-center" @click.prevent="onArrowLeft()">
-				<IconCheveronLeft transform="rotate(90, 0 ,0)" />
-			</a>
-			<a href="#" class="w-20 self-center" @click.prevent="onArrowRight()">
-				<IconCheveronLeft transform="rotate(-90, 0 ,0)" />
-			</a>
-		</div>
-		<!--/ ARROW BUTTONS -->
 	</div>
 </template>
 <script>
@@ -150,7 +157,7 @@ export default {
 
 			// call slide in swipe mode (if needed)
 			if (this.swipeActive) {
-				this.$options.swipe.slide(index, 400)
+				this.$options.swipe.slide(index, 300)
 			}
 		},
 
@@ -184,7 +191,7 @@ export default {
 
 			// use Swipe lib and save instance to $options
 			this.$options.swipe = new Swipe(this.$refs.swipeWrap, {
-				speed: 400,
+				speed: 300,
 				continuous: true,
 				disableScroll: false,
 				stopPropagation: false,

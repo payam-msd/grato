@@ -4,7 +4,7 @@
 			<li
 				v-for="item in data"
 				:key="item.id"
-				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2"
+				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2 lea"
 			>
 				<nuxt-link
 					:style="{
@@ -39,7 +39,7 @@
 		</ul>
 
 		<div class="text-center py-24">
-			<nuxt-link to="/somewhere" class="btn btn--lg hover:bg-gray-900">
+			<nuxt-link to="/somewhere" class="btn btn-lg hover:bg-gray-900">
 				{{ `ادامه ${listDetail.listName}` }}
 				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-7" />
 			</nuxt-link>

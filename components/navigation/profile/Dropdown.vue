@@ -106,6 +106,6 @@ export default {
 	margin-top: 20%;
 }
 .special-margin-false {
-	margin-top: 39%;
+	margin-top: 45%;
 }
 </style>

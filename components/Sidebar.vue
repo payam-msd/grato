@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="sidebar"
-		class="fixed inset-y-0 w-11/12 lg:w-sidebar z-40 bg-white shadow-2xl"
+		class="fixed inset-y-0 w-11/12 lg:w-2/5 z-40 bg-white shadow-2xl"
 	>
 		<Notification class="shadow-inner" />
 
@@ -15,7 +15,7 @@
 				<span>{{ cart.sum | currency }}</span>
 			</div>
 			<nuxt-link
-				class="btn btn--lg"
+				class="btn btn-lg"
 				to="/payment/checkout"
 				@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
 			>

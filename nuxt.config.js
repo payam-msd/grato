@@ -3,6 +3,10 @@ export default {
 	mode: 'universal',
 	head: {
 		title: process.env.npm_package_name || '',
+		htmlAttrs: {
+			lang: 'fa',
+			dir: 'rtl',
+		},
 		meta: [
 			{charset: 'utf-8'},
 			{name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -15,6 +19,8 @@ export default {
 		link: [{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}],
 		script: [
 			{
+				hid: 'gsap.v3.0.4',
+				defer: true,
 				src:
 					process.env.NODE_ENV === 'production'
 						? 'https://unpkg.com/gsap@3.0.4/dist/gsap.min.js'
@@ -75,9 +81,9 @@ export default {
 		},
 	},
 
-	// router: {
-	//     middleware: ["storeRoutes"],
-	// },
+	router: {
+		middleware: ['storeRoutes'],
+	},
 
 	auth: {
 		strategies: {

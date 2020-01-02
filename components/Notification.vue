@@ -1,13 +1,10 @@
 <template>
 	<!-- <component :is="component" v-if="component" :data="data" /> -->
 	<div class="w-full h-auto py-3 flex justify-center items-center bg-gray-100 ">
-		<h4 class="text-gray-900">
+		<h6 class="text-gray-900">
 			{{ 'خرید استثنایی +NOTE 10  در این هفته' }}
-		</h4>
-		<nuxt-link
-			class="px-4 text-lg font-dana-bold bg-black text-gray-100 mx-4"
-			to="#"
-		>
+		</h6>
+		<nuxt-link class="btn btn-tiny mx-2" to="#">
 			{{ 'برو' }}
 		</nuxt-link>
 	</div>

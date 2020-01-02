@@ -19,16 +19,17 @@ import Instagram from '~/components/FollowInsta'
 export default {
 	name: 'Home',
 
-	meta: {
-		title: 'فروشگاه اینترنتی گراتو',
-	},
-
 	components: {
 		Hero,
 		ProdcutsNav,
 		Present,
 		Slider,
 		Instagram,
+	},
+
+	meta: {
+		name: 'خانه',
+		path: '/',
 	},
 	head() {
 		return {
@@ -55,7 +56,7 @@ export default {
 		if (store.getters.isAuthenticated) await store.dispatch('GET_CART_DATA')
 	},
 
-	async asyncData({app}) {
+	async asyncData({route, app}) {
 		return {
 			products: await app.$FETCH_PRODUCTS.index(),
 			shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),

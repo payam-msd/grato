@@ -25,13 +25,13 @@
 			@click="$store.commit('TOGGLE_SIDEBAR', {component: cartContent})"
 		>
 			<BagIcon class="w-7 m-1" transform="scale(-1,1)" />
-			<span
+			<!-- <span
 				v-if="cart.inCart"
-				class="cart-prop-m w-6 h-6 bg-teal-500 text-white
+				class="absolute w-6 h-6 bg-teal-500 text-white
                 rounded-full flex justify-center items-center"
-			>
-				{{ cart.inCart }}
-			</span>
+			> -->
+			{{ cart.inCart }}
+			<!-- </span> -->
 		</a>
 	</header>
 </template>
