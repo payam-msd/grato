@@ -1,11 +1,11 @@
 <template>
-	<div class="relative h-32">
+	<div class="relative h-24 lg:h-32">
 		<header
-			class=" z-20 bg-white w-full h-32 flex flex-wrap items-center"
+			class="z-20 bg-white flex flex-wrap items-center"
 			:class="[
 				isNavbarFixed
-					? 'fixed inset-auto top-0 shadow-lg rounded-b h-auto py-4 '
-					: 'relative ',
+					? 'fixed inset-auto w-full h-24 top-0 shadow-lg rounded-b'
+					: 'relative h-32 ',
 			]"
 		>
 			<div
@@ -23,11 +23,13 @@
 
 						<nuxt-link
 							v-else
-							class="text-gray-800 py-3 lg:py-4 rounded block px-3  lg:px-6 border border-gray-500 hover:border-black"
+							class="text-gray-800 py-3 lg:py-4 rounded block px-3 lg:px-6 lg:border lg:border-gray-500 lg:hover:border-black "
 							to="/auth/login"
-							tag="a"
 						>
-							{{ 'ورود به حساب کاربری' }}
+							<a class=" hidden lg:block">
+								{{ 'ورود به حساب کاربری' }}
+							</a>
+							<IconUser class="w-2.2 lg:hidden" />
 						</nuxt-link>
 					</div>
 
@@ -39,9 +41,11 @@
 					<button
 						id="bagButton"
 						class="cursor-pointer flex items-center"
-						@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
+						@click="onCartClick"
 					>
-						<BagIcon class="w-10 lg:w-8" />
+						<div class="w-2.2 lg:w-10">
+							<BagIcon />
+						</div>
 
 						<div v-if="cart.inCart" class="relative">
 							<span
@@ -66,6 +70,7 @@ import {mapGetters, mapState} from 'vuex'
 import NavCategories from '~/components/NavCategories'
 import profile from '~/components/navigation/profile/Dropdown'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'
+import IconUser from '~/assets/svg/icons/icon-user.svg'
 import thinLine from '~/assets/svg/icons/icon-remove.svg'
 export default {
 	components: {
@@ -73,6 +78,7 @@ export default {
 		NavCategories,
 		BagIcon,
 		thinLine,
+		IconUser,
 	},
 
 	data() {
@@ -141,6 +147,10 @@ export default {
 			// }
 			// // Set the current scroll position as the last scroll position
 			// this.lastScrollPosition = currentScrollPosition
+		},
+
+		onCartClick() {
+			this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
 		},
 	},
 }

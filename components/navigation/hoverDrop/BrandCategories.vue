@@ -1,10 +1,13 @@
 <template>
 	<div>
+		<button id="menuButton" class="lg:hidden w-2.2 block" @click="onMenuClick">
+			<IconMenu />
+		</button>
 		<div
 			class="block cursor-pointer"
 			@mouseenter="sharedState.active = !sharedState.active"
 		>
-			<IconMenu class="inline w-10 lg:w-8" />
+			<IconMenu class="w-8 hidden lg:inline" />
 			<a
 				href="#"
 				class="hidden lg:inline text-gray-800 pl-3 word-2-space cursor-none"
@@ -42,6 +45,12 @@ export default {
 				active: false,
 			},
 		}
+	},
+
+	methods: {
+		onMenuClick() {
+			this.$store.commit('TOGGLE_MENU')
+		},
 	},
 
 	computed: {

@@ -102,8 +102,8 @@
 									<div
 										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
-										<IconThinLine class="w-5 lg:w-7" />
-										<IconCheveronDown class="w-5 lg:w-7" />
+										<IconThinLine class="w-5 lg:w-10" />
+										<IconCheveronDown class="w-5 lg:w-10" />
 									</div>
 								</div>
 							</div>
@@ -124,8 +124,8 @@
 									<div
 										class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700"
 									>
-										<IconThinLine class="w-5 lg:w-7" />
-										<IconCheveronDown class="w-5 lg:w-7" />
+										<IconThinLine class="w-5 lg:w-10" />
+										<IconCheveronDown class="w-5 lg:w-10" />
 									</div>
 								</div>
 							</div>
@@ -169,7 +169,7 @@
 								:to="$route.query.redirect"
 								class="mt-2 lg:mt-0 tertiary-link"
 							>
-								<IconCheveronRight class="w-7" />
+								<IconCheveronRight class="w-10" />
 								{{ 'برگشت به محصول' }}
 							</nuxt-link>
 						</div>

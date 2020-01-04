@@ -13,13 +13,9 @@
 	@apply inline mr-2;
 }
 
-.login-icon {
-	@apply w-6 ml-8 text-gray-600 cursor-pointer stroke-current;
-}
-
 
 .input {
-	@apply border rounded border-gray-400 py-3 px-4 bg-white block w-full appearance-none;
+	@apply border rounded border-gray-400 py-3 px-4 bg-white block w-full appearance-none transition-all transition-slower ease-in-out;
 }
 
 .input:focus-within{
@@ -63,70 +59,17 @@
 }
 
 .tertiary-link {
-	@apply bg-transparent px-3 py-2 text-gray-600;
+	@apply bg-transparent px-3 py-2 text-gray-500 text-sm;
 }
 
 .tertiary-link:hover {
 	@apply underline text-gray-800;
 }
 
-.transition-color{
-	transition-property: color, background-color;
-}
-.transition-opacity{
-	transition-property: opacity ;
-}
-.transition-transform{
-	transition-property: transform ;
-}
-.transition-all{
-	transition-property: all;
-}
-.transition-fastest{
-	transition-duration: 50ms;
-}
-.transition-faster{
-	transition-duration: 100ms;
-}
-.transition-fast{
-	transition-duration: 150ms;
-}
-.transition-medium{
-	transition-duration: 100ms;
-}
-.transition-slow{
-	transition-duration: 250ms;
-}
-.transition-slower{
-	transition-duration: 300ms;
-}
-.transition-slowest{
-	transition-duration: 500ms;
-}
 
-.ease-in{
-	transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-}
-.ease-out{
-	transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-.ease-in-out{
-	transition-timing-function :cubic-bezier(0.455, 0.03, 0.515, 0.955) ;
-}
-
-.scalse-0{
-	transform: scale(0);
-}
-.scalse-25{
-	transform: scale(.25);
-}
-.scalse-50{
-	transform: scale(0.50);
-}
-.scalse-75{
-	transform: scale(0.75);
-}
-.scalse-100{
-	transform: scale(1);
+@screen lg{
+	.tertiary-link {
+		@apply bg-transparent px-3 py-2 text-gray-500 text-base;
+	}	
 }
 

@@ -29,7 +29,7 @@
 				>
 					<button class="btn btn-lg w-full" @click.prevent="handleAddToCart">
 						{{ 'اضافه به سبد خرید' }}
-						<IconAdd class="inline w-7" />
+						<IconAdd class="inline w-10" />
 					</button>
 					<p v-if="userSelectedGuaranty" class="text-red-600 my-2">
 						{{ userSelectedGuaranty.quantity }}

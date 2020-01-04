@@ -9,7 +9,6 @@
 		</div>
 		<div class="absolute bottom-0 w-full h-12 text-center">
 			<nuxt-link
-				tag="a"
 				class="text-gray-800 font-serif-bold tracking-wide
                   p-1"
 				to="/page"

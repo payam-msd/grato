@@ -14,6 +14,7 @@
 		</nav> -->
 		<!-- <p>{{ breadcrumbs }}</p> -->
 		<Sidebar />
+		<MenuSide />
 		<Navigation />
 		<nuxt />
 		<Footer />
@@ -25,6 +26,7 @@ import Navigation from '~/components/Navbar'
 import Footer from '~/components/Footer'
 import Notification from '~/components/Notification'
 import Sidebar from '~/components/Sidebar'
+import MenuSide from '~/components/MenuSide'
 import SplashScreen from '~/components/SplashScreen'
 
 export default {
@@ -34,6 +36,7 @@ export default {
 		Notification,
 		Footer,
 		SplashScreen,
+		MenuSide,
 	},
 
 	data() {

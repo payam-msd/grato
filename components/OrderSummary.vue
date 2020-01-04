@@ -4,9 +4,9 @@
 			class="lg:hidden w-full h-16 bg-gray-100 border-t flex items-center justify-between px-3 border-b border-gray-400"
 			@click="isOrderSumOpen = !isOrderSumOpen"
 		>
-			<IconBag class="w-7 ml-2" />
+			<IconBag class="w-10 ml-2" />
 			<span class="tracking-wide">{{ 'خلاصه خرید' }}</span>
-			<IconCheveronDown class="w-7 ml-auto" />
+			<IconCheveronDown class="w-10 ml-auto" />
 			<span>{{ cart.sum | currency }}</span>
 		</div>
 

@@ -1,113 +1,108 @@
 <template>
-	<div
-		class="h-ful flex justify-center lg:justify-start items-center container mx-auto px-6 py-6 lg:py-12"
-	>
-		<form class="w-full lg:w-1/3" @submit.prevent="Register">
-			<h1 class="text-black ">{{ 'ثبت نام' }}</h1>
-
-			<div class="flex text-gray-700">
-				<p>{{ 'قبلا ثبت نام کرده اید ؟‌' }}</p>
-				<nuxt-link tag="a" class=" mx-1 text-blue-600" to="/auth/login">
-					{{ 'وارد شوید' }}
-				</nuxt-link>
-			</div>
-
-			<div class="my-6">
-				<div class="py-1">
-					<label class="text-gray-900 mx-1 text-lg">
-						{{ 'نام کاربری' }}
-					</label>
-				</div>
-				<input
-					ref="username"
-					v-model.lazy="$v.form.username.$model"
-					class="input w-4/5"
-					type="text"
-					@keyup.enter="$refs.email.focus()"
-				/>
-
-				<div class="py-1">
-					<label class="text-gray-900 mx-1 text-lg">ایمیل</label>
-				</div>
-				<input
-					ref="email"
-					v-model.lazy="$v.form.email.$model"
-					class="input w-4/5"
-					type="text"
-					@keyup.enter="$refs.password.focus()"
-				/>
-
-				<div class="py-1">
-					<label class="text-gray-900 mx-1 text-lg">
-						کلمه عبور
-					</label>
-				</div>
-				<div class="relative">
-					<div
-						class="w-16 mb-2 inset-y-0 absolute left-0 ml-16 appearance-none"
-					>
-						<EyeIcon
-							v-show="!hidePassword"
-							stroke-width="1.7"
-							class="login-icon inset-center"
-							@click="hidePassword = !hidePassword"
-						/>
-						<CloseEye
-							v-show="!!hidePassword"
-							class="login-icon inset-center"
-							@click="hidePassword = !hidePassword"
-						/>
-					</div>
-					<input
-						ref="password"
-						v-model.lazy="$v.form.password.$model"
-						:type="passwordType"
-						class="w-4/5 input"
-						autocomplete="new-password"
-					/>
-				</div>
-
-				<div class="text-gray-800 pl-16 py-2 inline-flex">
-					<div class="py-1 px-2">
-						<input v-model="rulesAgreed" type="checkbox" />
-					</div>
+	<div class="container mx-auto px-4 lg:px-6">
+		<div class="h-screen lg:h-full flex justify-start items-start ">
+			<form class="w-full lg:w-1/3 lg:py-16" @submit.prevent="Register">
+				<div class="my-8">
+					<h2>{{ 'ثبت نام' }}</h2>
 					<p>
+						{{ 'قبلا ثبت نام کرده اید ؟‌' }}
+
 						<nuxt-link
-							tag="a"
-							class="text-blue-500 hover:underline mx-1"
-							to="/page"
+							class="inline mx-1 text-blue-600 text-sm lg:text-base"
+							to="/auth/login"
 						>
-							{{ 'حریم خصوصی' }}
+							{{ 'وارد شوید' }}
 						</nuxt-link>
-						{{ 'و' }}
-						<nuxt-link
-							tag="a"
-							class="text-blue-500 hover:underline mx-1"
-							to="/page"
-						>
-							{{ 'شرایط و قوانین' }}
-						</nuxt-link>
-						استفاده از سرویس های سایت گراتو را مطالعه نموده و با کلیه موارد آن
-						موافقم.
 					</p>
 				</div>
-			</div>
 
-			<div class="my-4">
-				<button
-					:disabled="rulesAgreed == true ? false : true"
-					:class="{'cursor-not-allowed': !rulesAgreed}"
-					type="submit"
-					class="btn btn-md hover:bg-gray-900"
-				>
-					<span>ثبت نام در گراتو</span>
-					<SendIcon class="icon w-10" />
-				</button>
-				<nuxt-link tag="a" class="tertiary-link" to="/">
-					{{ 'یا برگشت به فروشگاه' }}
-				</nuxt-link>
-			</div>
-		</form>
+				<div class="my-6">
+					<div class="py-1">
+						<label class="text-gray-900 mx-1 lg:text-lg">
+							{{ 'نام کاربری' }}
+						</label>
+					</div>
+					<input
+						ref="username"
+						v-model.lazy="$v.form.username.$model"
+						class="input w-5/6 mb-2"
+						type="text"
+						@keyup.enter="$refs.email.focus()"
+					/>
+
+					<div class="py-1">
+						<label class="text-gray-900 mx-1 lg:text-lg">ایمیل</label>
+					</div>
+					<input
+						ref="email"
+						v-model.lazy="$v.form.email.$model"
+						class="input w-5/6 mb-2"
+						type="text"
+						@keyup.enter="$refs.password.focus()"
+					/>
+
+					<div class="py-1">
+						<label class="text-gray-900 mx-1 lg:text-lg">
+							کلمه عبور
+						</label>
+					</div>
+					<div class="relative">
+						<div class="w-16 absolute inset-y-center px-4" style="left: 18%">
+							<EyeIcon
+								v-show="!hidePassword"
+								stroke-width="1.7"
+								class="w-8 lg:w-2.2 stroke-current text-gray-500 float-left"
+								@click="hidePassword = !hidePassword"
+							/>
+							<CloseEye
+								v-show="!!hidePassword"
+								class="w-8 lg:w-2.2 stroke-current text-gray-500 float-left"
+								@click="hidePassword = !hidePassword"
+							/>
+						</div>
+						<input
+							ref="password"
+							v-model.lazy="$v.form.password.$model"
+							:type="passwordType"
+							autocomplete="password"
+							class="input z-10 w-5/6"
+						/>
+					</div>
+
+					<div class="text-gray-800 pl-16 py-4 inline-flex">
+						<div class="py-1 px-2">
+							<input id="rules" v-model="rulesAgreed" type="checkbox" />
+						</div>
+						<label for="rules">
+							<nuxt-link class="text-blue-500 hover:underline mx-1" to="/page">
+								{{ 'حریم خصوصی' }}
+							</nuxt-link>
+							{{ 'و' }}
+							<nuxt-link class="text-blue-500 hover:underline mx-1" to="/page">
+								{{ 'شرایط و قوانین' }}
+							</nuxt-link>
+							استفاده از سرویس های سایت گراتو را مطالعه نموده و با کلیه موارد آن
+							موافقم.
+						</label>
+					</div>
+				</div>
+
+				<div class="my-4">
+					<button
+						:disabled="rulesAgreed == true ? false : true"
+						:class="{'cursor-not-allowed': !rulesAgreed}"
+						type="submit"
+						class="btn btn-md hover:bg-gray-900"
+					>
+						<span>ثبت نام در گراتو</span>
+						<SendIcon class="icon w-10" />
+					</button>
+					<nuxt-link class="tertiary-link" to="/">
+						{{ 'یا برگشت به فروشگاه' }}
+					</nuxt-link>
+				</div>
+			</form>
+		</div>
 	</div>
 </template>
 

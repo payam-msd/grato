@@ -30,7 +30,7 @@
 							{{ item.minimum_price | currency }}
 						</span>
 						<IconDotsVertical
-							class="inline float-left w-7 p-1 hover:bg-teal-100
+							class="inline float-left w-10 p-1 hover:bg-teal-100
                             cursor-pointer rounded-full"
 						/>
 					</div>
@@ -41,7 +41,7 @@
 		<div class="text-center py-24">
 			<nuxt-link to="/somewhere" class="btn btn-lg hover:bg-gray-900">
 				{{ `ادامه ${listDetail.listName}` }}
-				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-7" />
+				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-10" />
 			</nuxt-link>
 		</div>
 	</div>

@@ -25,7 +25,7 @@
 					{{ link }}
 					<CheveronLeft
 						transform="rotate(90, 0 ,0)"
-						class="icon w-7"
+						class="icon w-10"
 						stroke-width="3"
 					/>
 				</nuxt-link>

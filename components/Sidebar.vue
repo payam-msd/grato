@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="sidebar"
-		class="fixed inset-y-0 w-11/12 lg:w-2/5 z-40 bg-white shadow-2xl"
-	>
+	<div id="sidebar" class="fixed inset-y-0 w-11/12 lg:w-2/5 z-40 bg-white ">
 		<Notification class="shadow-inner" />
 
 		<div
@@ -39,47 +36,114 @@ export default {
 	computed: {
 		...mapState(['sidebar', 'cart']),
 	},
+
 	watch: {
+		/* eslint-disable no-unused-vars */
 		'sidebar.isActive'(isActive) {
-			var _vm = this
-			var body = document.body
-			var bagButton = document.getElementById('bagButton')
+			var isMobile = window.innerWidth < 1024
 
 			isActive
-				? gsap.to(this.$el, {
-						duration: 1,
-						xPercent: 0,
-						ease: 'power3.out',
-						onStart() {
-							bagButton.disabled = true
-						},
-						onComplete() {
-							body.addEventListener('click', _vm.closeEvent)
-							bagButton.disabled = false
-						},
-				  })
-				: gsap.to(this.$el, {
-						xPercent: 100,
-						ease: 'power1',
-						onStart() {
-							body.removeEventListener('click', _vm.closeEvent)
-							bagButton.disabled = true
-						},
-						onComplete() {
-							bagButton.disabled = false
-						},
-				  })
+				? isMobile
+					? this.sidebarAnimMobileOpen()
+					: this.sidebarAnimDesktopOpen()
+				: isMobile
+				? this.sidebarAnimMobileClose()
+				: this.sidebarAnimDesktopClose()
 		},
 	},
 
 	mounted() {
-		gsap.set(this.$el, {
-			immediateRender: true,
-			xPercent: 100,
-		})
+		var isMobile = window.innerWidth < 1024
+		if (isMobile) {
+			gsap.set(this.$el, {
+				immediateRender: true,
+				left: 0,
+				xPercent: -100,
+			})
+		} else {
+			gsap.set(this.$el, {
+				immediateRender: true,
+				right: 0,
+				xPercent: 100,
+			})
+		}
 	},
 
 	methods: {
+		sidebarAnimDesktopOpen() {
+			var _vm = this
+			var bagButton = document.getElementById('bagButton')
+			var body = document.body
+
+			return gsap.timeline().to(this.$el, {
+				duration: 1,
+				xPercent: 0,
+				ease: 'power3.out',
+				onStart() {
+					bagButton.disabled = true
+				},
+				onComplete() {
+					body.addEventListener('click', _vm.closeEvent)
+					bagButton.disabled = false
+				},
+			})
+		},
+
+		sidebarAnimDesktopClose() {
+			var _vm = this
+			var bagButton = document.getElementById('bagButton')
+			var body = document.body
+
+			return gsap.timeline().to(this.$el, {
+				xPercent: 100,
+				ease: 'power1',
+				onStart() {
+					body.removeEventListener('click', _vm.closeEvent)
+					bagButton.disabled = true
+				},
+				onComplete() {
+					bagButton.disabled = false
+				},
+			})
+		},
+
+		sidebarAnimMobileOpen() {
+			var _vm = this
+			var bagButton = document.getElementById('bagButton')
+			var body = document.body
+
+			return gsap.timeline().to(this.$el, {
+				duration: 1,
+				xPercent: 0,
+				ease: 'power3.out',
+				onStart() {
+					bagButton.disabled = true
+				},
+				onComplete() {
+					body.addEventListener('click', _vm.closeEvent)
+					bagButton.disabled = false
+				},
+			})
+		},
+
+		sidebarAnimMobileClose() {
+			var _vm = this
+			var bagButton = document.getElementById('bagButton')
+			var body = document.body
+
+			return gsap.timeline().to(this.$el, {
+				xPercent: -100,
+				ease: 'power1',
+				onStart() {
+					body.removeEventListener('click', _vm.closeEvent)
+					bagButton.disabled = true
+				},
+				onComplete() {
+					bagButton.disabled = false
+				},
+			})
+		},
+
 		closeEvent(e) {
 			const clickedOutside = !e.target.closest('#sidebar')
 			if (clickedOutside && this.sidebar.isActive) {

@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="h-8 w-1/4 absolute bottom-0">
-			<IconCheveronDown class="w-7 mr-auto ml-2" />
+			<IconCheveronDown class="w-10 mr-auto ml-2" />
 		</div>
 	</div>
 </template>

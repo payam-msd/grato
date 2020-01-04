@@ -11,7 +11,7 @@ module.exports = {
 		},
 		extend: {
 			spacing: {
-				'7': '1.8rem',
+				'2.2': '2.2rem',
 				'14': '3.4rem',
 				'68': '22rem',
 				'78': '32rem',
@@ -37,9 +37,9 @@ module.exports = {
 	},
 	variants: {
 		backgroundColor: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-		border: ['focus', 'hover'],
-		borderWidth: ['focus', 'hover'],
-		borderColor: ['focus', 'hover'],
+		border: ['responsive', 'focus', 'hover'],
+		borderWidth: ['responsive', 'focus', 'hover'],
+		borderColor: ['responsive', 'focus', 'hover'],
 	},
 	plugins: [],
 }

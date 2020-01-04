@@ -4,7 +4,6 @@
 			{{ data }}
 		</p>
 		<nuxt-link
-			tag="a"
 			class="bg-black text-gray-100 h-6 rounded leading-tight px-4 mr-3 font-serif hover:bg-gray-900"
 			to="/specialSuggestion/id"
 		>

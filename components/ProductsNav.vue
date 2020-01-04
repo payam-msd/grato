@@ -1,16 +1,22 @@
 <template>
-	<div class="container mx-auto px-2 lg:px-6">
-		<ul class=" w-full lg:w-1/2 flex justify-around items-center mx-auto py-8">
+	<div class="container mx-auto px-4 lg:px-6">
+		<ul
+			class="overflow-auto scrolling-touch lg:overflow-hidden lg:w-1/2 flex flex-no-wrap lg:justify-around items-center lg:mx-auto py-8"
+		>
 			<li
 				v-for="(list, i) in lists"
 				:key="i"
 				:class="{
 					'border-b border-black': link.isActive && link.id === i,
 				}"
-				class="text-lg text-black cursor-pointer py-4"
-				@click="handleClick(i, list.name)"
+				class="py-4 mx-4"
 			>
-				{{ list.name }}
+				<a
+					class="text-base lg:text-lg cursor-pointer whitespace-no-wrap"
+					@click="handleClick(i, list.name)"
+				>
+					{{ list.name }}
+				</a>
 			</li>
 		</ul>
 
@@ -50,6 +56,8 @@ export default {
 				{name: 'تخفیف های استثنایی'},
 				{name: 'پرفروش ترین ها'},
 				{name: 'تازه رسیده ها'},
+				{name: 'متفرقه'},
+				{name: 'متفرقه'},
 				{name: 'متفرقه'},
 			],
 		}

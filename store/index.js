@@ -8,6 +8,9 @@ export const state = () => ({
 	navbar: {
 		data: undefined,
 	},
+	menu: {
+		isActive: false,
+	},
 	meta: [],
 	sidebar: {
 		sidebarContent: undefined,
@@ -27,6 +30,10 @@ export const mutations = {
 	TOGGLE_SIDEBAR(state, {component}) {
 		state.sidebar.sidebarContent = component
 		state.sidebar.isActive = !state.sidebar.isActive
+	},
+
+	TOGGLE_MENU(state) {
+		state.menu.isActive = !state.menu.isActive
 	},
 
 	USER_ORDERS(state, payload) {

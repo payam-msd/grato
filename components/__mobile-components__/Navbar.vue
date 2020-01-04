@@ -10,7 +10,6 @@
 		</a>
 
 		<nuxt-link
-			tag="a"
 			class="p-1  text-green-800 font-dana-bold
              "
 			to="/"
@@ -24,7 +23,7 @@
 			class="relative  "
 			@click="$store.commit('TOGGLE_SIDEBAR', {component: cartContent})"
 		>
-			<BagIcon class="w-7 m-1" transform="scale(-1,1)" />
+			<BagIcon class="w-10 m-1" transform="scale(-1,1)" />
 			<!-- <span
 				v-if="cart.inCart"
 				class="absolute w-6 h-6 bg-teal-500 text-white

@@ -1,7 +1,17 @@
 <template>
 	<div>
-		<div class="pt-6 text-center">
-			<h2 class="text-black ">{{ 'سبد خرید' }}</h2>
+		<div class="relative w-full text-center pt-6">
+			<button
+				class="absolute right-0"
+				@click="
+					$store.commit('TOGGLE_SIDEBAR', {
+						component: undefined,
+					})
+				"
+			>
+				<Close class="w-12" />
+			</button>
+			<h2 class="inline">{{ 'سبد خرید' }}</h2>
 		</div>
 
 		<div v-for="(item, index) in cart.cartItems" :key="index">
@@ -58,7 +68,13 @@
 
 <script>
 import {mapState} from 'vuex'
+import Close from '~/assets/svg/icons/icon-close.svg'
+
 export default {
+	components: {
+		Close,
+	},
+
 	computed: {
 		...mapState(['cart']),
 	},
