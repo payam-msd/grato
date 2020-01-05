@@ -43,8 +43,7 @@
 
 					<h4 class="text-black pb-4 pt-8">اطلاعات پرداخت</h4>
 					<form
-						class="flex flex-col justify-around w-full"
-						style="height: 50vh"
+						class="flex flex-col justify-around w-full h-64vh lg:h-40vh"
 						@submit.prevent="onFormClick"
 					>
 						<div class="flex">

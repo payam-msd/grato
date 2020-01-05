@@ -4,8 +4,8 @@
 			class="z-20 bg-white flex flex-wrap items-center"
 			:class="[
 				isNavbarFixed
-					? 'fixed inset-auto w-full h-24 top-0 shadow-lg rounded-b'
-					: 'relative h-32 ',
+					? 'fixed inset-auto w-full h-20 lg:h-24 top-0 shadow-lg rounded-b'
+					: 'relative h-24 lg:h-32 ',
 			]"
 		>
 			<div
@@ -84,7 +84,7 @@ export default {
 	data() {
 		return {
 			isNavbarFixed: false,
-			lastScrollPosition: 850,
+			lastScrollPosition: 700,
 		}
 	},
 
@@ -93,33 +93,13 @@ export default {
 		...mapState(['cart']),
 	},
 
-	// watch: {
-	// 	isNavbarFixed(newValue) {
-	// 		var {navbar} = this.$refs
-
-	// 		if (newValue) {
-	// 			gsap.set(navbar, {
-	// 				css: {
-	// 					classList:
-	// 						'+=',
-	// 				},
-	// 			})
-	// 		} else {
-	// 			gsap.set(navbar, {
-	// 				css: {
-	// 					classList:
-	// 						'-=w-full z-20 bg-white flex flex-wrap items-center py-6 lg:py-8',
-	// 				},
-	// 			})
-	// 		}
-	// },
-
 	mounted() {
 		window.addEventListener('scroll', this.onscroll)
 		this.$on('hook:beforeDestroy', () => {
 			window.removeEventListener('scroll', this.onscroll)
 		})
 	},
+
 	methods: {
 		onscroll() {
 			const route = this.$route.name
@@ -150,14 +130,10 @@ export default {
 		},
 
 		onCartClick() {
-			this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
+			this.$store.commit('TOGGLE_SIDEBAR')
 		},
 	},
 }
 </script>
 
-<style scope>
-#menu-toggle:checked + #menu {
-	display: hidden;
-}
-</style>
+<style scope></style>

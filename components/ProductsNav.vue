@@ -1,18 +1,17 @@
 <template>
 	<div class="container mx-auto px-4 lg:px-6">
 		<ul
-			class="overflow-auto scrolling-touch lg:overflow-hidden lg:w-1/2 flex flex-no-wrap lg:justify-around items-center lg:mx-auto py-8"
+			class="h-32 overflow-auto scrolling-touch lg:overflow-hidden lg:w-1/2 flex flex-no-wrap lg:justify-around items-center lg:mx-auto"
 		>
-			<li
-				v-for="(list, i) in lists"
-				:key="i"
-				:class="{
-					'border-b border-black': link.isActive && link.id === i,
-				}"
-				class="py-4 mx-4"
-			>
+			<li v-for="(list, i) in lists" :key="i" class="my-4">
 				<a
-					class="text-base lg:text-lg cursor-pointer whitespace-no-wrap"
+					role="button"
+					tabindex="0"
+					class="text-base lg:text-lg cursor-pointer whitespace-no-wrap text-gray-600 py-4 mx-4 focus:outline-none"
+					:class="{
+						'border-b border-black text-gray-900':
+							link.isActive && link.id === i,
+					}"
 					@click="handleClick(i, list.name)"
 				>
 					{{ list.name }}
@@ -93,6 +92,6 @@ export default {
 
 <style scoped>
 .active-class {
-	@apply border-b py-4;
+	@apply text-black border-b py-4;
 }
 </style>

@@ -5,15 +5,15 @@
 		>
 			<div class="w-full lg:w-2/5 lg:pl-32">
 				<div class="mb-4">
-					<h3 class=" pb-1">{{ product.title }}</h3>
+					<h3 class="pb-1">{{ product.title }}</h3>
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
-					<span class="block text-gray-800 pt-8">
+					<div class="block text-gray-800 pt-8 font-dana-bold">
 						{{
 							userSelectedGuaranty === undefined
 								? product.minimum_price
 								: userSelectedGuaranty.price | currency
 						}}
-					</span>
+					</div>
 				</div>
 
 				<div class="thin-line" />
@@ -23,15 +23,15 @@
 					:guaranties="items"
 					@updatedGuaranty="userSelectedGuaranty = {...$event}"
 				/>
-
-				<div
-					class="fixed z-30 lg:static bottom-0 inset-x-0 lg:my-8 text-center"
-				>
-					<button class="btn btn-lg w-full" @click.prevent="handleAddToCart">
+				<div>
+					<button
+						class="btn btn-md lg:btn-lg w-full"
+						@click.prevent="handleAddToCart"
+					>
 						{{ 'اضافه به سبد خرید' }}
 						<IconAdd class="inline w-10" />
 					</button>
-					<p v-if="userSelectedGuaranty" class="text-red-600 my-2">
+					<p v-if="userSelectedGuaranty" class="text-red-600 my-2 text-center">
 						{{ userSelectedGuaranty.quantity }}
 						{{ 'عدد باقی مانده' }}
 					</p>
@@ -62,8 +62,6 @@ import Guaranty from '~/components/product/productDetail/Guaranty'
 import ProductExtraDetail from '~/components/product/productDetail/ProductExtraDetail'
 
 export default {
-	/* eslint-disable camelcase */
-
 	name: 'ProductID',
 
 	components: {
@@ -74,14 +72,35 @@ export default {
 		IconAdd,
 		ProductCarousel,
 	},
+
 	meta: {
 		name: 'محصول',
 		path: `/product/id`,
 	},
 
+	asyncData({params, app, error, route}) {
+		try {
+			return app.$SHOW_PRODUCT_DETAIL.show(params.id).then(data => {
+				let guaranties = []
+				data.items.map(guaranty => {
+					return guaranties.push(guaranty)
+				})
+				return {
+					items: guaranties,
+					product: data,
+				}
+			})
+		} catch (e) {
+			//   Error 😨
+			error({statusCode: e.code, message: e.message})
+		}
+	},
+
 	data() {
 		return {
 			id: this.$route.params.id,
+			isButtonFixed: false,
+			lastScrollPosition: 400,
 			userSelectedGuaranty: undefined,
 
 			images: [
@@ -108,6 +127,38 @@ export default {
 		}
 	},
 
+	computed: {
+		...mapGetters(['isAuthenticated']),
+	},
+
+	mounted() {
+		this.$nextTick(() => {
+			window.addEventListener('scroll', this.onScroll)
+			this.$on('hook:beforeDestroy', () => {
+				window.removeEventListener('scroll', this.onScroll)
+			})
+		})
+	},
+
+	methods: {
+		handleAddToCart() {
+			if (this.isAuthenticated) {
+				this.$store.dispatch('ADD_TO_CART', {
+					itemID: this.userSelectedGuaranty.id,
+					quantity: 1,
+				})
+				this.$store.commit('TOGGLE_SIDEBAR', {
+					component: undefined,
+				})
+			}
+		},
+		onScroll() {
+			var currentScrollPosition =
+				window.pageYOffset || document.documentElement.scrollTop
+			this.isButtonFixed = currentScrollPosition > this.lastScrollPosition
+		},
+	},
+
 	head() {
 		return {
 			title: this.product.title,
@@ -123,41 +174,6 @@ export default {
 
 	validate({params}) {
 		return /^\d+$/.test(params.id)
-	},
-
-	computed: {
-		...mapGetters(['isAuthenticated']),
-	},
-
-	asyncData({params, app, error, route}) {
-		try {
-			return app.$SHOW_PRODUCT_DETAIL.show(params.id).then(data => {
-				let guaranties = []
-				data.items.map(guaranty => {
-					return guaranties.push(guaranty)
-				})
-				return {
-					items: guaranties,
-					product: data,
-				}
-			})
-		} catch (e) {
-			//   Error 😨
-			error({statusCode: e.code, message: e.message})
-		}
-	},
-	methods: {
-		handleAddToCart() {
-			if (this.isAuthenticated) {
-				this.$store.dispatch('ADD_TO_CART', {
-					itemID: this.userSelectedGuaranty.id,
-					quantity: 1,
-				})
-				this.$store.commit('TOGGLE_SIDEBAR', {
-					component: undefined,
-				})
-			}
-		},
 	},
 }
 </script>

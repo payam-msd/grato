@@ -1,18 +1,20 @@
 <template>
 	<div>
-		<div
-			class="lg:hidden w-full h-16 bg-gray-100 border-t flex items-center justify-between px-3 border-b border-gray-400"
+		<button
+			class="lg:hidden relative overflow-hidden w-full h-16 bg-gray-100 border-t flex items-center justify-between px-3 border-b border-gray-400"
 			@click="isOrderSumOpen = !isOrderSumOpen"
 		>
-			<IconBag class="w-10 ml-2" />
-			<span class="tracking-wide">{{ 'خلاصه خرید' }}</span>
-			<IconCheveronDown class="w-10 ml-auto" />
+			<IconBag class="w-2.2 ml-2" />
+			<p class="ml-auto">
+				{{ 'خلاصه خرید' }}
+				<IconCheveronDown class="w-2.2 inline" />
+			</p>
 			<span>{{ cart.sum | currency }}</span>
-		</div>
+		</button>
 
 		<div
-			:class="[isOrderSumOpen ? 'visible' : 'hidden']"
-			class="bg-white relative w-full lg:w-2/5 lg:fixed lg:inset-y-0 lg:left-0 lg:block border-r border-gray-400"
+			id="orderSummary"
+			class="bg-white absolute w-full lg:w-2/5 lg:fixed lg:inset-y-0 lg:left-0 lg:block border-r border-gray-400"
 		>
 			<div class="mx-4 lg:ml-24 lg:mr-20 py-8 scrolling-auto">
 				<div v-for="(order, index) in cart.cartItems" :key="index">
@@ -106,9 +108,43 @@ export default {
 		...mapState(['cart']),
 	},
 
+	watch: {
+		isOrderSumOpen(isOpen) {
+			isOpen ? this.animateOrderSummaryOpen() : this.animateOrderSummaryClose()
+		},
+	},
+
+	mounted() {
+		this.$nextTick(() => {
+			var isMobile = window.innerWidth < 1024
+			if (isMobile) {
+				gsap.set('#orderSummary', {
+					yPercent: -100,
+					autoAlpha: 0,
+				})
+			}
+		})
+	},
+
 	methods: {
 		calculatePrice(price, quantity) {
 			return price * quantity
+		},
+		animateOrderSummaryOpen() {
+			return gsap.to('#orderSummary', {
+				duration: 0.75,
+				ease: 'power2.inOut',
+				yPercent: 0,
+				autoAlpha: 1,
+			})
+		},
+		animateOrderSummaryClose() {
+			return gsap.to('#orderSummary', {
+				duration: 0.75,
+				ease: 'power2.inOut',
+				yPercent: -100,
+				autoAlpha: 0,
+			})
 		},
 	},
 }

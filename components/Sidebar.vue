@@ -147,7 +147,7 @@ export default {
 		closeEvent(e) {
 			const clickedOutside = !e.target.closest('#sidebar')
 			if (clickedOutside && this.sidebar.isActive) {
-				this.$store.commit('TOGGLE_SIDEBAR', {component: undefined})
+				this.$store.commit('TOGGLE_SIDEBAR')
 			}
 		},
 	},

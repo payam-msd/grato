@@ -4,34 +4,40 @@
 			<li
 				v-for="item in data"
 				:key="item.id"
-				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2 lea"
+				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2"
 			>
 				<nuxt-link
 					:style="{
 						backgroundImage: `url(https://source.unsplash.com/Pvx24X1uiq4)`,
 					}"
 					:to="`/product/${item.id}`"
-					class="bg-cover h-64 lg:h-68 bg-center bg-rose-200 cursor-pointer"
+					class="bg-cover h-15 lg:h-22 bg-center bg-rose-100 cursor-pointer"
 					tag="div"
 				/>
 
-				<div class="py-4 pb-4">
-					<div class="text-gray-900 mb-1 cursor-pointer truncate">
+				<div class="py-4">
+					<div class="text-gray-900 cursor-pointer whitespace-normal	">
 						<nuxt-link :to="`/product/${item.id}`" class="pl-3">
 							{{ item.title }}
 						</nuxt-link>
-						<span class="inline text-gray-500">(سفید)</span>
+						<p class="inline text-gray-500 text-sm lg:text-base">
+							(سفید)
+						</p>
 					</div>
-					<div class="py-1">
-						<span v-if="!item.discount" class="text-black ">
+
+					<div class="flex items-center justify-between my-2">
+						<span v-if="!item.discount" class="text-sm lg:text-base self-end">
 							{{ item.minimum_price | currency }}
 						</span>
-						<span v-else class="text-red-500 line-through ">
+						<span
+							v-else
+							class="text-red-500 line-through text-sm lg:text-base self-end"
+						>
 							{{ item.minimum_price | currency }}
 						</span>
 						<IconDotsVertical
-							class="inline float-left w-10 p-1 hover:bg-teal-100
-                            cursor-pointer rounded-full"
+							class="inline w-8
+                            cursor-pointer"
 						/>
 					</div>
 				</div>
@@ -39,9 +45,9 @@
 		</ul>
 
 		<div class="text-center py-24">
-			<nuxt-link to="/somewhere" class="btn btn-lg hover:bg-gray-900">
+			<nuxt-link to="/somewhere" class="btn btn-md lg:btn-lg hover:bg-gray-900">
 				{{ `ادامه ${listDetail.listName}` }}
-				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-10" />
+				<IconCheveronLeft transform="rotate(90, 0 ,0)" class="icon w-2.2" />
 			</nuxt-link>
 		</div>
 	</div>

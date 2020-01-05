@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-rose-100">
+	<div class="bg-rose-100 py-64 lg:py-0" style="height: 60vh">
 		<div class="container mx-auto px-6 py-24">
 			<h2 class="text-center">{{ 'ما را در اینستاگرام دنبال کنید' }}</h2>
 			<ul class="flex flex-no-wrap">

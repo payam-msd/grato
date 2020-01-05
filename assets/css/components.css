@@ -1,75 +1,79 @@
 /* ****************
  *        SVG STYLES
 ****************/
-.primary {
-	@apply text-gray-800 fill-current inline;
-}
+@variants responsive {
 
-.secondary {
-	@apply text-gray-600 fill-current inline;
-}
-
-.icon {
-	@apply inline mr-2;
-}
-
-
-.input {
-	@apply border rounded border-gray-400 py-3 px-4 bg-white block w-full appearance-none transition-all transition-slower ease-in-out;
-}
-
-.input:focus-within{
-	@apply outline-none border-2 border-black;
-}
-
-/* ****************
- *        BUTTONS STYLE
-****************/
-
-.btn {
-	@apply bg-black text-gray-100 text-center font-dana-bold;
-}
-
-.btn-tiny {
-	@apply px-3 text-base ;
-}
-.btn-sm {
-	@apply py-4 px-4 text-sm ;
-}
-.btn-md {
-	@apply py-4 px-4 text-base ;
-}
-.btn-lg {
-	@apply py-5 px-12 text-lg;
-}
-.btn-xl{
-	@apply py-5 px-12 text-xl;
-
-}
-
-.secondary-btn{
-	@apply text-base text-gray-600 px-2 py-2;
-}
-.secondary-btn:hover{
-	@apply  text-gray-900;
-}
-
-.tertiary-btn{
-	@apply text-sm w-auto h-auto py-1 border-b border-gray-700 text-gray-900;
-}
-
-.tertiary-link {
-	@apply bg-transparent px-3 py-2 text-gray-500 text-sm;
-}
-
-.tertiary-link:hover {
-	@apply underline text-gray-800;
-}
-
-
-@screen lg{
+	.primary {
+		@apply text-gray-800 fill-current inline;
+	}
+	
+	.secondary {
+		@apply text-gray-600 fill-current inline;
+	}
+	
+	.icon {
+		@apply inline mr-2;
+	}
+	
+	
+	.input {
+		@apply border rounded border-gray-400 py-3 px-4 bg-white block w-full appearance-none transition-all transition-slower ease-in-out;
+	}
+	
+	.input:focus-within{
+		@apply outline-none border-2 border-black;
+	}
+	
+	/* ****************
+	*        BUTTONS STYLE
+	****************/
+	
+	.btn {
+		@apply bg-black text-gray-100 text-center font-dana-bold;
+	}
+	
+	.btn-tiny {
+		@apply px-3 text-base ;
+	}
+	.btn-sm {
+		@apply py-4 px-4 text-sm ;
+	}
+	.btn-md {
+		@apply py-4 px-4 text-base ;
+	}
+	.btn-lg {
+		@apply py-5 px-12 text-lg;
+	}
+	.btn-xl{
+		@apply py-5 px-12 text-xl;
+		
+	}
+	
+	.secondary-btn{
+		@apply text-base text-gray-600 px-2 py-2;
+	}
+	.secondary-btn:hover{
+		@apply  text-gray-900;
+	}
+	
+	.tertiary-btn{
+		@apply text-sm w-auto h-auto py-1 border-b border-gray-700 text-gray-900;
+	}
+	
 	.tertiary-link {
-		@apply bg-transparent px-3 py-2 text-gray-500 text-base;
-	}	
+		@apply bg-transparent px-3 py-2 text-gray-500 text-sm;
+	}
+	
+	.tertiary-link:hover {
+		@apply underline text-gray-800;
+	}
+	
 }
-
+	
+	@screen lg{
+		.tertiary-link {
+			@apply bg-transparent px-3 py-2 text-gray-500 text-base;
+		}	
+	}
+	
+	

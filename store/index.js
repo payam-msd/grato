@@ -13,7 +13,6 @@ export const state = () => ({
 	},
 	meta: [],
 	sidebar: {
-		sidebarContent: undefined,
 		isActive: false,
 	},
 })
@@ -27,8 +26,7 @@ export const mutations = {
 		state.navbar.data = payload
 	},
 
-	TOGGLE_SIDEBAR(state, {component}) {
-		state.sidebar.sidebarContent = component
+	TOGGLE_SIDEBAR(state) {
 		state.sidebar.isActive = !state.sidebar.isActive
 	},
 

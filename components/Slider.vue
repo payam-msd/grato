@@ -1,7 +1,7 @@
 <template>
 	<div
-		class="h-full bg-gray-300 flex flex-col lg:flex-row items-center"
-		style="height:60vh"
+		class="h-full bg-gray-300 flex flex-col lg:flex-row items-center py-32 my-64 lg:my-0"
+		style="height:80vh"
 	>
 		<div class="container mx-auto px-4 lg:px-6">
 			<div class="flex flex-col-reverse lg:flex-row bg-white">

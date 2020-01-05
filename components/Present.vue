@@ -1,7 +1,9 @@
 <template>
 	<div class="bg-rose-100">
 		<div class="container mx-auto px-4 lg:px-6 py-24">
-			<h2 class="text-center">{{ 'تلاش ما براوردن بهترین تجربه خرید است' }}</h2>
+			<h3 class="text-center lg:text-3xl">
+				{{ 'تلاش ما براوردن بهترین تجربه خرید است' }}
+			</h3>
 			<div class="present-grid py-24">
 				<nuxt-link
 					to="/
@@ -13,11 +15,13 @@
 							src="https://source.unsplash.com/collection/4408389/1600x900"
 							alt
 						/>
-						<div class="inline-flex items-center tertiary-btn text-lg">
+						<div
+							class="inline-flex items-center tertiary-btn text-base lg:text-lg"
+						>
 							<p>
 								{{ 'خرید سامسونگ' }}
 							</p>
-							<IconLeftArrow class="mr-1" />
+							<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
 						</div>
 					</div>
 				</nuxt-link>
@@ -28,23 +32,27 @@
 							src="https://source.unsplash.com/collection/795176/1600x900/"
 							alt
 						/>
-						<div class="inline-flex items-center tertiary-btn text-lg">
+						<div
+							class="inline-flex items-center tertiary-btn text-base lg:text-lg"
+						>
 							<p>{{ 'خرید هواوی' }}</p>
-							<IconLeftArrow class="mr-1" />
+							<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
 						</div>
 					</div>
 				</nuxt-link>
 			</div>
 			<nuxt-link to="/">
-				<div class="w-full " style="height: 55vh">
+				<div class="w-full" style="height: 55vh">
 					<img
 						class="w-full h-full object-cover"
 						src="https://source.unsplash.com/collection/4585094/1600x900"
 						alt
 					/>
-					<div class="inline-flex items-center tertiary-btn text-lg">
+					<div
+						class="inline-flex items-center tertiary-btn text-base lg:text-lg"
+					>
 						<p>{{ 'خرید ایفون' }}</p>
-						<IconLeftArrow class="mr-1" />
+						<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
 					</div>
 				</div>
 			</nuxt-link>
@@ -53,10 +61,10 @@
 </template>
 
 <script>
-import IconLeftArrow from '~/assets/svg/left-arrow.svg'
+import IconCheveronLeft from '~/assets/svg/icons/icon-cheveron-down.svg'
 export default {
 	components: {
-		IconLeftArrow,
+		IconCheveronLeft,
 	},
 }
 </script>
