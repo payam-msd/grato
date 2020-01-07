@@ -74,8 +74,16 @@ export default {
 	},
 
 	meta: {
-		name: 'محصول',
-		path: `/product/id`,
+		children: [
+			{
+				name: 'محصولات',
+				path: '/',
+			},
+			{
+				name: 'محصول شماره ۳',
+				path: '/',
+			},
+		],
 	},
 
 	asyncData({params, app, error, route}) {

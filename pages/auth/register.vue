@@ -115,8 +115,12 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 export default {
 	middleware: ['guest'],
 	meta: {
-		name: 'صفحه ثبت نام',
-		path: '/auth/register',
+		children: [
+			{
+				name: ' ثبت نام در گراتو',
+				path: '/auth/register',
+			},
+		],
 	},
 	components: {
 		EyeIcon,

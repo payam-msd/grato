@@ -26,11 +26,19 @@ export default {
 		Slider,
 		Instagram,
 	},
+	// meta: {
+	// 	children: [
+	// 		{
+	// 			name: 'محصولات',
+	// 			path: '/',
+	// 		},
+	// 		{
+	// 			name: 'محصول شماره ۳',
+	// 			path: '/',
+	// 		},
+	// 	],
+	// },
 
-	meta: {
-		name: 'خانه',
-		path: '/',
-	},
 	head() {
 		return {
 			title: 'فروشگاه اینترنتی گراتو',
@@ -56,7 +64,7 @@ export default {
 		if (store.getters.isAuthenticated) await store.dispatch('GET_CART_DATA')
 	},
 
-	async asyncData({route, app}) {
+	async asyncData({route, app, meta}) {
 		return {
 			products: await app.$FETCH_PRODUCTS.index(),
 			shopSuggestions: await app.$FETCH_SHOP_SUGGESTIONS.index(),

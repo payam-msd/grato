@@ -93,8 +93,12 @@ import SendIcon from '~/assets/svg/sendIcon.svg'
 export default {
 	name: 'Login',
 	meta: {
-		name: 'صفحه ورود',
-		path: '/auth/login',
+		children: [
+			{
+				name: 'ورود به گراتو',
+				path: '/auth/login',
+			},
+		],
 	},
 
 	middleware: ['auth'],

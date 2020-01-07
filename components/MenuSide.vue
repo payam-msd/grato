@@ -1,8 +1,5 @@
 <template>
-	<div
-		id="menu"
-		class="fixed z-40 inset-y-0 right-0 w-11/12 h-screen bg-white shadow-2xl"
-	>
+	<div id="menu" class="fixed z-40 inset-y-0 right-0 w-11/12 h-full bg-white">
 		<div class="w-full p-6 ">
 			<Close class="w-12" @click="$store.commit('TOGGLE_MENU')" />
 		</div>
@@ -79,39 +76,39 @@ export default {
 			],
 			items2: [
 				{
-					id: 1,
+					id: 5,
 					name: 'سبد خرید',
 					route: '/cart',
 				},
 				{
-					id: 2,
+					id: 6,
 					name: 'تمامی محصولات',
 					route: '/products',
 				},
 				{
-					id: 3,
+					id: 7,
 					name: 'متفرقه',
 					route: '/',
 				},
 				{
-					id: 4,
+					id: 8,
 					name: 'داستان ما',
 					route: '/story',
 				},
 			],
 			items3: [
 				{
-					id: 1,
+					id: 9,
 					name: 'ورود',
 					route: '/auth/login',
 				},
 				{
-					id: 2,
+					id: 10,
 					name: 'راهنمایی نیاز دارید؟',
 					route: '/help',
 				},
 				{
-					id: 3,
+					id: 11,
 					name: 'تماس با ما',
 					route: '/contact',
 				},

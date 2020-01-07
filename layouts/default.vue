@@ -3,19 +3,10 @@
 		<div ref="cover" />
 		<SplashScreen :is-loading="loader" />
 		<Notification />
-		<!-- <nav class="breadcrumb" aria-label="breadcrumbs">
-			<ul>
-				<li v-for="(item, i) in crumbs" :key="i" :class="item.classes">
-					<nuxt-link :to="item.path">
-						{{ item.name }}
-					</nuxt-link>
-				</li>
-			</ul>
-		</nav> -->
-		<!-- <p>{{ breadcrumbs }}</p> -->
 		<Sidebar />
 		<MenuSide />
 		<Navigation />
+		<Breadcrumbs :key="$route.fullPath" />
 		<nuxt />
 		<Footer />
 	</div>
@@ -28,6 +19,7 @@ import Notification from '~/components/Notification'
 import Sidebar from '~/components/Sidebar'
 import MenuSide from '~/components/MenuSide'
 import SplashScreen from '~/components/SplashScreen'
+import Breadcrumbs from '~/components/Breadcrumbs'
 
 export default {
 	components: {
@@ -37,6 +29,7 @@ export default {
 		Footer,
 		SplashScreen,
 		MenuSide,
+		Breadcrumbs,
 	},
 
 	data() {
@@ -49,68 +42,7 @@ export default {
 		sidebarOpen() {
 			return this.$store.state.sidebar.isActive
 		},
-		// breadcrumbs() {
-		// 	return this.$options.breadcrumbs.forEach(e => {
-		// 		return e.title
-		// 	})
 	},
-	// crumbs() {
-	// 	const crumbs = []
-	// 	this.$route.matched.map((item, i, {length}) => {
-	// 		const crumb = {}
-	// 		crumb.path = item.path
-	// 		crumb.name = this.$i18n.t('route.' + (item.name || item.path))
-
-	// 		// is last item?
-	// 		if (i === length - 1) {
-	// 			// is param route? .../.../:id
-	// 			if (item.regex.keys.length > 0) {
-	// 				crumbs.push({
-	// 					path: item.path.replace(/\/:[^/:]*$/, ''),
-	// 					name: this.$i18n.t('route.' + item.name.replace(/-[^-]*$/, '')),
-	// 				})
-	// 				crumb.path = this.$route.path
-	// 				crumb.name = this.$i18n.t('route.' + this.$route.name, [
-	// 					crumb.path.match(/[^/]*$/)[0],
-	// 				])
-	// 			}
-	// 			crumb.classes = 'is-active'
-	// 		}
-
-	// 		crumbs.push(crumb)
-	// 	})
-
-	// 	return crumbs
-	// },
-	// crumbs() {
-	// 	const crumbs = []
-	// 	this.$route.matched.map((item, i, {length}) => {
-	// 		const crumb = {}
-	// 		crumb.path = item.path
-	// 		crumb.name = this.$i18n.t('route.' + (item.name || item.path))
-
-	// 		// is last item?
-	// 		if (i === length - 1) {
-	// 			// is param route? .../.../:id
-	// 			if (item.regex.keys.length > 0) {
-	// 				crumbs.push({
-	// 					path: item.path.replace(/\/:[^/:]*$/, ''),
-	// 					name: this.$i18n.t('route.' + item.name.replace(/-[^-]*$/, '')),
-	// 				})
-	// 				crumb.path = this.$route.path
-	// 				crumb.name = this.$i18n.t('route.' + this.$route.name, [
-	// 					crumb.path.match(/[^/]*$/)[0],
-	// 				])
-	// 			}
-	// 			crumb.classes = 'is-active'
-	// 		}
-
-	// 		crumbs.push(crumb)
-	// 	})
-
-	// 	return crumbs
-	// },
-	// },
 
 	watch: {
 		sidebarOpen(newValue) {

@@ -49,7 +49,7 @@ export default {
 	transform: translateY(-5px);
 }
 .special-top-true {
-	top: 129%;
+	top: 136%;
 }
 .special-top-false {
 	top: 165%;
