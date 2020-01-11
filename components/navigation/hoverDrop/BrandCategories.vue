@@ -1,21 +1,21 @@
 <template>
 	<div>
+		<!--  MENUSIDE MOBILE -->
 		<button id="menuButton" class="lg:hidden w-2.2 block" @click="onMenuClick">
 			<IconMenu />
 		</button>
+		<!--  MENUSIDE MOBILE -->
+
 		<div
 			class="block cursor-pointer"
 			@mouseenter="sharedState.active = !sharedState.active"
 		>
 			<IconMenu class="w-8 hidden lg:inline" />
-			<a
-				href="#"
-				class="hidden lg:inline text-gray-800 pl-3 word-2-space cursor-none"
-			>
+			<a href="#" class="hidden lg:inline text-black word-2-space">
 				{{ 'دسته بندی کالاها' }}
 			</a>
 			<IconLine
-				class="hidden lg:inline w-8"
+				class="hidden lg:inline w-8 mx-1"
 				transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 			/>
 		</div>

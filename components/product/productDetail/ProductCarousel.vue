@@ -193,7 +193,7 @@ export default {
 			this.$options.swipe = new Swipe(this.$refs.swipeWrap, {
 				speed: 300,
 				continuous: true,
-				disableScroll: false,
+				disableScroll: true,
 				stopPropagation: false,
 				callback: this.onSwipe,
 			})

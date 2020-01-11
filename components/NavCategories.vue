@@ -1,10 +1,10 @@
 <template>
 	<div
-		class="lg:ml-auto w-1/3 pl-10 h-full flex items-center justify-start lg:justify-around"
+		class="lg:ml-auto w-auto h-full flex items-center justify-start lg:justify-around"
 	>
 		<!-- BRAND CATEGORIES -->
 		<brandCategories>
-			<Dropdown slot="dropdown" :is-navbar-fixed="isFixed">
+			<Dropdown slot="dropdown">
 				<Category slot="category" @category="onCategoryIDUpdated" />
 				<SubCaregories slot="subCaregories" :hovered-item="category" />
 			</Dropdown>
@@ -14,6 +14,7 @@
 		<a href="#" class="hidden lg:block secondary-btn word-2-space ">
 			{{ 'رویه بازگشت کالا' }}
 		</a>
+
 		<a href="#" class="hidden lg:block secondary-btn word-2-space ">
 			{{ 'سوالی دارید؟' }}
 		</a>
@@ -32,12 +33,6 @@ export default {
 		Dropdown,
 		Category,
 		SubCaregories,
-	},
-	props: {
-		isFixed: {
-			type: Boolean,
-			default: false,
-		},
 	},
 	data() {
 		return {

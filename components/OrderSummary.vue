@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<button
-			class="lg:hidden relative overflow-hidden w-full h-16 bg-gray-100 border-t flex items-center justify-between px-3 border-b border-gray-400"
+			class="lg:hidden w-full h-16 bg-gray-100 border-t flex items-center justify-between px-3 border-b border-gray-400"
 			@click="isOrderSumOpen = !isOrderSumOpen"
 		>
-			<IconBag class="w-2.2 ml-2" />
+			<IconCart class="w-2.2 ml-2" transform="scale(-1,1)" />
 			<p class="ml-auto">
 				{{ 'خلاصه خرید' }}
 				<IconCheveronDown class="w-2.2 inline" />
@@ -14,43 +14,46 @@
 
 		<div
 			id="orderSummary"
-			class="bg-white absolute w-full lg:w-2/5 lg:fixed lg:inset-y-0 lg:left-0 lg:block border-r border-gray-400"
+			class="bg-white w-full lg:w-2/5 lg:fixed lg:inset-y-0 lg:left-0 lg:block border-r border-gray-400"
 		>
 			<div class="mx-4 lg:ml-24 lg:mr-20 py-8 scrolling-auto">
-				<div v-for="(order, index) in cart.cartItems" :key="index">
-					<div class="w-full flex flex-row-reverse justify-start my-6">
-						<div class="relative border border-gray-400 rounded">
-							<span
-								class="absolute w-6 h-6 bg-black text-white  rounded-full flex items-center text-sm font-dana-bold justify-center"
-								style="left: -11px;
+				<ul>
+					<li v-for="(order, index) in cart.cartItems" :key="index">
+						<div class="w-full flex flex-row-reverse justify-start my-6">
+							<div class="relative border border-gray-400 rounded">
+								<span
+									class="absolute w-6 h-6 bg-black text-white  rounded-full flex items-center text-sm font-dana-bold justify-center"
+									style="left: -11px;
 								top: -6px;
 								line-height: 1.4rem;
 							"
-							>
-								{{ order.quantity }}
-							</span>
-							<!-- <img
+								>
+									{{ order.quantity }}
+								</span>
+								<!-- <img
 								:src="order.product.media.images[0].path"
 								class="object-scale-down rounded-lg w-32 h-20"
 							/>-->
-							<img
-								src="https://source.unsplash.com/collection/795176/1600x900"
-								class="object-scale-down w-32 h-full"
-							/>
+								<img
+									src="https://source.unsplash.com/collection/795176/1600x900"
+									class="object-scale-down w-32 h-full"
+								/>
+							</div>
+							<div class="flex flex-col ml-auto">
+								<h4 class="-mt-1 pb-3 text-gray-900">
+									{{ order.product.title }}
+								</h4>
+								<span class="pt-8 text-gray-800">
+									{{
+										calculatePrice(order.item.price, order.quantity) | currency
+									}}
+								</span>
+							</div>
 						</div>
-						<div class="flex flex-col ml-auto">
-							<h4 class="-mt-1 pb-3 text-gray-900">
-								{{ order.product.title }}
-							</h4>
-							<span class="pt-8 text-gray-800">
-								{{
-									calculatePrice(order.item.price, order.quantity) | currency
-								}}
-							</span>
-						</div>
-					</div>
-					<div class="thin-line" />
-				</div>
+						<div class="thin-line" />
+					</li>
+				</ul>
+
 				<div class="my-6 relative">
 					<input
 						class="border border-gray-400 px-4 h-12 rounded w-full focus:border-black focus:border-2 focus:outline-none appearance-none"
@@ -92,16 +95,17 @@
 import {mapState} from 'vuex'
 import ThinLine from '~/assets/svg/thin-line.svg'
 import IconCheveronDown from '~/assets/svg/icons/icon-cheveron-down.svg'
-import IconBag from '~/assets/svg/icons/icon-shopping-bag.svg'
+import IconCart from '~/assets/svg/icons/icon-shopping-cart.svg'
 export default {
 	components: {
 		ThinLine,
 		IconCheveronDown,
-		IconBag,
+		IconCart,
 	},
 	data() {
 		return {
 			isOrderSumOpen: false,
+			ClientHeight: 0,
 		}
 	},
 	computed: {
@@ -116,13 +120,10 @@ export default {
 
 	mounted() {
 		this.$nextTick(() => {
-			var isMobile = window.innerWidth < 1024
-			if (isMobile) {
-				gsap.set('#orderSummary', {
-					yPercent: -100,
-					autoAlpha: 0,
-				})
-			}
+			gsap.set('#orderSummary', {
+				height: 0,
+				display: 'none',
+			})
 		})
 	},
 
@@ -130,20 +131,24 @@ export default {
 		calculatePrice(price, quantity) {
 			return price * quantity
 		},
+
 		animateOrderSummaryOpen() {
-			return gsap.to('#orderSummary', {
-				duration: 0.75,
-				ease: 'power2.inOut',
-				yPercent: 0,
-				autoAlpha: 1,
-			})
+			return gsap
+				.timeline()
+				.set('#orderSummary', {height: 'auto', display: 'block'})
+				.from('#orderSummary', {
+					height: 0,
+					immediateRender: false,
+					duration: 1,
+					ease: 'expo.inOut',
+				})
 		},
 		animateOrderSummaryClose() {
 			return gsap.to('#orderSummary', {
-				duration: 0.75,
-				ease: 'power2.inOut',
-				yPercent: -100,
-				autoAlpha: 0,
+				duration: 1,
+				ease: 'expo.inOut',
+				height: 0,
+				display: 'none',
 			})
 		},
 	},

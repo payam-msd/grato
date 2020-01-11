@@ -11,7 +11,7 @@
 			>
 				<Close class="w-12" />
 			</button>
-			<h2 class="inline">{{ 'سبد خرید' }}</h2>
+			<h3 class="inline">{{ 'سبد خرید' }}</h3>
 		</div>
 
 		<div v-for="(item, index) in cart.cartItems" :key="index">
@@ -28,9 +28,9 @@
 						/>
 					</div>
 					<div class="flex flex-col ml-auto">
-						<h3 class="-mt-1 tracking-wide text-gray-900">
+						<h5 class="-mt-1 tracking-wide text-gray-900">
 							{{ item.product.title }}
-						</h3>
+						</h5>
 						<div class="self-end ml-3 mt-2 pt-8">
 							<button
 								class="h-8 w-8 -m-1 rounded-r border border-gray-400"

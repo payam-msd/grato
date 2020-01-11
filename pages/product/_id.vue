@@ -1,9 +1,13 @@
 <template>
 	<div class="relative bg-gray-100">
 		<div
-			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col-reverse lg:flex-row lg:justify-between py-10 lg:py-16"
+			class="container mx-auto px-4 w-full h-auto lg:px-8 flex flex-col lg:flex-row lg:justify-between "
 		>
-			<div class="w-full lg:w-2/5 lg:pl-32">
+			<div class="w-full lg:w-3/5">
+				<ProductCarousel :images="images" />
+			</div>
+
+			<div class="w-full lg:w-2/5 px-12">
 				<div class="mb-4">
 					<h3 class="pb-1">{{ product.title }}</h3>
 					<span class="block text-gray-600">{{ 'قرمز' }}</span>
@@ -37,15 +41,11 @@
 					</p>
 				</div>
 
-				<p class="text-gray-800 pb-6">{{ product.description }}</p>
+				<p class="text-gray-800 my-12">{{ product.description }}</p>
 
 				<div class="thin-line" />
 
 				<ProductExtraDetail :data="titles" />
-			</div>
-
-			<div class="w-full lg:w-3/5">
-				<ProductCarousel :images="images" />
 			</div>
 		</div>
 	</div>

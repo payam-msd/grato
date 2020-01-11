@@ -1,60 +1,63 @@
 <template>
-	<Wrapper class="z-30">
-		<button
-			class="w-full h-full py-3 flex items-center justify-around focus:outline-none
+	<div class="relative w-64">
+		<Wrapper>
+			<button
+				class="py-3 mr-auto flex items-center justify-around focus:outline-none
              "
-		>
-			<UserIcon class="icon w-8" />
-			<CheveronDown class="icon w-8" />
-		</button>
-
-		<Item class="relative">
-			<ul
-				class="w-64 absolute bg-white
-                shadow-inner left-0 py-2"
-				:class="[isFixed ? 'special-margin-true' : 'special-margin-false']"
 			>
-				<ItemDetail>
-					<li class="hover:bg-gray-200 cursor-pointer">
-						<nuxt-link
-							to="/auth/user"
-							class="mt-2 mr-2 inline-flex items-center justify-center pointer-cursor"
-						>
-							<img
-								class="rounded-full w-8 h-8 border-transparent hover:border-indigo-400"
-								src="https://i.pravatar.cc/600"
-								alt
-							/>
-							<p class="w-full text-gray-darker pr-2">
-								{{
-									userDetail.first_name === undefined
-										? 'کاربر جدید'
-										: userDetail.first_name
-								}}
-							</p>
-						</nuxt-link>
-					</li>
-				</ItemDetail>
-				<ItemDetail>
-					<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
-						<BagIcon height="28" width="28" class="text-gray-700 inline" />
-						<nuxt-link to="/profile" class="w-full text-gray-darker px-3">
-							سفارش های من
-						</nuxt-link>
-					</li>
-				</ItemDetail>
-				<div class="h-px mx-3 bg-gray-400" />
-				<ItemDetail>
-					<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
-						<ExportIcon height="28" width="28" class="text-gray-700" />
-						<a class="w-full text-gray-darker px-3" @click.once="handleLogout">
-							{{ 'خروج از حساب کاربری' }}
-						</a>
-					</li>
-				</ItemDetail>
-			</ul>
-		</Item>
-	</Wrapper>
+				<UserIcon class="icon w-8" />
+				<CheveronDown class="icon w-8" />
+			</button>
+			<Item>
+				<ul
+					class="absolute z-30 bg-white shadow-inner"
+					style="top:135%; left: 0"
+				>
+					<ItemDetail>
+						<li class="hover:bg-gray-200 cursor-pointer">
+							<nuxt-link
+								to="/auth/user"
+								class="py-4 mr-2 inline-flex items-center justify-center pointer-cursor"
+							>
+								<img
+									class="rounded-full w-8 h-8 border-transparent hover:border-indigo-400"
+									src="https://i.pravatar.cc/600"
+									alt
+								/>
+								<p class="w-full text-gray-darker pr-2">
+									{{
+										userDetail.first_name === undefined
+											? 'کاربر جدید'
+											: userDetail.first_name
+									}}
+								</p>
+							</nuxt-link>
+						</li>
+					</ItemDetail>
+					<ItemDetail>
+						<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
+							<BagIcon height="28" width="28" class="text-gray-700 inline" />
+							<nuxt-link to="/profile" class="w-full text-gray-darker px-3">
+								سفارش های من
+							</nuxt-link>
+						</li>
+					</ItemDetail>
+					<div class="h-px mx-3 bg-gray-400" />
+					<ItemDetail>
+						<li class="hover:bg-gray-200 cursor-pointer p-4 flex items-center">
+							<ExportIcon height="28" width="28" class="text-gray-700" />
+							<a
+								class="w-full text-gray-darker px-3"
+								@click.once="handleLogout"
+							>
+								{{ 'خروج از حساب کاربری' }}
+							</a>
+						</li>
+					</ItemDetail>
+				</ul>
+			</Item>
+		</Wrapper>
+	</div>
 </template>
 
 <script>
@@ -77,12 +80,6 @@ export default {
 		BagIcon,
 	},
 
-	props: {
-		isFixed: {
-			type: Boolean,
-			default: false,
-		},
-	},
 	computed: {
 		...mapGetters(['isAuthenticated', 'userDetail']),
 	},
@@ -101,11 +98,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.special-margin-true {
-	margin-top: 20%;
-}
-.special-margin-false {
-	margin-top: 45%;
-}
-</style>
+<style scoped></style>

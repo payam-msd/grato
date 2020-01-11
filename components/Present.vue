@@ -12,16 +12,20 @@
 					<div class="w-full pb-20 lg:pb-0" style="height: 85vh">
 						<img
 							class="w-full h-full object-cover"
-							src="https://source.unsplash.com/collection/4408389/1600x900"
+							src="
+							https://source.unsplash.com/9Eia3u2qsN0"
 							alt
 						/>
 						<div
 							class="inline-flex items-center tertiary-btn text-base lg:text-lg"
 						>
 							<p>
-								{{ 'خرید سامسونگ' }}
+								{{ 'محصولات سامسونگ' }}
 							</p>
-							<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
+							<IconCheveronLeft
+								class="w-8 -mr-1"
+								transform="rotate(90, 0 ,0)"
+							/>
 						</div>
 					</div>
 				</nuxt-link>
@@ -29,14 +33,19 @@
 					<div class="w-full" style="height: 85vh">
 						<img
 							class="w-full h-full object-cover"
-							src="https://source.unsplash.com/collection/795176/1600x900/"
+							src="
+							https://source.unsplash.com/70ku6P7kgmc
+							"
 							alt
 						/>
 						<div
 							class="inline-flex items-center tertiary-btn text-base lg:text-lg"
 						>
-							<p>{{ 'خرید هواوی' }}</p>
-							<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
+							<p>{{ 'محصولات هواوی' }}</p>
+							<IconCheveronLeft
+								class="w-8 -mr-1"
+								transform="rotate(90, 0 ,0)"
+							/>
 						</div>
 					</div>
 				</nuxt-link>
@@ -44,15 +53,15 @@
 			<nuxt-link to="/">
 				<div class="w-full" style="height: 55vh">
 					<img
-						class="w-full h-full object-cover"
-						src="https://source.unsplash.com/collection/4585094/1600x900"
+						class="w-full h-full object-cover object-left-bottom"
+						src="https://source.unsplash.com/Nod1nQ0i5a0"
 						alt
 					/>
 					<div
 						class="inline-flex items-center tertiary-btn text-base lg:text-lg"
 					>
-						<p>{{ 'خرید ایفون' }}</p>
-						<IconCheveronLeft class="w-2.2" transform="rotate(90, 0 ,0)" />
+						<p>{{ 'محصولات اپل' }}</p>
+						<IconCheveronLeft class="w-8 -mr-1" transform="rotate(90, 0 ,0)" />
 					</div>
 				</div>
 			</nuxt-link>

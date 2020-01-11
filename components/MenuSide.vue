@@ -3,7 +3,6 @@
 		<div class="w-full p-6 ">
 			<Close class="w-12" @click="$store.commit('TOGGLE_MENU')" />
 		</div>
-
 		<div
 			class="w-full h-full overflow-y-scroll overflow-x-hidden flex flex-col items-stretch justify-start px-6"
 		>
@@ -45,6 +44,12 @@
 
 <script>
 import {mapState} from 'vuex'
+import {
+	disableBodyScroll,
+	enableBodyScroll,
+	clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
+
 import Close from '~/assets/svg/icons/icon-close.svg'
 export default {
 	components: {
@@ -135,6 +140,7 @@ export default {
 						},
 						onComplete() {
 							body.addEventListener('click', _vm.closeEvent)
+							disableBodyScroll(body)
 							menuButton.disabled = false
 						},
 				  })
@@ -143,10 +149,12 @@ export default {
 						ease: 'power1',
 						onStart() {
 							body.removeEventListener('click', _vm.closeEvent)
+							enableBodyScroll(body)
 							menuButton.disabled = true
 						},
 						onComplete() {
 							menuButton.disabled = false
+							clearAllBodyScrollLocks(body)
 						},
 				  })
 		},

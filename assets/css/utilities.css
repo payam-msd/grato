@@ -77,20 +77,24 @@
 		transition-timing-function :cubic-bezier(0.455, 0.03, 0.515, 0.955) ;
 	}
 	
-	.scalse-0{
+	.scale-0{
 		transform: scale(0);
 	}
-	.scalse-25{
+	.scale-25{
 		transform: scale(.25);
 	}
-	.scalse-50{
+	.scale-50{
 		transform: scale(0.50);
 	}
-	.scalse-75{
+	.scale-75{
 		transform: scale(0.75);
 	}
-	.scalse-100{
+	.scale-100{
 		transform: scale(1);
+	}
+
+	.leading-extreme{
+		line-height: 1.6rem;
 	}
 
 }

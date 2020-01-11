@@ -43,7 +43,7 @@
 
 					<h4 class="text-black pb-4 pt-8">اطلاعات پرداخت</h4>
 					<form
-						class="flex flex-col justify-around w-full h-64vh lg:h-40vh"
+						class="flex flex-col justify-around w-full h-48vh"
 						@submit.prevent="onFormClick"
 					>
 						<div class="flex">
@@ -172,8 +172,15 @@
 								{{ 'برگشت به محصول' }}
 							</nuxt-link>
 						</div>
-						<div class="thin-line" />
 					</form>
+					<div class="thin-line" />
+					<div class="w-full h-16 flex items-center justify-start">
+						<div v-for="(item, i) in footerLinks" :key="i">
+							<nuxt-link class="tertiary-link" :to="item.path">
+								{{ item.name }}
+							</nuxt-link>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -203,6 +210,20 @@ export default {
 
 	data() {
 		return {
+			footerLinks: [
+				{
+					name: 'حریم خصوصی',
+					path: '/privacyPosicy',
+				},
+				{
+					name: 'شرایط استفاده',
+					path: '/termsAndService',
+				},
+				{
+					name: 'رویه بازگرداندن کالا',
+					path: '/refundPolicy',
+				},
+			],
 			// * Form handling happens here
 			selectedState: 11, // default to mashhad
 			form: {

@@ -68,12 +68,12 @@ export default {
 		}
 	},
 	watch: {
-		url: function(val) {
+		url(val) {
 			this.imgUrl = val
 			this.orginUrl = val
 			this.initTime()
 		},
-		bigUrl: function() {
+		bigUrl() {
 			this.bigImgUrl = bigUrl
 			this.bigOrginUrl = bigUrl
 			this.initTime()
@@ -136,14 +136,17 @@ export default {
 			this.canvas = document.createElement('canvas')
 			this.canvas.className = 'mouse-cover-canvas'
 			this.canvas.style.position = 'fixed'
-			this.canvas.style.left =
-				this.imgbox.offsetLeft + this.imgbox.offsetWidth + -10 + 'px'
-			this.canvas.style.top = this.imgbox.offsetTop + 10 + 'vh'
+			this.canvas.style.left = '1%'
+			// this.imgbox.offsetRight + this.imgbox.offsetWidth + 10 + 'px'
+			this.canvas.style.top = '20%'
+			// this.imgbox.offsetTop + 10 + 'vh'
 			this.canvas.style.border = '1px solid black'
 			this.canvas.style.zIndex = '20'
 			this.canvas.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-			this.canvas.height = this.imgbox.offsetHeight - 80
+			this.canvas.height = this.imgbox.offsetHeight - 140
+			// this.imgbox.offsetHeight - 80
 			this.canvas.width = this.imgbox.offsetWidth - 200
+			// this.imgbox.offsetWidth - 200
 			this.canvas.style.display = 'none'
 			document.body.append(this.canvas)
 			this.ctx = this.canvas.getContext('2d')

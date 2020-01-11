@@ -1,9 +1,9 @@
 <template>
-	<div v-show="breadcrumb" class="container mx-auto px-1">
-		<div class="w-full py-4 px-8">
+	<div v-show="breadcrumb" :key="$route.fullPath" class="bg-gray-100">
+		<div class="w-full py-2 lg:py-4 container mx-auto px-4 lg:px-8">
 			<nav aria-label="breadcrumbs">
-				<ul class="flex  justify-start items-center">
-					<nuxt-link class="text-gray-700" to="/">
+				<ul class="flex  justify-start items-center text-sm lg:text-base">
+					<nuxt-link class="text-gray-600" to="/">
 						{{ 'فروشگاه اینترنتی گراتو ' }}
 					</nuxt-link>
 					<IconLeft class="inline w-2.2" transform="rotate(90, 0, 0)" />
@@ -11,7 +11,7 @@
 						v-for="(item, i) in breadcrumb"
 						:key="i"
 						:class="item.classes"
-						class="text-gray-700 "
+						class="text-gray-600 word-space-snug"
 					>
 						<nuxt-link :to="item.path">
 							{{ item.name }}
@@ -58,9 +58,9 @@ export default {
 		// 		return crumbs
 		// 	},
 	},
-	watch: {
-		$route: 'breadcrumb',
-	},
+	// watch: {
+	// 	$route: 'breadcrumb',
+	// },
 }
 </script>
 

@@ -8,18 +8,18 @@
 				<div class="w-full lg:w-2/3" style="height: 50vh">
 					<img
 						class="w-full h-full object-cover"
-						src="https://source.unsplash.com/collection/4408389/1600x900"
+						src="https://source.unsplash.com/tdMu8W9NTnY"
 						alt
 					/>
 				</div>
 				<div class="w-full lg:w-1/3 p-24">
-					<h2>{{ 'سامسونگ' }}</h2>
+					<h2>{{ 'محصولات اپل' }}</h2>
 					<p class="py-6">
 						{{ 'کیفیت و کارایی همراه با ضمانت ۲ ساله از شرکت های معتبر' }}
 					</p>
 					<nuxt-link to="/page">
 						<div class="inline-flex items-center tertiary-btn text-base">
-							<a>{{ 'خرید سامسونگ' }}</a>
+							<a>{{ 'ادامه محصولات' }}</a>
 							<IconLeftArrow class="mr-1" />
 						</div>
 					</nuxt-link>

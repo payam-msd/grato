@@ -1,31 +1,41 @@
 <template>
 	<div class="hero-grid ">
-		<div class="w-full " style="height:78vh">
+		<div class="w-full relative " style="height:82vh">
 			<img
 				class="w-full h-full object-cover"
-				src="https://source.unsplash.com/collection/962362/"
+				src="https://source.unsplash.com/HY3l4IeOc3E"
 				alt
 			/>
+			<nuxt-link
+				class="absolute inset-x-center  bottom-0 mb-6 tertiary-btn text-base lg:hidden"
+				to="/"
+			>
+				{{ 'مجموعه محصولات اپل' }}
+				<CheveronLeft
+					transform="rotate(90, 0 ,0)"
+					class="icon w-8 -mr-1"
+					stroke-width="3"
+				/>
+			</nuxt-link>
 		</div>
 
-		<div class="hidden relative w-full  lg:block" style="height:78vh">
+		<div class="hidden relative w-full  lg:block" style="height:82vh">
 			<img
 				class="w-full h-full object-cover"
-				src="https://source.unsplash.com/Q0oo_CeBfUY"
+				src="https://source.unsplash.com/v8BDEj9bfcs"
 				alt
 			/>
 
-			<div
-				class="w-1/2 absolute bottom-0 left-0 p-8 mb-24 bg-rose-100 rounded-r"
-			>
-				<h4>
+			<div class="w-1/2 absolute top-0 left-0 p-8 mt-24">
+				<h5>
 					{{ product }}
-				</h4>
+				</h5>
+
 				<nuxt-link class="tertiary-btn" to="/somewhere">
 					{{ link }}
 					<CheveronLeft
 						transform="rotate(90, 0 ,0)"
-						class="icon w-10"
+						class="icon w-6 -mr-1"
 						stroke-width="3"
 					/>
 				</nuxt-link>
@@ -45,7 +55,7 @@ export default {
 	data() {
 		return {
 			product: 'زیبایی در کمال نهفته است',
-			link: 'بررسی تخصصی +NOTE 10',
+			link: 'بررسی تخصصی APPLE WATCH 4',
 		}
 	},
 }

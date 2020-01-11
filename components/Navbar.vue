@@ -9,54 +9,58 @@
 			]"
 		>
 			<div
-				class="relative flex justify-between items-center container mx-auto px-4 lg:px-6"
+				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
 			>
-				<!-- SUBSEQUENT NAVBAR  -->
-				<NavCategories :is-fixed="isNavbarFixed" />
-				<!-- /SUBSEQUENT NAVBAR	  -->
+				<!-- DROWDOWN  -->
+				<NavCategories />
+				<!-- /DROWDOWN	  -->
 
-				<div class="w-full lg:w-auto flex lg:items-center justify-end">
-					<div
-						class="items-center justify-between text-base text-gray-700 lg:flex"
+				<nuxt-link
+					class="lg:hidden text-3xl self-end text-green-800 font-dana-bold"
+					to="/"
+				>
+					{{ 'گراتو' }}
+				</nuxt-link>
+
+				<div class="w-auto flex items-center justify-end">
+					<!-- <profile v-if="isAuthenticated" /> -->
+
+					<nuxt-link
+						v-if="isAuthenticated"
+						class="hidden lg:block secondary-btn mt-1 text-gray-900 word-space-relaxed"
+						to="/auth/profile"
 					>
-						<profile v-if="isAuthenticated" :is-fixed="isNavbarFixed" />
-
-						<nuxt-link
-							v-else
-							class="text-gray-800 py-3 lg:py-4 rounded block px-3 lg:px-6 lg:border lg:border-gray-500 lg:hover:border-black "
-							to="/auth/login"
-						>
-							<a class=" hidden lg:block">
-								{{ 'ورود به حساب کاربری' }}
-							</a>
-							<IconUser class="w-2.2 lg:hidden" />
-						</nuxt-link>
-					</div>
+						{{ 'حساب کاربری' }}
+					</nuxt-link>
+					<nuxt-link
+						v-else
+						class="text-gray-800 py-3 lg:py-4 rounded block px-3 lg:px-6 lg:border lg:border-gray-500 lg:hover:border-black "
+						to="/auth/login"
+					>
+						<a class="hidden lg:block">
+							{{ 'ورود به حساب کاربری' }}
+						</a>
+					</nuxt-link>
 
 					<thinLine
-						class="w-8 lg:mx-1"
+						class="w-8 h-full lg:mx-1 mt-1 hidden lg:block"
 						transform="rotate( 90, 0, 0 ) scale(1.5,1)"
 					/>
 
 					<button
 						id="bagButton"
-						class="cursor-pointer flex items-center"
+						class="relative flex items-end"
 						@click="onCartClick"
 					>
-						<div class="w-2.2 lg:w-10">
+						<div class="w-2.2">
 							<BagIcon />
 						</div>
 
-						<div v-if="cart.inCart" class="relative">
-							<span
-								class="absolute w-6 h-6 border border-black text-black  rounded-full flex items-center text-sm font-dana-bold justify-center"
-								style="left: -20px;
-								top: -8px;
-								line-height: 1.4rem;
-							"
-							>
-								{{ cart.inCart }}
-							</span>
+						<div
+							v-show="cart.inCart"
+							class="absolute inset-x-center w-6 h-6 text-white rounded-full text-sm font-dana-bold justify-center leading-extreme"
+						>
+							{{ cart.inCart }}
 						</div>
 					</button>
 				</div>
@@ -68,17 +72,17 @@
 <script>
 import {mapGetters, mapState} from 'vuex'
 import NavCategories from '~/components/NavCategories'
-import profile from '~/components/navigation/profile/Dropdown'
+// import profile from '~/components/navigation/profile/Dropdown'
 import BagIcon from '~/assets/svg/icons/icon-shopping-bag.svg'
-import IconUser from '~/assets/svg/icons/icon-user.svg'
+// import IconUser from '~/assets/svg/icons/icon-user.svg'
 import thinLine from '~/assets/svg/icons/icon-remove.svg'
 export default {
 	components: {
-		profile,
+		// profile,
 		NavCategories,
 		BagIcon,
 		thinLine,
-		IconUser,
+		// IconUser,
 	},
 
 	data() {

@@ -44,8 +44,13 @@ export default {
 
 <style scoped>
 .category-props {
-	overflow: -moz-scrollbars-none;
-	-ms-overflow-style: none;
+	/* overflow: -moz-scrollbars-none; */
+	/* -ms-overflow-style: none; */
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	padding-left: 17px; /* Increase/decrease this value for cross-browser compatibility */
+	box-sizing: content-box; /* So the width will be 100% + 17px */
 }
 .category-props::-webkit-scrollbar {
 	width: 0 !important;

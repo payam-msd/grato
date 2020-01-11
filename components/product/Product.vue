@@ -7,11 +7,8 @@
 				class="w-1/2 lg:w-1/4 p-1 lg:p-3 pb-2"
 			>
 				<nuxt-link
-					:style="{
-						backgroundImage: `url(https://source.unsplash.com/Pvx24X1uiq4)`,
-					}"
 					:to="`/product/${item.id}`"
-					class="bg-cover h-15 lg:h-22 bg-center bg-rose-100 cursor-pointer"
+					class="image transition-all transition-medium ease-out bg-cover h-15 lg:h-22 bg-center bg-rose-100 cursor-pointer"
 					tag="div"
 				/>
 
@@ -76,4 +73,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.image {
+	background-image: url('https://source.unsplash.com/Pvx24X1uiq4');
+}
+.image:hover {
+	background-image: url('https://source.unsplash.com/R1qvCoD5Mjg');
+}
+</style>

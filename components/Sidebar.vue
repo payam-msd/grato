@@ -14,7 +14,7 @@
 			<nuxt-link
 				class="btn btn-lg"
 				to="/payment/checkout"
-				@click="$store.commit('TOGGLE_SIDEBAR', {component: undefined})"
+				@click="$store.commit('TOGGLE_SIDEBAR')"
 			>
 				{{ 'بررسی خرید' }}
 			</nuxt-link>
@@ -24,6 +24,11 @@
 
 <script>
 import {mapState} from 'vuex'
+import {
+	disableBodyScroll,
+	enableBodyScroll,
+	clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 import SidebarContent from '~/components/SidebarContent'
 import Notification from '~/components/notification/SidebarNotif'
 
@@ -84,6 +89,7 @@ export default {
 				},
 				onComplete() {
 					body.addEventListener('click', _vm.closeEvent)
+					disableBodyScroll(body)
 					bagButton.disabled = false
 				},
 			})
@@ -99,10 +105,12 @@ export default {
 				ease: 'power1',
 				onStart() {
 					body.removeEventListener('click', _vm.closeEvent)
+					enableBodyScroll(body)
 					bagButton.disabled = true
 				},
 				onComplete() {
 					bagButton.disabled = false
+					clearAllBodyScrollLocks(body)
 				},
 			})
 		},
@@ -121,6 +129,7 @@ export default {
 				},
 				onComplete() {
 					body.addEventListener('click', _vm.closeEvent)
+					disableBodyScroll(body)
 					bagButton.disabled = false
 				},
 			})
@@ -136,10 +145,12 @@ export default {
 				ease: 'power1',
 				onStart() {
 					body.removeEventListener('click', _vm.closeEvent)
+					enableBodyScroll(body)
 					bagButton.disabled = true
 				},
 				onComplete() {
 					bagButton.disabled = false
+					clearAllBodyScrollLocks(body)
 				},
 			})
 		},
