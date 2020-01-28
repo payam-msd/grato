@@ -1,13 +1,6 @@
 <template>
-	<div class="relative h-24 lg:h-32">
-		<header
-			class="z-20 bg-white flex flex-wrap items-center"
-			:class="[
-				isNavbarFixed
-					? 'fixed inset-auto w-full h-20 lg:h-24 top-0 shadow-lg rounded-b'
-					: 'relative h-24 lg:h-32 ',
-			]"
-		>
+	<div class="relative">
+		<nav id="navbar" class="flex flex-wrap items-center bg-white w-screen h-32">
 			<div
 				class="flex justify-between items-center container mx-auto px-4 lg:px-6"
 			>
@@ -16,7 +9,7 @@
 				<!-- /DROWDOWN	  -->
 
 				<nuxt-link
-					class="lg:hidden text-3xl self-end text-green-800 font-dana-bold"
+					class="lg:hidden text-3xl self-end text-green-800 font-dana-bold "
 					to="/"
 				>
 					{{ 'گراتو' }}
@@ -65,7 +58,7 @@
 					</button>
 				</div>
 			</div>
-		</header>
+		</nav>
 	</div>
 </template>
 
@@ -88,7 +81,7 @@ export default {
 	data() {
 		return {
 			isNavbarFixed: false,
-			lastScrollPosition: 700,
+			isProtected: false,
 		}
 	},
 
@@ -97,42 +90,70 @@ export default {
 		...mapState(['cart']),
 	},
 
+	watch: {
+		isNavbarFixed(isFixed) {
+			const nav = document.querySelector('#navbar')
+			const isMobile = this.$breakpoint === 'sm'
+
+			isFixed && !this.isProtected
+				? gsap.to('#navbar', {
+						duration: 0.25,
+						ease: 'circ',
+						height: isMobile ? '5rem' : '6rem',
+						onStart() {
+							nav.parentNode.style.height = nav.offsetHeight + 'px'
+							nav.classList.add(
+								'fixed',
+								'shadow-lg',
+								'rounded-b',
+								'inset-x-0',
+								'top-0',
+								'z-20',
+							)
+						},
+				  })
+				: gsap.to('#navbar', {
+						duration: 0.25,
+						ease: 'circ',
+						height: isMobile ? '6rem' : '9rem',
+						onStart() {
+							nav.parentNode.style.height = 'auto'
+							nav.classList.remove(
+								'fixed',
+								'shadow-lg',
+								'rounded-b',
+								'inset-x-0',
+								'top-0',
+								'z-20',
+							)
+						},
+				  })
+		},
+	},
+
 	mounted() {
-		window.addEventListener('scroll', this.onscroll)
+		window.addEventListener('scroll', this.fixNavbar)
 		this.$on('hook:beforeDestroy', () => {
-			window.removeEventListener('scroll', this.onscroll)
+			window.removeEventListener('scroll', this.fixNavbar)
 		})
 	},
 
 	methods: {
-		onscroll() {
-			const route = this.$route.name
-			const currentScrollPosition =
-				window.pageYOffset || document.documentElement.scrollTop
-
-			// ? Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
-			if (currentScrollPosition < 0) {
-				return
-			}
+		fixNavbar() {
+			const currentRoute = this.$route.name
+			const notif = document.querySelector('#notif')
+			this.isProtected = false
 
 			if (
-				route === 'auth-register' ||
-				route === 'auth-login' ||
-				route === 'product-id'
+				['auth-register', 'auth-login', 'product-id'].includes(currentRoute)
 			) {
-				this.isNavbarFixed = false
-			} else {
-				// Here we determine whether we need to show or hide the navbar
-				this.isNavbarFixed = currentScrollPosition > this.lastScrollPosition
+				this.isProtected = true
 			}
 
-			// if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
-			// 	return
-			// }
-			// // Set the current scroll position as the last scroll position
-			// this.lastScrollPosition = currentScrollPosition
+			window.scrollY >= notif.offsetHeight
+				? (this.isNavbarFixed = true)
+				: (this.isNavbarFixed = false)
 		},
-
 		onCartClick() {
 			this.$store.commit('TOGGLE_SIDEBAR')
 		},

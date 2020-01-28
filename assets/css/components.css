@@ -1,5 +1,4 @@
 @variants responsive {
-
 .primary {
 	@apply text-gray-800 fill-current inline;
 }

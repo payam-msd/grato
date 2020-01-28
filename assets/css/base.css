@@ -22,6 +22,38 @@ html {
 	user-select: none;
 }
 
+body{
+	@apply overflow-x-hidden w-screen;
+}
+
+body::before{
+    content: 'sm';
+    display: none;
+	visibility: hidden;
+}
+
+@screen md {
+    body::before{
+        content: 'md';
+        display: none;
+        visibility: hidden;
+    }
+}
+@screen lg {
+    body::before{
+        content: 'lg';
+        display: none;
+        visibility: hidden;
+    }
+}
+@screen xl {
+    body::before{
+        content: 'xl';
+        display: none;
+        visibility: hidden;
+    }
+}
+
 
 h1 {
 	@apply text-4xl ;

@@ -3,12 +3,12 @@
 		class="lg:ml-auto w-auto h-full flex items-center justify-start lg:justify-around"
 	>
 		<!-- BRAND CATEGORIES -->
-		<brandCategories>
+		<CategoriesTitle>
 			<Dropdown slot="dropdown">
-				<Category slot="category" @category="onCategoryIDUpdated" />
+				<Categories slot="category" @category="onCategoryIDUpdated" />
 				<SubCaregories slot="subCaregories" :hovered-item="category" />
 			</Dropdown>
-		</brandCategories>
+		</CategoriesTitle>
 		<!-- /BRAND CATEGORIES -->
 
 		<a href="#" class="hidden lg:block secondary-btn word-2-space ">
@@ -22,16 +22,16 @@
 </template>
 
 <script>
-import brandCategories from '~/components/navigation/hoverDrop/BrandCategories'
-import Dropdown from '~/components/navigation/hoverDrop/Dropdown'
-import Category from '~/components/navigation/hoverDrop/Category'
-import SubCaregories from '~/components/navigation/hoverDrop/SubCaregories'
+import CategoriesTitle from '~/components/navigation/category/CategoriesTitle'
+import Dropdown from '~/components/navigation/category/Dropdown'
+import Categories from '~/components/navigation/category/Categories'
+import SubCaregories from '~/components/navigation/category/SubCaregories'
 
 export default {
 	components: {
-		brandCategories,
+		CategoriesTitle,
 		Dropdown,
-		Category,
+		Categories,
 		SubCaregories,
 	},
 	data() {

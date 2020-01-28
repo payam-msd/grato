@@ -113,7 +113,7 @@ import CloseEye from '~/assets/svg/closeEye.svg'
 import SendIcon from '~/assets/svg/sendIcon.svg'
 
 export default {
-	middleware: ['guest'],
+	middleware: ['auth'],
 	meta: {
 		children: [
 			{

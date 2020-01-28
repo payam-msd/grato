@@ -253,6 +253,7 @@
 <script>
 export default {
 	name: 'Error500',
+	scrollToTop: true,
 	props: {
 		error: {
 			type: Object,

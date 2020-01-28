@@ -23,8 +23,8 @@ export default {
 				defer: true,
 				src:
 					process.env.NODE_ENV === 'production'
-						? 'https://unpkg.com/gsap@3.0.4/dist/gsap.min.js'
-						: 'https://unpkg.com/gsap@3.0.4/dist/gsap.js',
+						? 'https://unpkg.com/gsap@3.0.5/dist/gsap.min.js'
+						: 'https://unpkg.com/gsap@3.0.5/dist/gsap.js',
 			},
 		],
 	},
@@ -44,6 +44,7 @@ export default {
 	 */
 	plugins: [
 		{src: '~/plugins/currency.js'},
+		{src: '~/plugins/breakPoint.js', mode: 'client'},
 		{src: '~/plugins/axios.js'},
 		{src: '~/plugins/vuelidate.js'},
 		{src: '~/plugins/repository.js'},

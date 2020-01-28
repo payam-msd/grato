@@ -205,6 +205,7 @@
 <script>
 export default {
 	name: 'Error404',
+	scrollToTop: true,
 	props: {
 		error: {
 			type: Object,

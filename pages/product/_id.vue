@@ -54,8 +54,6 @@
 <script>
 import {mapGetters} from 'vuex'
 import ProductCarousel from '~/components/product/productDetail/ProductCarousel'
-// import ChevronBottomIcon from '~/assets/svg/icons/icon-cheveron-down.svg'
-// import CheckmarkIcon from '~/assets/svg/icons/icon-check.svg'
 import IconAdd from '~/assets/svg/icons/icon-add.svg'
 
 import Guaranty from '~/components/product/productDetail/Guaranty'
@@ -67,8 +65,6 @@ export default {
 	components: {
 		Guaranty,
 		ProductExtraDetail,
-		// CheckmarkIcon,
-		// ChevronBottomIcon,
 		IconAdd,
 		ProductCarousel,
 	},
@@ -107,8 +103,6 @@ export default {
 	data() {
 		return {
 			id: this.$route.params.id,
-			isButtonFixed: false,
-			lastScrollPosition: 400,
 			userSelectedGuaranty: undefined,
 
 			images: [
@@ -140,12 +134,7 @@ export default {
 	},
 
 	mounted() {
-		this.$nextTick(() => {
-			window.addEventListener('scroll', this.onScroll)
-			this.$on('hook:beforeDestroy', () => {
-				window.removeEventListener('scroll', this.onScroll)
-			})
-		})
+		this.$nextTick(() => {})
 	},
 
 	methods: {
@@ -155,15 +144,8 @@ export default {
 					itemID: this.userSelectedGuaranty.id,
 					quantity: 1,
 				})
-				this.$store.commit('TOGGLE_SIDEBAR', {
-					component: undefined,
-				})
+				this.$store.commit('TOGGLE_SIDEBAR')
 			}
-		},
-		onScroll() {
-			var currentScrollPosition =
-				window.pageYOffset || document.documentElement.scrollTop
-			this.isButtonFixed = currentScrollPosition > this.lastScrollPosition
 		},
 	},
 

@@ -1,6 +1,9 @@
 <template>
 	<!-- <component :is="component" v-if="component" :data="data" /> -->
-	<div class="w-full h-auto py-3 flex justify-center items-center bg-gray-100 ">
+	<div
+		id="notif"
+		class="w-full h-auto py-3 flex justify-center items-center bg-gray-100 "
+	>
 		<h6 class="text-gray-900">
 			{{ 'خرید استثنایی +NOTE 10  در این هفته' }}
 		</h6>

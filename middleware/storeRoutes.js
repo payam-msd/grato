@@ -30,5 +30,5 @@
 // }
 
 export default ctx => {
-	ctx.meta = ctx.route.meta[0].children
+	ctx.meta = ctx.route.meta[0].children || null
 }
